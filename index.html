@@ -1,1 +1,2489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abu Sufian</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-pink: #e91e63;
+            --light-pink: #fce4ec;
+            --bg-color: #f4f7f6;
+            --text-dark: #2d3436;
+            --text-gray: #636e72;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, sans-serif;
+        }
+
+        body {
+            background-color: #e0e0e0;
+            display: flex;
+            justify-content: center;
+        }
+
+        .app-container {
+            width: 100%;
+            max-width: 412px;
+            background-color: var(--bg-color);
+            min-height: 100vh;
+            padding-bottom: 90px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Page Display Logic */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ======================== 
+           HOME PAGE STYLES 
+        ======================== */
+        .home-header {
+            background-color: var(--white);
+            padding: 12px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #eee;
+        }
+
+        .brand-logo {
+            font-size: 24px;
+            font-weight: 900;
+            color: var(--primary-pink);
+            font-style: italic;
+        }
+
+        .banner-slider {
+            margin: 15px;
+            height: 180px;
+            background: linear-gradient(45deg, #ff4081, #e91e63);
+            border-radius: 15px;
+            padding: 25px;
+            color: white;
+            position: relative;
+            box-shadow: 0 10px 20px rgba(233, 30, 99, 0.2);
+        }
+
+        .banner-slider h2 { font-size: 22px; }
+        .banner-slider p { font-size: 13px; opacity: 0.9; margin-top: 5px; }
+
+        .notice-container {
+            background: white;
+            margin: 0 15px 15px;
+            padding: 10px 15px;
+            border-radius: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .notice-container marquee { font-size: 12px; color: var(--text-dark); }
+
+        .cat-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            padding: 0 15px;
+            margin-bottom: 20px;
+        }
+
+        .cat-item {
+            background: white;
+            padding: 15px 5px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+        }
+
+        .cat-item img { width: 45px; height: 45px; margin-bottom: 8px; }
+        .cat-item span { font-size: 13px; font-weight: 600; display: block; }
+
+        /* ======================== 
+           ACTIVITY PAGE STYLES 
+        ======================== */
+        .activity-header {
+            background-color: var(--primary-pink);
+            padding: 20px;
+            color: white;
+            text-align: center;
+            font-weight: bold;
+        }
+        .activity-page {
+            background-color: #fff0f5;
+            padding: 15px;
+            font-family: sans-serif;
+        }
+
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .icon-box {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 8px;
+            color: white;
+            font-size: 24px;
+            box-shadow: 0 4px 8px rgba(255, 20, 147, 0.2);
+        }
+
+        .pink-bg { background: #ff4d94; }
+
+        .icon-item span {
+            font-size: 11px;
+            color: #666;
+            font-weight: bold;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .promo-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+        }
+
+        .pink-gradient {
+            background: linear-gradient(135deg, #ff7eb3 0%, #ff4d94 100%);
+        }
+
+        .image-placeholder {
+            height: 100px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 40px;
+        }
+
+        .card-text { padding: 10px; }
+        .card-text h3 { margin: 0; font-size: 14px; color: #333; }
+        .card-text p { margin: 5px 0 0; font-size: 10px; color: #888; }
+
+        .banner-button {
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .banner-content h3 { margin: 0; font-size: 20px; }
+        .banner-content p { margin: 5px 0 15px; font-size: 12px; }
+
+        .claim-btn {
+            background: #ffeb3b;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-weight: bold;
+            color: #d6336c;
+            cursor: pointer;
+        }
+
+        .banner-icon i { font-size: 60px; opacity: 0.3; }
+
+        /* ======================== 
+           PROMOTION PAGE STYLES 
+        ======================== */
+        .promo-header {
+            background: var(--primary-pink);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+        }
+        .promo-balance { font-size: 32px; font-weight: bold; }
+
+        /* ======================== 
+           ACCOUNT PAGE STYLES 
+        ======================== */
+        .acc-header {
+            background-color: var(--primary-pink);
+            padding: 40px 20px 70px 20px;
+            border-bottom-left-radius: 35px;
+            border-bottom-right-radius: 35px;
+            color: white;
+        }
+        .profile-box { display: flex; align-items: center; gap: 15px; }
+        .profile-img { width: 65px; height: 65px; border-radius: 50%; border: 2px solid #fff6; object-fit: cover; }
+        .vip-badge { background: var(--white); color: var(--primary-pink); font-size: 10px; padding: 2px 8px; border-radius: 20px; font-weight: 900; }
+        
+        .balance-card {
+            background: var(--white);
+            margin: -50px 15px 15px 15px;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+        .balance-amount { font-size: 28px; font-weight: 800; margin: 10px 0; color: var(--text-dark); }
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            margin-top: 15px;
+            border-top: 1px solid #f1f1f1;
+            padding-top: 15px;
+        }
+        .action-item { text-align: center; font-size: 11px; font-weight: 600; color: var(--text-dark); }
+        .action-item i { font-size: 20px; margin-bottom: 5px; display: block; }
+
+        .cs-button {
+            background: linear-gradient(90deg, #ff4081, #e91e63);
+            margin: 0 15px 15px; padding: 15px 20px; border-radius: 15px;
+            display: flex; justify-content: space-between; align-items: center;
+            color: white; box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+        }
+
+        .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 0 15px; }
+        .menu-card { background: white; padding: 18px; border-radius: 15px; display: flex; align-items: center; gap: 12px; font-size: 13px; font-weight: 600; }
+        .list-box { background: white; margin: 15px; border-radius: 18px; overflow: hidden; }
+        .list-item { padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8f9fa; }
+        .list-item i.icon { color: var(--primary-pink); font-size: 18px; }
+
+        .service-center {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            padding: 15px;
+            text-align: center;
+            gap: 20px;
+        }
+        .service-item i { font-size: 24px; color: #fbc02d; margin-bottom: 8px; display: block; }
+        .service-item span { font-size: 11px; }
+
+        .logout-btn {
+            width: calc(100% - 30px); margin: 10px 15px 30px; padding: 14px;
+            border-radius: 30px; border: 1.5px solid var(--primary-pink);
+            background: transparent; color: var(--primary-pink); font-weight: 700;
+        }
+
+        /* ======================== 
+           NAVIGATION BAR 
+        ======================== */
+        .nav-bar {
+            position: fixed; bottom: 0; width: 100%; max-width: 412px;
+            background: var(--white); display: flex; justify-content: space-around;
+            padding: 10px 0 15px 0; box-shadow: 0 -5px 20px rgba(0,0,0,0.08);
+            border-top-left-radius: 25px; border-top-right-radius: 25px; z-index: 1000;
+        }
+        .nav-link {
+            text-align: center; color: #b2bec3; text-decoration: none; flex: 1;
+            display: flex; flex-direction: column; align-items: center; cursor: pointer;
+        }
+        .nav-link i { font-size: 22px; margin-bottom: 4px; }
+        .nav-link span { font-size: 11px; font-weight: 600; }
+        .nav-link.active { color: var(--primary-pink); }
+                .promo-header {
+            background: var(--primary-pink);
+            padding: 30px 20px;
+            color: white;
+            text-align: center;
+        }
+/* Promotion Page Specific Styles */
+.promo-header-custom {
+    background-color: var(--primary-pink);
+    padding: 20px 15px 40px;
+    text-align: center;
+    color: white;
+}
+
+.promo-header-custom h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+}
+
+.commission-box h1 {
+    font-size: 36px;
+    margin-bottom: 5px;
+}
+
+.commission-box span {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 15px;
+    border-radius: 20px;
+    font-size: 12px;
+}
+
+.commission-box p {
+    font-size: 11px;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+.subordinate-stats {
+    display: flex;
+    margin: -20px 15px 15px;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.stat-col { flex: 1; text-align: center; border-right: 1px solid #f0f0f0; }
+.stat-col:last-child { border-right: none; }
+
+.stat-header {
+    padding: 10px;
+    font-size: 12px;
+    font-weight: bold;
+}
+.stat-header.direct { background-color: #ffeb3b; color: #333; }
+.stat-header.team { background-color: #fce4ec; color: var(--primary-pink); }
+
+.stat-body { padding: 10px 5px; }
+.stat-row { margin-bottom: 10px; }
+.stat-row b { display: block; font-size: 14px; }
+.stat-row span { font-size: 10px; color: #888; line-height: 1.2; display: block; }
+
+.green-text { color: #4caf50; }
+.orange-text { color: #ff9800; }
+
+.qr-download-btn {
+    width: calc(100% - 30px);
+    margin: 10px 15px;
+    padding: 12px;
+    background: var(--primary-pink);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+.list-item-promo {
+    background: white;
+    margin: 8px 15px;
+    padding: 15px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.03);
+}
+
+.list-item-promo .left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+    color: #444;
+}
+
+.list-item-promo .left i {
+    color: var(--primary-pink);
+    font-size: 16px;
+}
+
+.list-item-promo .right {
+    font-size: 13px;
+    color: #888;
+}
+/* প্রফেশনাল আইকন গ্রিড স্টাইল */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    padding: 20px 15px;
+}
+
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+/* গোল ব্যাকগ্রাউন্ড এবং সাদা আইকন */
+.icon-circle {
+    width: 60px;
+    height: 60px;
+    background: linear-gradient(135deg, #ff7eb3 0%, #e91e63 100%); /* গোলাপি গ্রেডিয়েন্ট */
+    border-radius: 50%; /* পুরোপুরি গোল */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3); /* হালকা শ্যাডো */
+    transition: transform 0.3s ease;
+}
+
+.icon-circle i {
+    color: #ffffff; /* আইকন কালার সাদা */
+    font-size: 24px;
+}
+
+.cat-item span {
+    font-size: 13px;
+    font-weight: 600;
+    color: #333;
+}
+
+/* হোভার ইফেক্ট (মাউস নিলে নড়বে) */
+.cat-item:hover .icon-circle {
+    transform: translateY(-5px);
+}
+/* ৮টি বাটনের প্রফেশনাল গ্রিড */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* এক লাইনে ৪টি */
+    gap: 12px;
+    padding: 20px 12px;
+    background-color: transparent;
+}
+
+.cat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.3s ease;
+}
+
+/* লম্বাটে প্রফেশনাল কার্ড */
+.icon-card {
+    width: 100%;
+    aspect-ratio: 4/5; /* বাটনকে একটু লম্বাটে করার জন্য */
+    background: linear-gradient(145deg, #ff4d94, #c2185b); /* প্রফেশনাল গোলাপি গ্রেডিয়েন্ট */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+    overflow: hidden;
+}
+
+/* গ্লসি ইফেক্ট (কার্ডের ওপর হালকা আলো) */
+.icon-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255,255,255,0.1), transparent);
+    transform: rotate(45deg);
+}
+
+.icon-card i {
+    color: #ffffff; /* আইকন কালার সাদা */
+    font-size: 28px; /* আইকন সাইজ একটু বড় */
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+}
+
+.cat-item span {
+    font-size: 11px; /* টেক্সট সাইজ মোবাইল ফ্রেন্ডলি */
+    font-weight: 700;
+    color: #444;
+    text-align: center;
+    white-space: nowrap;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* ক্লিক করার সময় হালকা দেবে যাবে */
+.cat-item:active {
+    transform: scale(0.92);
+}
+
+.cat-item:hover .icon-card {
+    box-shadow: 0 6px 15px rgba(233, 30, 99, 0.4);
+}
+:root {
+    --primary-pink: #e91e63; /* আপনার পছন্দের গোলাপি কালার কোড এখানে দিতে পারেন */
+}
+
+.nav-bar {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* বাম পাশ থেকে শুরু করার জন্য */
+    right: 0; /* ডান পাশ পর্যন্ত যাওয়ার জন্য */
+    margin: 0 auto; /* মাঝখানে রাখার জন্য */
+    width: 100%;
+    max-width: 412px;
+    background: var(--primary-pink);
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 0 18px 0;
+    box-shadow: 0 -5px 20px rgba(0,0,0,0.15);
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    z-index: 9999; /* যেন সব পেজের উপরে থাকে */
+}
+
+.nav-link {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.5); /* আন-অ্যাক্টিভ অবস্থায় কিছুটা ঝাপসা সাদা */
+    text-decoration: none;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* অ্যাক্টিভ স্টাইল */
+.nav-link.active {
+    color: #ffffff !important;
+    transform: translateY(-5px); /* একটু বেশি উপরে উঠবে */
+}
+
+.nav-link.active i {
+    font-size: 24px; /* আইকন বড় হবে */
+    filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
+}
+/* হোম হেডার - প্রফেশনাল গোলাপি থিম */
+.home-header {
+    background-color: var(--primary-pink); /* মেইন গোলাপি কালার */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.brand-logo {
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff !important; /* লোগো টেক্সট সাদা */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.header-icons {
+    display: flex; 
+    gap: 18px; 
+    color: #ffffff; /* আইকন সাদা */
+    font-size: 18px;
+}
+
+.header-icons i {
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.header-icons i:active {
+    transform: scale(0.9); /* ক্লিক করলে হালকা ছোট হবে */
+}
+/* ======================== 
+   WALLET PAGE STYLES 
+======================== */
+#walletPage {
+    background-color: #fff0f5; /* Light Pink Background */
+    overflow-y: auto;
+}
+
+/* Header আপডেট - গোলাপি ব্যাকগ্রাউন্ড এবং সাদা কন্টেন্ট */
+.wallet-header {
+    background-color: var(--primary-pink); /* আপনার সংজ্ঞায়িত গোলাপি কালার */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: none; /* বর্ডার সরিয়ে দেওয়া হয়েছে ক্লিন লুকের জন্য */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    color: white;
+}
+.wallet-header h2 { font-size: 18px; margin: 0; text-align: center; flex: 1; }
+.wallet-nav-back { font-size: 18px; cursor: pointer; }
+
+/* ব্যালেন্স কার্ড - প্রফেশনাল গোলাপি গ্রেডিয়েন্ট */
+.balance-gradient-card {
+    background: linear-gradient(135deg, #ff4d94 0%, #c2185b 100%);
+    padding: 30px 20px;
+    color: white;
+    text-align: center;
+}
+
+.wallet-icon-box { margin-bottom: 15px; display: inline-block; }
+.balance-display h2 { font-size: 36px; margin: 0; }
+.balance-display span { font-size: 12px; opacity: 0.8; }
+
+.stats-grid { display: grid; grid-template-columns: 1fr 1fr; margin-top: 25px; gap: 10px; }
+.stat-item-w b { font-size: 18px; }
+.stat-item-w p { font-size: 11px; opacity: 0.7; }
+
+/* প্রগ্রেস চার্ট সেকশন */
+.progress-section { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.chart-flex { display: flex; justify-content: space-around; margin-bottom: 20px; }
+.chart-box { text-align: center; }
+.chart-box b { display: block; margin-top: 10px; font-size: 14px; }
+.chart-box p { font-size: 11px; color: #888; }
+
+/* প্রফেশনাল সার্কেল প্রগ্রেস বার */
+.progress-circle-custom {
+    width: 80px; height: 80px; border-radius: 50%;
+    display: flex; justify-content: center; align-items: center;
+    font-size: 16px; font-weight: bold; position: relative;
+    border: 8px solid #f0f0f0;
+}
+.full-progress { border-color: var(--primary-pink); color: var(--primary-pink); }
+.no-progress { border-color: #f0f0f0; color: #ccc; }
+
+/* গোলাপি ট্রান্সফার বাটন */
+.transfer-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+/* কুইক অ্যাকশন গ্রিড */
+.wallet-actions-container {
+    background: white; margin: 0 15px 15px; padding: 15px;
+    border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.action-grid-w { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; text-align: center; }
+.icon-wrap-w {
+    width: 45px; height: 45px; border-radius: 12px;
+    display: flex; justify-content: center; align-items: center;
+    margin: 0 auto 5px; color: white; font-size: 20px;
+}
+.pink-bg { background: #ff4d94; }
+.stat-item-w p { margin-top: 4px; }
+.action-item-w span { font-size: 10px; color: #555; }
+/* Balance Card Mini */
+.balance-card-mini {
+    background: linear-gradient(135deg, #ff6b6b, #ee5253);
+    padding: 15px; border-radius: 12px; color: white; margin-bottom: 15px;
+}
+.b-amount { font-size: 24px; font-weight: bold; margin-top: 5px; }
+
+/* Method Selection */
+.method-selection { display: flex; gap: 10px; margin-bottom: 20px; }
+.method-item {
+    flex: 1; background: white; padding: 10px; border-radius: 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 5px;
+    border: 2px solid transparent; box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.method-item img { width: 35px; height: 35px; object-fit: contain; }
+.method-item span { font-size: 11px; font-weight: bold; }
+.method-item.active { border-color: var(--primary-pink); background: #fff0f5; }
+
+/* Channel Grid */
+.channel-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.channel-item {
+    background: #f1f2f6; padding: 12px 10px; border-radius: 8px;
+    font-size: 11px; font-weight: bold; text-align: center; color: #555;
+}
+.channel-item span { font-size: 10px; color: #888; font-weight: normal; }
+.channel-item.active { background: var(--primary-pink); color: white; }
+.channel-item.active span { color: #ffe0e0; }
+/* Deposit Page Styles */
+#depositPage { background-color: #f8f9fa; }
+
+.deposit-header {
+    background: white; padding: 15px; display: flex;
+    justify-content: space-between; align-items: center;
+    border-bottom: 1px solid #eee;
+}
+.deposit-header h2 { font-size: 18px; color: #333; margin: 0; }
+.history-link { font-size: 13px; color: #666; }
+
+.deposit-content { padding: 15px; padding-bottom: 100px; }
+
+.amount-card, .instruction-card {
+    background: white; border-radius: 12px; padding: 15px;
+    margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.card-title { font-weight: bold; font-size: 15px; margin-bottom: 15px; color: #444; }
+.card-title i { color: var(--primary-pink); margin-right: 8px; }
+
+.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.amt-btn {
+    background: #fff; border: 1px solid #eee; padding: 10px;
+    border-radius: 8px; color: #ff4d94; font-weight: bold; cursor: pointer;
+}
+.amt-btn:active { background: #fff0f5; border-color: #ff4d94; }
+
+.input-box {
+    margin-top: 15px; background: #f9f9f9; border-radius: 8px;
+    display: flex; align-items: center; padding: 10px 15px;
+}
+.input-box input {
+    background: transparent; border: none; outline: none;
+    flex: 1; padding: 0 10px; font-size: 14px;
+}
+.currency-symbol { color: #ff4d94; font-weight: bold; }
+.clear-btn { color: #ccc; cursor: pointer; }
+
+.instr-list { padding-left: 15px; margin: 0; }
+.instr-list li {
+    font-size: 12px; color: #777; margin-bottom: 10px;
+    line-height: 1.5; list-style-type: square;
+}
+
+.deposit-footer {
+    position: fixed; bottom: 0; width: 100%; max-width: 412px;
+    background: white; padding: 15px; display: flex;
+    justify-content: space-between; align-items: center;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+.method-info { font-size: 12px; color: #555; }
+.final-deposit-btn {
+    background: #ced4da; color: #fff; border: none;
+    padding: 12px 35px; border-radius: 8px; font-weight: bold;
+}
+/* যখন ইনপুট থাকবে তখন বাটনের কালার হবে গোলাপি */
+.btn-active { background: var(--primary-pink) !important; cursor: pointer; }
+/* Dynamic Summary Card Style */
+.summary-card {
+    background: white;
+    margin: 15px 0;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #fce4ec;
+    background-image: linear-gradient(to bottom right, #ffffff, #fff9fb);
+}
+
+.card-inner p {
+    font-size: 11px;
+    color: #888;
+    text-align: center;
+    margin-top: 10px;
+}
+
+.card-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.card-row span { color: #666; }
+.card-row strong { color: var(--primary-pink); }
+
+.summary-card hr {
+    border: 0;
+    border-top: 1px dashed #eee;
+    margin: 10px 0;
+}
+/* ব্যালেন্স কার্ড গোলাপি ডিজাইন */
+.balance-card-pink {
+    background: linear-gradient(135deg, #ff4081 0%, #e91e63 100%);
+    padding: 25px;
+    border-radius: 20px;
+    color: white;
+    position: relative;
+    margin-bottom: 20px;
+    box-shadow: 0 10px 20px rgba(233, 30, 99, 0.2);
+}
+.balance-card-pink .b-info { display: flex; align-items: center; gap: 10px; opacity: 0.9; font-size: 14px; }
+.balance-card-pink .b-amount { font-size: 32px; font-weight: 800; margin-top: 10px; }
+.refresh-icon { position: absolute; top: 25px; right: 25px; opacity: 0.7; }
+
+/* মেথড আইকন বক্স */
+.method-icon-wrap {
+    width: 50px;
+    height: 50px;
+    background: #fff0f5;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 8px;
+}
+.method-icon-wrap img { width: 30px; }
+.method-icon-wrap i { font-size: 24px; }
+
+/* সামারি কার্ড ও কনফার্ম বাটন */
+.summary-card-pink {
+    background: white;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    border: 1px solid #ffdae9;
+    margin-top: 20px;
+}
+.summary-header {
+    background: #fff0f5;
+    padding: 12px;
+    text-align: center;
+    font-weight: bold;
+    color: #e91e63;
+    font-size: 14px;
+}
+.summary-body { padding: 20px; }
+.s-row { display: flex; justify-content: space-between; margin-bottom: 12px; font-size: 14px; }
+.status-tag { background: #fff3e0; color: #ff9800; padding: 2px 8px; border-radius: 4px; font-size: 12px; }
+
+.confirm-btn-inside {
+    width: 100%;
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.confirm-btn-inside:active { transform: scale(0.96); }
+/* মেথড আইকন বক্সের স্টাইল */
+.method-icon-wrap {
+    width: 60px; /* আইকন বক্সের সাইজ */
+    height: 60px;
+    background: #fff0f5; /* হালকা গোলাপি ব্যাকগ্রাউন্ড */
+    border-radius: 15px; /* গোল কোণা */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto 8px; /* মাঝখানে রাখার জন্য */
+    border: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+/* মেথড আইটেম একটিভ হলে গোলাপি বর্ডার */
+.method-item.active .method-icon-wrap {
+    border-color: #e91e63; /* একটিভ গোলাপি বর্ডার */
+    background: #fff; /* ব্যাকগ্রাউন্ড সাদা */
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
+}
+
+.method-icon-wrap img {
+    max-width: 80%; /* আইকনটি বক্সের ভেতরে সুন্দরভাবে থাকবে */
+    max-height: 80%;
+}
+/* সার্ভিস সেন্টার মেইন কন্টেইনার */
+.service-center {
+    display: flex;
+    justify-content: space-around;
+    background: white;
+    margin: 15px;
+    padding: 20px 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+/* প্রতিটি আইটেম */
+.service-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.service-item:active {
+    transform: scale(0.9); /* ক্লিক করলে হালকা ছোট হবে */
+}
+
+/* আইকনের গোলাপি গোল বক্স */
+.service-icon-box {
+    width: 50px;
+    height: 50px;
+    background-color: #fff0f5; /* খুব হালকা গোলাপি ব্যাকগ্রাউন্ড */
+    color: #e91e63; /* গাঢ় গোলাপি আইকন কালার */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    transition: all 0.3s ease;
+}
+
+/* হোভার করলে আইকন বক্স আরও উজ্জ্বল হবে */
+.service-item:hover .service-icon-box {
+    background-color: #e91e63;
+    color: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+/* টেক্সট স্টাইল */
+.service-item span {
+    font-size: 12px;
+    font-weight: 600;
+    color: #555;
+    text-align: center;
+}
+/* ======================== 
+   WITHDRAW PAGE STYLES 
+======================== */
+#withdrawPage {
+    background-color: #fce4ec; /* Very Light Pink Background */
+    overflow-y: auto;
+    padding-bottom: 30px;
+}
+
+/* Header */
+.withdraw-header {
+    background-color: white; 
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #f8bbd0;
+}
+.withdraw-header h2 { font-size: 18px; margin: 0; text-align: center; flex: 1; color: #333; }
+.withdraw-nav-back { font-size: 18px; cursor: pointer; color: #e91e63; }
+.history-link { font-size: 12px; color: #666; }
+
+/* ব্যালেন্স কার্ড (গোলাপি গ্রেডিয়েন্ট) */
+.withdraw-balance-card {
+    background: linear-gradient(135deg, #f06292, #e91e63); /* Pink Gradient */
+    margin: 15px;
+    padding: 25px;
+    border-radius: 15px;
+    color: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.2);
+    position: relative;
+}
+.b-info-w { display: flex; align-items: center; gap: 8px; font-size: 12px; opacity: 0.9; }
+.b-amount-w { font-size: 28px; font-weight: bold; margin-top: 10px; }
+.refresh-icon-w { font-size: 16px; margin-left: 10px; opacity: 0.8; cursor: pointer; }
+
+/* Withdrawal Methods */
+.withdraw-methods { display: flex; margin: 15px; gap: 15px; }
+.method-box-w {
+    flex: 1;
+    background: white;
+    padding: 15px;
+    border-radius: 12px;
+    text-align: center;
+    border: 2px solid transparent;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.method-box-w i { font-size: 24px; color: var(--primary-pink); margin-bottom: 8px; display: block; }
+.method-box-w span { font-size: 12px; font-weight: bold; color: #333; }
+.method-box-w.active { border-color: var(--primary-pink); }
+
+/* Account Details (Nagad) */
+.account-details-w {
+    background: white; margin: 15px; padding: 15px; border-radius: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+.acc-info-left { display: flex; align-items: center; gap: 15px; }
+.acc-icon-w { font-size: 24px; color: var(--primary-pink); }
+.acc-text-w strong { font-size: 14px; color: #333; }
+.acc-text-w p { font-size: 12px; color: #888; margin: 0; }
+.acc-arrow-w { font-size: 14px; color: #ccc; }
+
+/* Amount Section */
+.amount-section-w { background: white; margin: 15px; padding: 20px; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
+.input-container-w { display: flex; align-items: center; background: #fff0f5; padding: 12px; border-radius: 8px; margin-bottom: 15px; }
+.currency-w { font-size: 16px; font-weight: bold; color: var(--primary-pink); }
+.input-container-w input { flex: 1; border: none; background: transparent; padding-left: 10px; font-size: 16px; outline: none; }
+
+.amount-summary-w { margin-bottom: 20px; }
+.summary-row-w { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-size: 12px; }
+.all-btn-w { background: transparent; border: 1px solid var(--primary-pink); color: var(--primary-pink); padding: 2px 8px; border-radius: 4px; cursor: pointer; font-size: 10px; }
+
+/* Withdraw Action Buttons */
+.final-withdraw-btn {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    font-weight: bold;
+    cursor: not-allowed;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: all 0.3s ease;
+}
+.gray-btn { background: #ced4da; }
+.active-withdraw-btn { background: linear-gradient(135deg, #f06292, #e91e63); cursor: pointer; box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3); }
+
+/* Rules / Instructions */
+.instruction-list-w { margin: 15px; padding-left: 15px; }
+.instruction-list-w ul { padding: 0; list-style-type: none; }
+.instruction-list-w li { font-size: 11px; color: #777; margin-bottom: 8px; line-height: 1.5; position: relative; padding-left: 15px; }
+.instruction-list-w li::before { content: '♦'; color: var(--primary-pink); position: absolute; left: 0; font-size: 12px; }
+.payment-form { padding: 20px; }
+.payment-form label { display: block; margin-top: 15px; font-weight: bold; color: #555; }
+.payment-form input, .payment-form select {
+    width: 100%; padding: 12px; margin-top: 5px; border: 1px solid #ddd; border-radius: 8px;
+}
+.save-btn {
+    width: 100%; background: #e91e63; color: white; border: none; padding: 15px;
+    margin-top: 25px; border-radius: 25px; font-weight: bold; cursor: pointer;
+}
+.account-details-w {
+    background: white; margin: 15px; padding: 15px; border-radius: 12px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); cursor: pointer;
+}
+/* পেমেন্ট ফর্ম কন্টেইনার */
+.payment-form-container {
+    padding: 20px;
+    background: #fdfdfd;
+    height: 100vh;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    color: #333;
+    font-size: 14px;
+}
+
+.form-input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    background: #fff;
+    font-size: 15px;
+    outline: none;
+}
+
+/* সেভ বাটন স্টাইল */
+.form-footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 10px;
+    background: #fff;
+}
+
+.final-save-btn {
+    width: 100%;
+    padding: 15px;
+    background-color: #e91e63; /* গোলাপি কালার */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* উইথড্র পেজের একাউন্ট বক্স */
+.account-details-w {
+    background: white;
+    margin: 15px;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.acc-icon-box-w {
+    width: 40px;
+    height: 40px;
+    background: #fff0f5;
+    color: #e91e63;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-size: 20px;
+}
+
+/* মেইন কন্টেইনার এবং স্ক্রল */
+.vip-scroll-container {
+    height: calc(100vh - 60px);
+    overflow-y: auto;
+    background: #fdf2f8; /* Very Light Pink Background */
+    font-family: Arial, sans-serif;
+}
+
+/* টপ হলুদ অংশকে গোলাপি করা হয়েছে */
+.vip-top-section.pink-bg {
+    background: linear-gradient(135deg, #fbcfe8, #f472b6); /* Pink Gradient */
+    padding: 20px;
+    padding-bottom: 50px;
+    position: relative;
+}
+/* ইউজার ইনফো */
+.vip-user-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.vip-avatar-box {
+    width: 65px;
+    height: 65px;
+    background: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.vip-user-icon {
+    font-size: 30px;
+    color: #e91e63;
+}
+
+.vip-name-wrap p.vip-username {
+    font-weight: bold;
+    color: white;
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.vip-badge-small {
+    background: rgba(255,255,255,0.3);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: bold;
+}
+
+/* স্ট্যাটাস বক্স */
+.vip-stats-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.vip-stat-box {
+    flex: 1;
+    background: #fff;
+    padding: 12px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.vip-stat-box strong {
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+}
+
+.vip-stat-box span {
+    font-size: 11px;
+    color: #888;
+}
+
+.text-pink { color: #e91e63; }
+.text-white { color: white; }
+.text-gray { color: #888; }
+
+.vip-note {
+    font-size: 11px;
+    color: rgba(255,255,255,0.9);
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+/* মেইন কার্ড (স্ক্রিনশটের মতো ব্লু গ্রেডিয়েন্ট) */
+.vip-main-card {
+    background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%);
+    border-radius: 15px;
+    padding: 20px;
+    position: relative;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.v-label {
+    font-weight: bold;
+    font-size: 18px;
+    color: #333;
+}
+
+.achieved-status {
+    color: #10b981; /* Green */
+    font-size: 12px;
+    font-weight: normal;
+    margin-left: 5px;
+}
+
+.vip-icon-box {
+    width: 45px;
+    height: 45px;
+    background: rgba(255,255,255,0.5);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+}
+
+.card-subtitle {
+    font-size: 13px;
+    color: #666;
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
+/* প্রগ্রেস বার */
+.progress-container {
+    background: rgba(255,255,255,0.4);
+    height: 14px;
+    border-radius: 20px;
+    position: relative;
+    margin-top: 5px;
+    overflow: hidden;
+    border: 1px solid rgba(0,0,0,0.05);
+}
+
+.progress-bar-fill {
+    background: #e91e63; /* Pink Fill */
+    height: 100%;
+    border-radius: 20px;
+}
+
+.progress-info-text {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 10px;
+    line-height: 14px;
+    color: white;
+    font-weight: bold;
+}
+
+.mt-label {
+    font-size: 12px;
+    color: #333;
+}
+
+.card-warning-note {
+    font-size: 10px;
+    color: #888;
+    margin-top: 10px;
+}
+
+/* বটম হোয়াইট সেকশন */
+.vip-bottom-section {
+    padding: 25px 20px;
+    background: #fff;
+    border-radius: 25px 25px 0 0;
+    margin-top: -25px;
+    position: relative;
+    z-index: 5;
+    box-shadow: 0 -5px 15px rgba(0,0,0,0.03);
+}
+
+.section-title {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* বেনিফিট কার্ড */
+.benefit-card {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: white;
+    border: 1px solid #fce7f3;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    align-items: center;
+    transition: transform 0.2s;
+}
+
+.benefit-card:active {
+    transform: scale(0.98);
+}
+
+.benefit-img-box {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+}
+
+.pink-light-bg {
+    background-color: #fdf2f8;
+}
+
+.benefit-details {
+    flex: 1;
+}
+
+.benefit-details h4 {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 3px;
+    color: #333;
+}
+
+.benefit-details p {
+    font-size: 11px;
+    color: #888;
+    margin: 0;
+}
+
+/* বাটন স্টাইল */
+.received-status-btn {
+    background: #e5e7eb;
+    color: #9ca3af;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: not-allowed;
+}
+
+.action-pink-btn {
+    background: #e91e63;
+    color: white;
+    border: none;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* হিস্ট্রি সেকশন */
+.history-tabs {
+    display: flex;
+    border-bottom: 2px solid #fce7f3;
+    margin-top: 25px;
+}
+
+.history-tabs span {
+    padding: 12px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    color: #888;
+}
+
+.history-tabs span.active {
+    color: #e91e63;
+    border-bottom: 2px solid #e91e63;
+    font-weight: bold;
+}
+
+.history-record-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 0;
+    border-bottom: 1px dotted #fce7f3;
+}
+
+.rec-title {
+    font-size: 14px;
+}
+
+.rec-desc {
+    font-size: 11px;
+    color: #777;
+    margin: 4px 0;
+}
+
+.rec-date-time {
+    font-size: 10px;
+    color: #aaa;
+}
+/* এটি নিশ্চিত করবে অ্যাক্টিভ আইকন সাদা হবে */
+.nav-link.active {
+    color: #ffffff !important;
+    opacity: 1 !important;
+}
+
+.nav-link.active i {
+    transform: translateY(-3px);
+    transition: 0.3s;
+}
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    
+<div id="homePage" class="page active">
+    <div class="home-header">
+        <div class="brand-logo">Abu Sufian</div>
+        <div class="header-icons">
+            <i class="far fa-envelope"></i>
+            <i class="fas fa-download"></i>
+        </div>
+    </div>
+
+
+
+        <div class="banner-slider">
+            <h2>Largest Online</h2>
+            <h1 style="color: #ffeb3b; font-size: 24px;">Entertainment Platform</h1>
+            <p>Model Brand, Reputation guarantee</p>
+            <img src="https://api.dicebear.com/7.x/shapes/svg?seed=pink" style="position:absolute; right:10px; bottom:10px; width:80px; opacity:0.5;">
+        </div>
+
+        <div class="notice-container">
+            <i class="fas fa-bullhorn" style="color: var(--primary-pink);"></i>
+            <marquee>Welcome to Abu Sufian! Best wishes for your gaming journey. Contact support for any help.</marquee>
+        </div>
+
+
+
+
+<div class="cat-grid">
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-gamepad"></i>
+        </div>
+        <span>Win go</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-plane-departure"></i>
+        </div>
+        <span>Aviator</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-chart-line"></i>
+        </div>
+        <span>Trading</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-dice"></i>
+        </div>
+        <span>Casino</span>
+    </div>
+
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-road"></i>
+        </div>
+        <span>Chicken Road</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-sort-amount-up"></i>
+        </div>
+        <span>7 Up Down</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-sync-alt"></i>
+        </div>
+        <span>Spin</span>
+    </div>
+    <div class="cat-item">
+        <div class="icon-card">
+            <i class="fas fa-coins"></i>
+        </div>
+        <span>Fortune</span>
+    </div>
+</div>
+    </div>
+    <div id="activityPage" class="page">
+        <div class="activity-header">Activity</div>
+        <div class="activity-page">
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-medal"></i></div>
+                    <span>Activity Award</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-hand-holding-usd"></i></div>
+                    <span>Betting rebate</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-trophy"></i></div>
+                    <span>Super Jackpot</span>
+                </div>
+                <div class="icon-item">
+                    <div class="icon-box pink-bg"><i class="fas fa-dharmachakra"></i></div>
+                    <span>Invite Wheel</span>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="promo-card">
+                    <div class="image-placeholder pink-gradient"><i class="fas fa-gift"></i></div>
+                    <div class="card-text"><h3>Gifts</h3><p>Enter the redemption code</p></div>
+                </div>
+                <div class="promo-card">
+                    <div class="image-placeholder pink-gradient"><i class="fas fa-calendar-check"></i></div>
+                    <div class="card-text"><h3>Attendance</h3><p>Sign in for rewards</p></div>
+                </div>
+            </div>
+
+            <div class="banner-button pink-gradient">
+                <div class="banner-content">
+                    <h3>DAILY CHECK-IN</h3>
+                    <p>Recharge & Claim Reward</p>
+                    <button class="claim-btn">CLAIM NOW</button>
+                </div>
+                <div class="banner-icon"><i class="fas fa-calendar-alt"></i></div>
+            </div>
+        </div>
+    </div>
+
+<div id="walletPage" class="page">
+    
+    <div class="wallet-header">
+        <div class="wallet-nav-back" onclick="showPage('homePage', this)">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <h2>Wallet</h2>
+    </div>
+
+    <div class="balance-gradient-card">
+        <div class="wallet-icon-box">
+            <i class="fas fa-wallet" style="color: #ffcccc; font-size: 32px;"></i>
+        </div>
+        <div class="balance-display">
+            <h2>৳0.00</h2>
+            <span>Total balance</span>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-item-w">
+                <b>0</b>
+                <p>Total amount</p>
+            </div>
+            <div class="stat-item-w">
+                <b>0</b>
+                <p>Total deposit amount</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="progress-section">
+        <div class="chart-flex">
+            <div class="chart-box">
+                <div class="progress-circle-custom full-progress">
+                    <span>100%</span>
+                </div>
+                <b>৳0.00</b>
+                <p>Main wallet</p>
+            </div>
+            <div class="chart-box">
+                <div class="progress-circle-custom no-progress">
+                    <span>0%</span>
+                </div>
+                <b>৳0.00</b>
+                <p>3rd party wallet</p>
+            </div>
+        </div>
+        
+        <button class="transfer-btn pink-gradient">Main wallet transfer</button>
+    </div>
+
+
+
+
+
+</div>
+<div id="promotionPage" class="page">
+    <div class="promo-header-custom">
+        <h2>Agency</h2>
+        <div class="commission-box">
+            <h1 id="totalCommission">0.00</h1>
+            <span>Yesterday's total commission</span>
+            <p>Upgrade the level to increase commission income</p>
+        </div>
+    </div>
+
+    <div class="subordinate-stats">
+        <div class="stat-col">
+            <div class="stat-header direct">Direct subordinates</div>
+            <div class="stat-body">
+                <div class="stat-row"><b>0</b><span>number of register</span></div>
+                <div class="stat-row"><b class="green-text">0</b><span>Deposit number</span></div>
+                <div class="stat-row"><b class="orange-text">0</b><span>Deposit amount</span></div>
+                <div class="stat-row"><b>0</b><span>Number of people making first deposit</span></div>
+            </div>
+        </div>
+        <div class="stat-col">
+            <div class="stat-header team">Team subordinates</div>
+            <div class="stat-body">
+                <div class="stat-row"><b>0</b><span>number of register</span></div>
+                <div class="stat-row"><b class="green-text">0</b><span>Deposit number</span></div>
+                <div class="stat-row"><b class="orange-text">0</b><span>Deposit amount</span></div>
+                <div class="stat-row"><b>0</b><span>Number of people making first deposit</span></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="promo-actions">
+        <button class="qr-download-btn">Download QR Code</button>
+        
+        <div class="list-item-promo" onclick="copyCode()">
+            <div class="left"><i class="fas fa-id-badge"></i> Copy invitation code</div>
+            <div class="right">12345678 <i class="far fa-copy"></i></div>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-users"></i> Subordinate data</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-file-invoice-dollar"></i> Commission detail</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+
+        <div class="list-item-promo">
+            <div class="left"><i class="fas fa-book"></i> Invitation rules</div>
+            <i class="fas fa-chevron-right arrow"></i>
+        </div>
+    </div>
+</div>
+
+<div id="withdrawPage" class="page">
+    <div class="withdraw-header">
+        <div class="withdraw-nav-back" onclick="showPage('walletPage')">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <h2>Withdraw</h2>
+    </div>
+
+    <div class="withdraw-balance-card">
+        <div class="b-info-w"><span>Available balance</span></div>
+        <div class="b-amount-w">৳ 0.00</div>
+    </div>
+
+    <div class="method-selection" style="display: flex; gap: 15px; padding: 15px;">
+        <div class="method-item active" id="bkashBtn" onclick="selectWithdrawMethod('BKASH', this)" style="flex: 1; text-align: center; border: 2px solid #e91e63; padding: 10px; border-radius: 10px; cursor: pointer;">
+            <div class="method-icon-wrap">
+                <img src="https://www.logo.wine/a/logo/BKash/BKash-Icon-Logo.wine.svg" alt="bKash" style="width: 40px;">
+            </div>
+            <span style="display: block; margin-top: 5px; font-size: 14px;">bKash</span>
+        </div>
+
+        <div class="method-item" id="nagadBtn" onclick="selectWithdrawMethod('NAGAD', this)" style="flex: 1; text-align: center; border: 1px solid #eee; padding: 10px; border-radius: 10px; cursor: pointer;">
+            <div class="method-icon-wrap" style="height: 40px; display: flex; align-items: center; justify-content: center;">
+                <i class="fas fa-university" style="font-size: 30px; color: #e91e63;"></i>
+            </div>
+            <span style="display: block; margin-top: 5px; font-size: 14px;">Nagad</span>
+        </div>
+    </div>
+
+    <div class="amount-section-w" style="padding: 15px;">
+        <div class="input-container-w" style="background: #fff; border: 1px solid #eee; margin-bottom: 15px; padding: 10px; border-radius: 8px; display: flex; align-items: center;">
+            <i class="fas fa-phone-alt" style="color: #e91e63; margin-right: 10px;"></i>
+            <input type="number" id="withdrawNumber" placeholder="Enter BKASH number" style="border: none; outline: none; width: 100%; font-size: 15px;">
+        </div>
+
+        <div class="input-container-w" style="background: #fff; border: 1px solid #eee; padding: 10px; border-radius: 8px; display: flex; align-items: center;">
+            <span class="currency-w" style="color: #e91e63; font-weight: bold; margin-right: 10px; font-size: 18px;">৳</span>
+            <input type="number" id="withdrawAmountInput" placeholder="Withdraw amount" oninput="updateWithdrawalButton()" style="border: none; outline: none; width: 100%; font-size: 15px;">
+        </div>
+        
+        <div class="amount-summary-w" style="margin-top: 15px; font-size: 13px;">
+            <div class="summary-row-w" style="display: flex; justify-content: space-between; margin-bottom: 5px;">
+                <span>Withdrawable balance: <strong style="color: #e91e63;">৳ 0.00</strong></span>
+                <button class="all-btn-w" onclick="setAllWithdrawableAmount()" style="background: none; border: 1px solid #e91e63; color: #e91e63; border-radius: 4px; padding: 2px 8px; cursor: pointer;">All</button>
+            </div>
+            <div class="summary-row-w">
+                <span>Withdrawal amount received: <strong id="receivedAmount" style="color: #e91e63;">৳ 0.00</strong></span>
+            </div>
+        </div>
+
+        <button class="final-withdraw-btn" id="finalWithdrawBtn" onclick="processWithdrawal()" style="width: 100%; padding: 15px; border-radius: 25px; border: none; margin-top: 25px; font-weight: bold; background: #ccc; color: #fff; transition: 0.3s; cursor: not-allowed;">Withdraw</button>
+    </div>
+
+    <div class="instruction-list-w" style="padding: 15px; background: #fafafa; margin-top: 10px;">
+        <ul style="padding-left: 20px; color: #666; font-size: 12px; line-height: 1.8;">
+            <li>Need to bet <strong style="color: #4caf50;">৳0.00</strong> to be able to withdraw</li>
+            <li>Withdraw time: 00:00-23:55</li>
+            <li>Today Remaining Withdrawal Times: <strong style="color: #e91e63;">3</strong></li>
+            <li>Withdrawal amount range: ৳100.00-৳25,000.00</li>
+            <li>Please confirm your beneficial account information before withdrawing.</li>
+        </ul>
+    </div>
+</div>
+
+<div id="vipPage" class="page" style="display:none; background: #fdf2f8; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; overflow: hidden;">
+    
+
+<div class="vip-header" style="background: #fff; padding: 15px; display: flex; align-items: center; border-bottom: 1px solid #fce7f3; height: 60px; box-sizing: border-box;">
+    <i class="fas fa-chevron-left" onclick="goBackToHome()" style="font-size: 20px; color: #333; cursor: pointer; width: 30px;"></i>
+    <h2 style="flex-grow: 1; text-align: center; font-size: 18px; margin: 0; padding-right: 30px; color: #e91e63;">VIP</h2>
+</div>
+    <div class="vip-scroll-container" style="height: calc(100vh - 60px); overflow-y: auto; -webkit-overflow-scrolling: touch;">
+        
+        <div class="vip-top-section pink-bg" style="background: linear-gradient(135deg, #fbcfe8, #f472b6); padding: 20px 20px 60px 20px;">
+            <div class="vip-user-info" style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                <div class="vip-avatar-box" style="width: 60px; height: 60px; background: #fff; border-radius: 50%; display: flex; justify-content: center; align-items: center;">
+                    <i class="fas fa-user" style="font-size: 30px; color: #f472b6;"></i>
+                </div>
+                <div class="vip-name-wrap">
+                    <span class="vip-badge-small" style="background: rgba(255,255,255,0.3); color: #fff; padding: 2px 8px; border-radius: 10px; font-size: 11px;">VIP0</span>
+                    <p class="vip-username" style="margin: 5px 0 0; color: #fff; font-weight: bold; font-size: 16px;">MemberNNG3KOKA</p>
+                </div>
+            </div>
+
+            <div class="vip-stats-row" style="display: flex; gap: 10px; margin-bottom: 20px;">
+                <div class="vip-stat-box" style="flex: 1; background: #fff; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <strong class="text-pink" style="color: #e91e63; display: block; font-size: 15px;">0 EXP</strong>
+                    <span style="font-size: 11px; color: #888;">My experience</span>
+                </div>
+                <div class="vip-stat-box" style="flex: 1; background: #fff; padding: 12px; border-radius: 12px; text-align: center; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+                    <strong class="text-pink" style="color: #e91e63; display: block; font-size: 15px;">0 Days</strong>
+                    <span style="font-size: 11px; color: #888;">Payout time</span>
+                </div>
+            </div>
+
+            <p class="vip-note" style="text-align: center; font-size: 11px; color: rgba(255,255,255,0.9); margin-bottom: 20px;">VIP level rewards are settled at 2:00 am on the 1st of every month</p>
+
+<div class="vip-slider-container" style="display: flex; overflow-x: auto; gap: 15px; padding: 20px; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;">
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #ff8a8a;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #333;">
+                <i class="fas fa-crown" style="color: #e91e63;"></i> VIP1 
+                <span style="color: #f44336; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #333; opacity: 0.2;"></i>
+        </div>
+        <p style="font-size: 12px; color: #666; margin: 10px 0;">Begin your journey</p>
+        <div class="maintenance-box">
+            <p style="font-size: 12px; color: #333; margin-bottom: 5px;">Progress</p>
+            <div class="progress-container" style="background: rgba(255,255,255,0.6); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #e91e63;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #444; font-weight: bold;">0/1000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #a1c4fd 0%, #c2e9fb 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #91b4ed;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #333;">
+                <i class="fas fa-crown" style="color: #1e88e5;"></i> VIP2 
+                <span style="color: #f44336; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #333; opacity: 0.2;"></i>
+        </div>
+        <p style="font-size: 12px; color: #666; margin: 10px 0;">Unlock higher commission</p>
+        <div class="maintenance-box">
+            <p style="font-size: 12px; color: #333; margin-bottom: 5px;">Progress</p>
+            <div class="progress-container" style="background: rgba(255,255,255,0.6); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #1e88e5;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #444; font-weight: bold;">0/5000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #d4fc79 0%, #96e6a1 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #86d691;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #333;">
+                <i class="fas fa-crown" style="color: #2e7d32;"></i> VIP3
+                <span style="color: #f44336; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #333; opacity: 0.2;"></i>
+        </div>
+        <p style="font-size: 12px; color: #666; margin: 10px 0;">Premium rewards wait</p>
+        <div class="maintenance-box">
+            <p style="font-size: 12px; color: #333; margin-bottom: 5px;">Progress</p>
+            <div class="progress-container" style="background: rgba(255,255,255,0.6); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #2e7d32;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #444; font-weight: bold;">0/20000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #e083eb;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #fff;">
+                <i class="fas fa-crown" style="color: #ffeb3b;"></i> VIP4
+                <span style="color: #ffeb3b; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #fff; opacity: 0.3;"></i>
+        </div>
+        <p style="font-size: 12px; color: #eee; margin: 10px 0;">Elite status activation</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.3); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #fff;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #fff; font-weight: bold;">0/50000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #3f9cfe;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #fff;">
+                <i class="fas fa-crown" style="color: #ffeb3b;"></i> VIP5
+                <span style="color: #ffeb3b; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #fff; opacity: 0.3;"></i>
+        </div>
+        <p style="font-size: 12px; color: #fff; margin: 10px 0;">Exclusive daily bonus</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.3); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #fff;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #fff; font-weight: bold;">0/100000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #566eda;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #fff;">
+                <i class="fas fa-crown" style="color: #ffd700;"></i> VIP6
+                <span style="color: #ffd700; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #fff; opacity: 0.3;"></i>
+        </div>
+        <p style="font-size: 12px; color: #ddd; margin: 10px 0;">Master level benefits</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.3); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #fff;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #fff; font-weight: bold;">0/250000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #f6d365 0%, #fda085 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #e6c355;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #333;">
+                <i class="fas fa-crown" style="color: #e65100;"></i> VIP7
+                <span style="color: #f44336; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #333; opacity: 0.2;"></i>
+        </div>
+        <p style="font-size: 12px; color: #666; margin: 10px 0;">Royal treatment active</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.6); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #e65100;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #333; font-weight: bold;">0/500000 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #2af598 0%, #009efd 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #1ae588;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #fff;">
+                <i class="fas fa-crown" style="color: #ffd700;"></i> VIP8
+                <span style="color: #ffd700; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #fff; opacity: 0.3;"></i>
+        </div>
+        <p style="font-size: 12px; color: #fff; margin: 10px 0;">Ultimate gaming power</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.3); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #fff;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #fff; font-weight: bold;">0/1M 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #000000 0%, #434343 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 1px solid #333;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 18px; color: #fff;">
+                <i class="fas fa-crown" style="color: #ffd700;"></i> VIP9
+                <span style="color: #ffd700; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 30px; color: #ffd700; opacity: 0.4;"></i>
+        </div>
+        <p style="font-size: 12px; color: #aaa; margin: 10px 0;">Legendary status</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.2); height: 14px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #ffd700;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 14px; color: #fff; font-weight: bold;">0/5M 0%</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="vip-main-card" style="min-width: 85%; scroll-snap-align: center; background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%); border-radius: 15px; padding: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); flex-shrink: 0; border: 2px solid #fff;">
+        <div class="card-header" style="display: flex; justify-content: space-between;">
+            <div class="v-label" style="font-weight: bold; font-size: 20px; color: #000;">
+                <i class="fas fa-crown" style="color: #fff;"></i> VIP10
+                <span style="color: #000; font-size: 12px; margin-left: 5px;">✖ Locked</span>
+            </div>
+            <i class="fas fa-lock" style="font-size: 35px; color: #000; opacity: 0.3;"></i>
+        </div>
+        <p style="font-size: 12px; color: #333; margin: 10px 0; font-weight: bold;">The Supreme Master Level</p>
+        <div class="maintenance-box">
+            <div class="progress-container" style="background: rgba(255,255,255,0.4); height: 16px; border-radius: 10px; position: relative; overflow: hidden;">
+                <div class="progress-bar-fill" style="width: 0%; height: 100%; background: #000;"></div>
+                <span style="position: absolute; width: 100%; text-align: center; top: 0; font-size: 10px; line-height: 16px; color: #000; font-weight: bold;">0/10M 0%</span>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<style>
+    .vip-slider-container::-webkit-scrollbar {
+        display: none;
+    }
+    .vip-slider-container {
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+</style>
+        <div class="vip-bottom-section" style="background: #fff; padding: 25px 20px; border-radius: 30px 30px 0 0; margin-top: -30px; min-height: 400px;">
+            <h3 style="font-size: 16px; margin-bottom: 20px;"><i class="fas fa-gem" style="color: #e91e63;"></i> VIP1 Benefits level</h3>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card" style="display: flex; align-items: center; gap: 15px; padding: 15px; border: 1px solid #fce7f3; border-radius: 15px; margin-bottom: 15px;">
+                    <div style="width: 50px; height: 50px; background: #fdf2f8; border-radius: 12px; display: flex; justify-content: center; align-items: center;">
+                        <i class="fas fa-gift" style="font-size: 20px; color: #e91e63;"></i>
+                    </div>
+                    <div style="flex: 1;">
+                        <h4 style="margin: 0; font-size: 14px;">Level up rewards</h4>
+                        <p style="margin: 2px 0 0; font-size: 11px; color: #999;">Only receive 1 time</p>
+                    </div>
+                    <button style="background: #eee; border: none; padding: 5px 12px; border-radius: 20px; font-size: 11px; color: #888;">Received</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="depositPage" class="page">
+    <div class="deposit-header">
+        <div class="back-btn" onclick="showPage('walletPage', this)">
+            <i class="fas fa-chevron-left"></i>
+        </div>
+        <h2>Deposit</h2>
+        <span class="history-link"></span>
+    </div>
+
+    <div class="deposit-content">
+        <div class="balance-card-pink">
+            <div class="b-info">
+                <i class="fas fa-university"></i>
+                <span>Current Balance</span>
+            </div>
+            <div class="b-amount">৳ 0.00</div>
+            <i class="fas fa-sync-alt refresh-icon"></i>
+        </div>
+
+<div class="method-selection">
+    <div class="method-item active" onclick="selectMethod('bkash', this)">
+        <div class="method-icon-wrap">
+            <img src="https://www.logo.wine/a/logo/BKash/BKash-Icon-Logo.wine.svg" alt="bKash">
+        </div>
+        <span>bKash</span>
+    </div>
+<div class="method-item" onclick="selectMethod('bank', this)">
+    <div class="method-icon-wrap">
+        <i class="fas fa-university" style="font-size: 30px; color: #e91e63;"></i>
+    </div>
+    <span>Nagad</span>
+</div>
+
+</div>
+<div class="amount-card">
+            <div class="card-title"><i class="fas fa-money-bill-wave"></i> Deposit amount</div>
+            <div class="amount-grid">
+                <button class="amt-btn" onclick="setAmount(100)">৳ 100</button>
+                <button class="amt-btn" onclick="setAmount(200)">৳ 200</button>
+                <button class="amt-btn" onclick="setAmount(500)">৳ 500</button>
+                <button class="amt-btn" onclick="setAmount(1000)">৳ 1K</button>
+                <button class="amt-btn" onclick="setAmount(5000)">৳ 5K</button>
+                <button class="amt-btn" onclick="setAmount(50000)">৳ 50K</button>
+            </div>
+<div class="input-box">
+                <span class="currency-symbol">৳</span>
+                <input type="number" id="depositInput" placeholder="৳100.00 - ৳25,000.00" oninput="updateSummaryCard()">
+                <i class="fas fa-times-circle clear-btn" onclick="clearInput()"></i>
+            </div>
+        </div>
+
+        <div class="instruction-card">
+            <div class="card-title"><i class="fas fa-book-open"></i> Recharge instructions</div>
+            <ul class="instr-list">
+
+                <li>If the transfer time is up, please fill out the deposit form again.</li>
+                <li>The transfer amount must match the order you created, otherwise the money cannot be credited successfully.</li>
+                <li>If you transfer the wrong amount, our company will not be responsible for the lost amount!</li>
+                <li>Note: do not cancel the deposit order after the money has been transferred.</li>
+            
+            </ul>
+        </div>
+
+
+        <div id="paymentSummaryCard" class="summary-card-pink">
+            <div class="summary-header">Payment Details</div>
+            <div class="summary-body">
+                <div class="s-row">
+                    <span>Method:</span>
+                    <strong id="cardMethod"></strong>
+                </div>
+                <div class="s-row">
+                    <span>Amount:</span>
+                    <strong id="cardAmount">৳ 0.00</strong>
+                </div>
+
+                
+                <button class="confirm-btn-inside" onclick="processDeposit()">
+                    <i class="fas fa-check-circle"></i> Confirm Deposit
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+    <div id="accountPage" class="page">
+        <div class="acc-header">
+            <div class="profile-box">
+                <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Lucky" class="profile-img">
+                <div class="user-details">
+                    <div style="font-weight:700; font-size:16px;">MEMBERNNGQEB <span class="vip-badge">VIP0</span></div>
+                    <div style="font-size:12px; opacity:0.9; margin-top:4px;">UID | 12345678 <i class="far fa-copy"></i></div>
+                    <div style="font-size:10px; opacity:0.7; margin-top:3px;">Last login: 2026-04-21 21:18:59</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="balance-card">
+            <div style="font-size:13px; color:var(--text-gray);">Total balance</div>
+            <div class="balance-amount">৳0.00</div>
+            <div class="quick-actions">
+<div class="action-item nav-item-custom" onclick="showPage('walletPage', this)">
+    <div class="icon-circle-box pink-light">
+        <i class="fas fa-wallet"></i>
+    </div>
+    <span>Wallet</span>
+</div>
+
+<div class="action-item nav-item-custom" onclick="showPage('depositPage', this)">
+    <div class="icon-circle-box pink-solid">
+        <i class="fas fa-plus-circle"></i>
+    </div>
+    <span>Deposit</span>
+</div>
+<div class="action-item" onclick="showPage('withdrawPage', this)">
+    <i class="fas fa-arrow-circle-down" style="color: #74b9ff;"></i>
+    <span>Withdraw</span>
+</div>
+             <div class="action-item" onclick="showPage('vipPage')">
+    <i class="fas fa-gem" style="color: #55efc4;"></i>
+    <span>VIP</span>
+</div>
+        </div>
+        </div>
+
+        <div class="cs-button">
+            <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-headset" style="font-size:24px;"></i>
+                <b>Customer Service</b>
+            </div>
+            <i class="fas fa-chevron-right"></i>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card"><i class="fas fa-gamepad" style="color: #00cec9;"></i> Game History</div>
+            <div class="menu-card"><i class="fas fa-exchange-alt" style="color: #6c5ce7;"></i> Transaction</div>
+            <div class="menu-card"><i class="fas fa-history" style="color: #e17055;"></i> Deposit Hist</div>
+            <div class="menu-card"><i class="fas fa-receipt" style="color: #0984e3;"></i> Withdraw Hist</div>
+        </div>
+
+        <div class="list-box" style="margin-bottom: 30px;">
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-bell icon"></i> Notification</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-gift icon"></i> Gifts & Rewards</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+            <div class="list-item">
+                <div style="display:flex; align-items:center; gap:15px;"><i class="fas fa-chart-pie icon"></i> Game Statistics</div>
+                <i class="fas fa-chevron-right" style="color:#ddd; font-size:12px;"></i>
+            </div>
+        </div>
+<div class="service-center">
+    <div class="service-item">
+        <div class="service-icon-box">
+            <i class="fas fa-cog"></i>
+        </div>
+        <span>Settings</span>
+    </div>
+
+    <div class="service-item">
+        <div class="service-icon-box">
+            <i class="fas fa-book"></i>
+        </div>
+        <span>Beginner's Guide</span>
+    </div>
+
+    <div class="service-item">
+        <div class="service-icon-box">
+            <i class="fas fa-info-circle"></i>
+        </div>
+        <span>About us</span>
+    </div>
+</div>
+
+        <button class="logout-btn">Log out</button>
+    </div>
+
+
+<nav class="nav-bar">
+    <div class="nav-link active" onclick="showPage('homePage', this)">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+    </div>
+    <div class="nav-link" onclick="showPage('activityPage', this)">
+        <i class="fas fa-th-large"></i>
+        <span>Activity</span>
+    </div>
+    <div class="nav-link" onclick="showPage('promotionPage', this)">
+        <i class="fas fa-bullhorn"></i>
+        <span>Promotion</span>
+    </div>
+    <div class="nav-link" onclick="showPage('accountPage', this)">
+        <i class="fas fa-user"></i>
+        <span>Account</span>
+    </div>
+</nav>
+</div>
+ <div id="homePage" class="page">...</div>
+<div id="activityPage" class="page" style="display:none;">...</div>
+
+
+<script>
+    function showPage(pageId, element) {
+        document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+        const target = document.getElementById(pageId);
+        if(target) target.classList.add('active');
+
+        document.querySelectorAll('.nav-link').forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+    }
+    function copyCode() {
+    const code = "76156462311";
+    navigator.clipboard.writeText(code).then(() => {
+        alert("Invitation code copied: " + code);
+    }).catch(err => {
+        console.error('Could not copy text: ', err);
+    });
+}
+
+// আপনি চাইলে ডাইনামিকভাবে ডেটা আপডেট করার জন্য এটি ব্যবহার করতে পারেন
+function updatePromoStats(commission, teamDeposit) {
+    document.getElementById('totalCommission').innerText = commission;
+    // আরও ডেটা আপডেট করার লজিক এখানে দিতে পারেন
+}
+function showPage(pageId, element) {
+    // সব পেজ লুকিয়ে ফেলা
+    document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+    });
+    
+    // টার্গেট পেজ দেখানো
+    const target = document.getElementById(pageId);
+    if(target) target.classList.add('active');
+
+    // নেভিগেশন আইকন কালার আপডেট (যদি থাকে)
+    document.querySelectorAll('.nav-link, .nav-item-wallet').forEach(link => {
+        link.classList.remove('active');
+    });
+    if(element) element.classList.add('active');
+}
+function selectMethod(method, element) {
+    // আগের একটিভ মেথড রিমুভ করা
+    document.querySelectorAll('.method-item').forEach(item => item.classList.remove('active'));
+    // বর্তমান মেথড একটিভ করা
+    element.classList.add('active');
+    
+    // নিচে রিচার্জ মেথডের নাম আপডেট করা
+    const methodName = method === 'nagad' ? 'GoPayBDT-Nagad' : 'FastPay-bKash';
+    document.querySelector('.method-info strong').innerText = methodName;
+}
+// ইনপুট বক্সে টাকা সেট করা
+function setAmount(val) {
+    const input = document.getElementById('depositInput');
+    input.value = val;
+    checkInput();
+}
+
+// ইনপুট ক্লিয়ার করা
+function clearInput() {
+    document.getElementById('depositInput').value = '';
+    checkInput();
+}
+
+// ইনপুট থাকলে ডিপোজিট বাটন উজ্জ্বল করা
+function checkInput() {
+    const input = document.getElementById('depositInput');
+    const btn = document.querySelector('.final-deposit-btn');
+    if(input.value > 0) {
+        btn.classList.add('btn-active');
+    } else {
+        btn.classList.remove('btn-active');
+    }
+}
+
+// ইভেন্ট লিসেনার যোগ করা
+document.getElementById('depositInput')?.addEventListener('input', checkInput);
+
+// ডিপোজিট বাটন ক্লিক করার ফাংশন
+function processDeposit() {
+    const amount = document.getElementById('depositInput').value;
+    if(amount >= 100) {
+        alert("Redirecting to payment gateway for ৳" + amount);
+        // এখানে পেমেন্ট গেটওয়ের কাজ হবে
+    } else {
+        alert("Minimum deposit amount is ৳100");
+    }
+}
+function selectMethod(method, element) {
+    // আগের একটিভ রিমুভ করা
+    document.querySelectorAll('.method-item').forEach(item => item.classList.remove('active'));
+    // বর্তমানটি একটিভ করা
+    element.classList.add('active');
+    
+    // টেক্সট আপডেট
+    const displayMethod = method === 'nagad' ? 'Nagad' : 'bKash';
+    document.getElementById('currentMethodDisplay').innerText = "GoPayBDT-" + displayMethod;
+    document.getElementById('cardMethod').innerText = displayMethod;
+}
+
+function setAmount(val) {
+    document.getElementById('depositInput').value = val;
+    updateSummaryCard();
+}
+
+function clearInput() {
+    document.getElementById('depositInput').value = '';
+    updateSummaryCard();
+}
+
+function updateSummaryCard() {
+    const amount = document.getElementById('depositInput').value || "0.00";
+    document.getElementById('cardAmount').innerText = "৳ " + amount;
+    
+    // ডিপোজিট বাটন একটিভ করা
+    const btn = document.getElementById('finalDepositBtn');
+    if(amount > 0) {
+        btn.classList.add('btn-active');
+        btn.style.backgroundColor = "var(--primary-pink)";
+    } else {
+        btn.classList.remove('btn-active');
+        btn.style.backgroundColor = "#ced4da";
+    }
+}
+function selectMethod(method, element) {
+    // আগের সিলেকশন রিমুভ করা
+    document.querySelectorAll('.method-item').forEach(item => item.classList.remove('active'));
+    // বর্তমানে যেটিতে ক্লিক করা হয়েছে সেটি একটিভ করা
+    element.classList.add('active');
+    
+    // কার্ড এবং ফুটার ডিসপ্লে আপডেট
+    const methodName = (method === 'bkash') ? 'bKash' : 'Nagad';
+    
+    // কার্ডের ভেতর মেথড আপডেট
+    if(document.getElementById('cardMethod')) {
+        document.getElementById('cardMethod').innerText = methodName;
+    }
+    
+    // ফুটারের নিচের টেক্সট আপডেট
+    if(document.getElementById('currentMethodDisplay')) {
+        document.getElementById('currentMethodDisplay').innerText = "GoPayBDT-" + methodName;
+    }
+}
+
+function updateSummaryCard() {
+    const amount = document.getElementById('depositInput').value || "0.00";
+    if(document.getElementById('cardAmount')) {
+        document.getElementById('cardAmount').innerText = "৳ " + amount;
+    }
+    
+    // কনফার্ম বাটন হাইলাইট করার লজিক
+    const btn = document.getElementById('finalDepositBtn');
+    if(btn) {
+        if(parseFloat(amount) >= 100) {
+            btn.style.backgroundColor = "var(--primary-pink)";
+            btn.style.cursor = "pointer";
+        } else {
+            btn.style.backgroundColor = "#ced4da";
+            btn.style.cursor = "not-allowed";
+        }
+    }
+}
+
+function setAmount(val) {
+    document.getElementById('depositInput').value = val;
+    updateSummaryCard();
+}
+// উইথড্র বাটনকে ডাইনামিকভাবে একটিভ/ইনঅ্যাক্টিভ করা
+function updateWithdrawalButton() {
+    const amount = document.getElementById('withdrawAmountInput').value;
+    const btn = document.getElementById('finalWithdrawBtn');
+    
+    if(amount > 0) {
+        btn.classList.remove('gray-btn');
+        btn.classList.add('active-withdraw-btn');
+    } else {
+        btn.classList.add('gray-btn');
+        btn.classList.remove('active-withdraw-btn');
+    }
+}
+
+// "All" বাটনে ক্লিক করলে সব অ্যামাউন্ট ইনপুট বক্সে দেওয়া (এখানে আমরা ডিফল্ট 0 রাখছি)
+function setAllWithdrawableAmount() {
+    // আপনি চাইলে একটি ভেরিয়েবল ব্যবহার করে এই ডেটা আপডেট করতে পারেন
+    // document.getElementById('withdrawAmountInput').value = drawableBalance;
+    // updateWithdrawalButton();
+}
+
+// উইথড্রাল প্রসেস করার ফাংশন
+function processWithdrawal() {
+    const amount = document.getElementById('withdrawAmountInput').value;
+    if(amount > 0) {
+        alert("Redirecting to process your withdrawal of ৳" + amount);
+        // এখানে পেমেন্ট প্রসেসের কাজ হবে
+    }
+}
+
+
+let currentMethod = 'BKASH';
+
+function selectWithdrawMethod(method, element) {
+    // বর্ডার রিসেট করা
+    document.querySelectorAll('.method-item').forEach(item => {
+        item.style.border = "1px solid #eee";
+        item.classList.remove('active');
+    });
+
+    // নতুন সিলেক্ট করা আইটেম হাইলাইট করা
+    element.style.border = "2px solid #e91e63";
+    element.classList.add('active');
+    
+    currentMethod = method;
+    
+    // নম্বর বক্সের প্লেসহোল্ডার পরিবর্তন
+    const numberInput = document.getElementById('withdrawNumber');
+    numberInput.placeholder = "Enter " + method + " number";
+}
+
+function updateWithdrawalButton() {
+    const amountInput = document.getElementById('withdrawAmountInput');
+    const receivedAmount = document.getElementById('receivedAmount');
+    const btn = document.getElementById('finalWithdrawBtn');
+    
+    const val = amountInput.value;
+    
+    // রিসিভড অ্যামাউন্ট আপডেট (যদি কোনো ফি থাকে তবে এখানে ক্যালকুলেশন করতে পারেন)
+    receivedAmount.innerText = "৳ " + (val ? val : "0.00");
+
+    // উইথড্র বাটন একটিভ করা (মিনিমাম ১০০ টাকা)
+    if (val >= 100) {
+        btn.style.background = "#e91e63";
+        btn.style.cursor = "pointer";
+    } else {
+        btn.style.background = "#ccc";
+        btn.style.cursor = "not-allowed";
+    }
+}
+
+function processWithdrawal() {
+    const number = document.getElementById('withdrawNumber').value;
+    const amount = document.getElementById('withdrawAmountInput').value;
+
+    if (!number || number.length < 11) {
+        alert("Please enter a valid " + currentMethod + " number!");
+        return;
+    }
+    if (amount < 100) {
+        alert("Minimum withdrawal amount is ৳100");
+        return;
+    }
+
+    // সাকসেস মেসেজ বা আপনার API কল এখানে হবে
+    alert(`Success!\nMethod: ${currentMethod}\nNumber: ${number}\nAmount: ৳${amount}`);
+}
+// আপনার VIP আইকনের HTML এমন হবে:
+// <div class="action-item" onclick="showPage('vipPage')">...</div>
+
+function showPage(pageId) {
+    // সব পেজ হাইড করা
+    document.querySelectorAll('.page').forEach(page => {
+        page.style.display = 'none';
+    });
+    // কাঙ্ক্ষিত পেজ শো করা
+    document.getElementById(pageId).style.display = 'block';
+}
+
+function goBackToHome() {
+    // যদি আপনার ফাংশনের নাম showPage হয় তবে নিচের লাইনটি কাজ করবে
+    // showPage('mainPage'); 
+
+    // অথবা সরাসরি হোমপেজে রিডাইরেক্ট করতে চাইলে:
+    window.location.href = "index.html"; // এখানে আপনার হোমপেজের ফাইলের নাম দিন
+}
+
+function showPage(pageId, element) {
+    // ১. সব পেজ হাইড করা
+    const pages = document.querySelectorAll('.page');
+    pages.forEach(page => {
+        page.style.display = 'none';
+    });
+
+    // ২. নির্দিষ্ট পেজটি শো করা
+    const targetPage = document.getElementById(pageId);
+    if (targetPage) {
+        targetPage.style.display = 'block';
+    } else {
+        console.error("Page with ID " + pageId + " not found!");
+    }
+
+    // ৩. নেভিগেশন বারের আইকন 'Active' ক্লাস হ্যান্ডেল করা
+    if (element) {
+        // প্রথমে সব লিংক থেকে active ক্লাস সরানো
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.classList.remove('active');
+        });
+        // ক্লিক করা লিংকে active ক্লাস যোগ করা
+        element.classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>
 
