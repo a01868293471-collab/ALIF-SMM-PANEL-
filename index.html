@@ -3091,7 +3091,48 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
+<!-- কম্প্যাক্ট সোশ্যাল বাটন গ্রিড -->
+<div style="padding: 10px 30px; width: 100%; box-sizing: border-box; overflow: hidden;"> <!-- প্যাডিং বাড়িয়ে ভেতরে চাপানো হয়েছে -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 5px; justify-items: center;"> <!-- গ্যাপ ৮ থেকে ৫ করা হয়েছে -->
+        
+        <!-- Facebook -->
+        <div onclick="window.open('https://www.facebook.com/share/1CpVnRhJam/')" style="cursor: pointer; text-align: center; width: 100%;">
+            <div style="aspect-ratio: 1/1; width: 100%; max-width: 58px; border-radius: 12px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15); border: 1.5px solid #ffffff; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255,255,255,0.1); transform: rotate(45deg);"></div>
+                <i class="fab fa-facebook" style="color: white; font-size: 18px; z-index: 1;"></i>
+            </div>
+            <p style="font-size: 8px; font-weight: 800; color: #ff0000; margin: 0; text-transform: uppercase;">Facebook</p>
+        </div>
 
+        <!-- YouTube -->
+        <div onclick="window.open('https://www.facebook.com/share/1CpVnRhJam/')" style="cursor: pointer; text-align: center; width: 100%;">
+            <div style="aspect-ratio: 1/1; width: 100%; max-width: 58px; border-radius: 12px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15); border: 1.5px solid #ffffff; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255,255,255,0.1); transform: rotate(45deg);"></div>
+                <i class="fab fa-youtube" style="color: white; font-size: 18px; z-index: 1;"></i>
+            </div>
+            <p style="font-size: 8px; font-weight: 800; color: #ff0000; margin: 0; text-transform: uppercase;">YouTube</p>
+        </div>
+
+        <!-- Telegram -->
+        <div onclick="window.open('https://www.facebook.com/share/1CpVnRhJam/')" style="cursor: pointer; text-align: center; width: 100%;">
+            <div style="aspect-ratio: 1/1; width: 100%; max-width: 58px; border-radius: 12px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15); border: 1.5px solid #ffffff; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255,255,255,0.1); transform: rotate(45deg);"></div>
+                <i class="fab fa-telegram-plane" style="color: white; font-size: 18px; z-index: 1;"></i>
+            </div>
+            <p style="font-size: 8px; font-weight: 800; color: #ff0000; margin: 0; text-transform: uppercase;">Telegram</p>
+        </div>
+
+        <!-- Reviews -->
+        <div onclick="window.open('https://www.facebook.com/share/1CpVnRhJam/')" style="cursor: pointer; text-align: center; width: 100%;">
+            <div style="aspect-ratio: 1/1; width: 100%; max-width: 58px; border-radius: 12px; background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15); border: 1.5px solid #ffffff; position: relative; overflow: hidden;">
+                <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: rgba(255,255,255,0.1); transform: rotate(45deg);"></div>
+                <i class="fas fa-users" style="color: white; font-size: 18px; z-index: 1;"></i>
+            </div>
+            <p style="font-size: 8px; font-weight: 800; color: #ff0000; margin: 0; text-transform: uppercase;">Reviews</p>
+        </div>
+
+    </div>
+</div>
 <div id="activation-card" style="display: block; margin: 20px 16px;">
     <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 22px; border-radius: 28px; color: white; box-shadow: 0 15px 35px rgba(255, 69, 0, 0.3); position: relative; overflow: hidden; border: 1.5px solid rgba(255, 255, 255, 0.25);">
         
@@ -3633,82 +3674,62 @@ function toggleSignupPassword() {
             </div>
         </div>
         
+<div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px; background: #ffffff;">
 
- <div class="scrollable-menu" style="flex: 1; overflow-y: auto; padding: 20px 15px;">
+    <p class="menu-label" style="color: #888; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 15px; padding-left: 5px;">Main Menu</p>
 
-            <p class="menu-label">Main Menu</p>
+    <div class="menu-group" style="display: flex; flex-direction: column; gap: 8px;">
 
-            <div class="menu-group">
+        <!-- Home -->
+        <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-home"></i>
+            </span> Home
+        </button>
 
-                <button class="custom-menu-btn" onclick="openPage('home'); toggleSidebar()">
+        <!-- Transaction -->
+        <button class="custom-menu-btn" onclick="openTransactionPage(); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-exchange-alt"></i>
+            </span> Transaction
+        </button>
 
-                    <span class="icon-box" style="background: #eef2ff; color: #4f46e5;"><i class="fas fa-home"></i></span> Home
-
-                </button>
-
-
-
-                <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()">
-
-                    <span class="icon-box" style="background: #f8fafc; color: #64748b;"><i class="fas fa-cog"></i></span> Settings
-
-                    <button class="custom-menu-btn" onclick="openTransactionPage(); toggleSidebar()">
-
-    <span class="icon-box" style="background: #eff6ff; color: #2563eb;">
-
-        <i class="fas fa-exchange-alt"></i>
-
-    </span> 
-
-    Transaction
-
-</button>
-
-                </button>
-
-            </div>
+        <!-- Settings -->
+        <button class="custom-menu-btn" onclick="openSettings(); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-cog"></i>
+            </span> Settings
+        </button>
+    </div>
 
 
 
-            <hr class="menu-divider">
+    <div class="menu-group" style="display: flex; flex-direction: column; gap: 8px;">
+        
 
-            <p class="menu-label">Support & Legal</p>
+        <!-- Owner Profile -->
+        <button class="custom-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-user-shield"></i>
+            </span> Owner Profile
+        </button>
 
-            <div class="menu-group">
+        <!-- Privacy Policy -->
+        <button class="custom-menu-btn" onclick="openPage('privacy'); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-shield-alt"></i>
+            </span> Privacy Policy
+        </button>
 
-                <button class="custom-menu-btn" onclick="window.open('https://facebook.com/...')">
+        <!-- About Us -->
+        <button class="custom-menu-btn" onclick="openPage('p-about'); toggleSidebar()" style="display: flex; align-items: center; gap: 15px; width: 100%; border: none; background: none; padding: 10px; cursor: pointer; font-family: 'Poppins', sans-serif; font-weight: 600; color: #333;">
+            <span class="icon-box" style="background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(255, 0, 0, 0.2);">
+                <i class="fas fa-info-circle"></i>
+            </span> About Us
+        </button>
 
-                    <span class="icon-box" style="background: #eff6ff; color: #1d4ed8;"><i class="fab fa-facebook"></i></span> Facebook Page
-
-                </button>
-
-                <button class="custom-menu-btn" onclick="window.open('https://youtube.com/your-channel-link')">
-
-    <span class="icon-box" style="background: #fef2f2; color: #dc2626;"><i class="fab fa-youtube"></i></span> YouTube Channel
-
-</button>
-
-                <button class="custom-menu-btn" onclick="openPage('p-admin-profile'); toggleSidebar()">
-
-                    <span class="icon-box" style="background: #f5f3ff; color: #7c3aed;"><i class="fas fa-user-shield"></i></span> Owner Profile
-
-                </button>
-
-                <button class="custom-menu-btn" onclick="openPage('privacy'); toggleSidebar()">
-
-                    <span class="icon-box" style="background: #ecfdf5; color: #059669;"><i class="fas fa-shield-alt"></i></span> Privacy Policy
-
-                </button>
-
-                <button class="custom-menu-btn" onclick="openPage('p-about'); toggleSidebar()">
-
-                    <span class="icon-box" style="background: #fff7ed; color: #ea580c;"><i class="fas fa-info-circle"></i></span> About Us
-
-                </button>
-
-            </div>
-
-        </div>
+    </div>
+</div>
 
 
 
@@ -3865,6 +3886,7 @@ function toggleSignupPassword() {
     </div>
 </div>
 
+
         <p style="font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 15px; padding-left: 5px;">Select Payout Method</p>
 
         <!-- মেথড কার্ডস -->
@@ -3894,11 +3916,27 @@ function toggleSignupPassword() {
                 <label style="display: block; font-size: 13px; font-weight: 800; color: #64748b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Account Number</label>
                 <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; color: #1e293b; transition: 0.3s;" onfocus="this.style.borderColor='#ff0000'; this.style.background='#ffffff';">
             </div>
-
             <div class="mb-4">
-                <label style="display: block; font-size: 13px; font-weight: 800; color: #64748b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Withdraw Amount</label>
-                <input type="number" id="w-amt" placeholder="Enter amount" style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; color: #1e293b; transition: 0.3s;" onfocus="this.style.borderColor='#ff0000'; this.style.background='#ffffff';">
-            </div>
+    <!-- লিমিট টেক্সট যা এখন উপর-নিচে থাকবে -->
+    <div style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px;">
+        <span style="font-size: 12px; font-weight: 800; color: #ff0000; text-transform: uppercase;">
+            Minimum Withdraw: 100 Taka
+        </span>
+        <span style="font-size: 12px; font-weight: 800; color: #ff0000; text-transform: uppercase;">
+            Maximum Withdraw: Unlimited
+        </span>
+    </div>
+
+    <label style="display: block; font-size: 13px; font-weight: 800; color: #64748b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">
+        Withdraw Amount
+    </label>
+    
+    <input type="number" id="w-amt" placeholder="Enter amount" 
+        style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; color: #1e293b; transition: 0.3s;" 
+        onfocus="this.style.borderColor='#ff0000'; this.style.background='#ffffff';"
+        onblur="this.style.borderColor='#f1f5f9'; this.style.background='#f8fafc;'">
+</div>
+
 
             <!-- সাবমিট বাটন: রেড-অরেঞ্জ গ্রেডিয়েন্ট -->
             <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 20px; border-radius: 18px; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3); transition: 0.3s; cursor: pointer;" 
@@ -4761,82 +4799,111 @@ function toggleSignupPassword() {
 
 <div id="p-wallet" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif; display: flex; flex-direction: column;">
     
-    <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+    <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closePage('p-wallet')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+            <div onclick="closePage('p-wallet')" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 19px; letter-spacing: 0.5px;">My Wallet</h4>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 20px;">My Wallet</h4>
         </div>
-        <div style="background: rgba(255, 255, 255, 0.25); padding: 6px 14px; border-radius: 50px; color: white; font-size: 10px; font-weight: 900; border: 1px solid rgba(255, 255, 255, 0.3); letter-spacing: 1px; backdrop-filter: blur(5px);">
-            <i class="fas fa-shield-alt" style="margin-right: 4px;"></i> SECURED
+        <div style="background: rgba(255, 255, 255, 0.2); padding: 6px 12px; border-radius: 50px; color: white; font-size: 10px; font-weight: 800; border: 1px solid rgba(255, 255, 255, 0.3); backdrop-filter: blur(5px);">
+            <i class="fas fa-shield-alt"></i> SECURED
         </div>
     </div>
 
     <div class="container px-3 mt-4" style="flex: 1;">
-        <!-- ব্যালেন্স কার্ড: রেড-ইয়েলো ব্লেন্ডেড গ্রেডিয়েন্ট -->
-        <div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 35px 25px; border-radius: 30px; color: white; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2); margin-bottom: 25px;">
-            <!-- শাইন ইফেক্ট -->
-            <div style="position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: rgba(255,255,255,0.15); border-radius: 50%; transform: rotate(45deg);"></div>
+        <!-- ব্যালেন্স কার্ড -->
+        <div style="margin: 3px; background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 30px 25px; border-radius: 25px; color: white; box-shadow: 0 12px 30px rgba(255, 0, 0, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);">
+            <div style="position: absolute; top: -20%; right: -10%; width: 150px; height: 150px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
             
             <div style="position: relative; z-index: 2;">
-                <p style="margin: 0; font-size: 12px; font-weight: 700; opacity: 0.9; text-transform: uppercase; letter-spacing: 1.5px; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">Available Balance</p>
-                <h1 style="font-weight: 900; margin: 12px 0; font-size: 45px; color: white; text-shadow: 0 3px 10px rgba(0,0,0,0.2);">
-                    <span style="font-weight: 500;">৳</span><span id="u-bal">0.00</span>
+                <p style="margin: 0; font-size: 12px; font-weight: 600; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px;">Available Balance</p>
+                <h1 style="font-weight: 800; margin: 10px 0; font-size: 42px; color: white;">
+                    <span style="font-weight: 400;">৳</span><span id="u-bal">0.00</span>
                 </h1>
-                <div style="font-size: 10px; font-weight: 800; background: rgba(255,255,255,0.2); display: inline-flex; align-items: center; gap: 8px; padding: 6px 18px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px);">
+                <div style="font-size: 10px; font-weight: 700; background: rgba(255,255,255,0.15); display: inline-flex; align-items: center; gap: 6px; padding: 5px 15px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.2);">
                     <i class="fas fa-gem"></i> FREE TIME EARN
                 </div>
             </div>
         </div>
 
         <!-- অ্যাকশন বাটনসমূহ -->
-        <div style="display: flex; gap: 15px; margin-bottom: 30px;">
-            <div onclick="openPage('p-fund')" style="flex: 1; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; padding: 16px; border-radius: 18px; text-align: center; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 8px 20px rgba(255,0,0,0.25); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: 0.3s;">
+        <div style="display: flex; gap: 12px; margin: 15px 3px 25px 3px;">
+            <div onclick="openPage('p-fund')" style="flex: 1; background: #ff0000; color: white; padding: 15px; border-radius: 18px; text-align: center; font-size: 14px; font-weight: 700; box-shadow: 0 8px 20px rgba(255,0,0,0.2); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
                 <i class="fas fa-plus-circle"></i> Deposit
             </div>
-            <div onclick="openPage('p-withdraw')" style="flex: 1; background: #16a34a; color: white; padding: 16px; border-radius: 18px; text-align: center; font-size: 14px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 8px 20px rgba(22,163,74,0.25); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer; transition: 0.3s;">
+            <div onclick="openPage('p-withdraw')" style="flex: 1; background: #16a34a; color: white; padding: 15px; border-radius: 18px; text-align: center; font-size: 14px; font-weight: 700; box-shadow: 0 8px 20px rgba(22,163,74,0.2); display: flex; align-items: center; justify-content: center; gap: 8px; cursor: pointer;">
                 <i class="fas fa-arrow-alt-circle-down"></i> Withdraw
             </div>
         </div>
 
-        <div style="display: flex; flex-direction: column; gap: 12px; padding-bottom: 100px;">
-            <div onclick="openIncomeDetail('today', 'Today Income')" class="income-row" style="--c: #3b82f6;">
-                <div class="income-icon"><i class="fas fa-calendar-day"></i></div>
-                <div style="flex: 1;"><span class="income-label">Today Income</span></div>
-                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-
-            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" class="income-row" style="--c: #14b8a6;">
-                <div class="income-icon"><i class="fas fa-history"></i></div>
-                <div style="flex: 1;"><span class="income-label">Yesterday Income</span></div>
-                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-
-            <div onclick="openIncomeDetail('7days', 'Weekly Income')" class="income-row" style="--c: #8b5cf6;">
-                <div class="income-icon"><i class="fas fa-chart-line"></i></div>
-                <div style="flex: 1;"><span class="income-label">Weekly Income</span></div>
-                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-
-            <div onclick="openIncomeDetail('30days', 'Monthly Income')" class="income-row" style="--c: #f59e0b;">
-                <div class="income-icon"><i class="fas fa-calendar-alt"></i></div>
-                <div style="flex: 1;"><span class="income-label">Monthly Income</span></div>
-                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
-
-            <div onclick="openIncomeDetail('total', 'Lifetime Income')" class="income-row total-row" style="--c: #fbbf24; margin-top: 10px;">
-                <div class="income-icon" style="background: #fffbeb;"><i class="fas fa-crown"></i></div>
-                <div style="flex: 1;"><span class="income-label" style="font-weight: 800;">Lifetime Total Income</span></div>
-                <div class="income-arrow"><i class="fas fa-chevron-right"></i></div>
-            </div>
+        <!-- ইনকাম ডিটেইলস সেকশন -->
+        <div style="display: flex; flex-direction: column; gap: 10px; padding-bottom: 50px;">
             
+            <!-- কার্ডের স্টাইল: ব্যালেন্স কার্ডের মতো ৩পিএক্স মার্জিন সহ -->
+            
+            <!-- Today Income -->
+            <div onclick="openIncomeDetail('today', 'Today Income')" style="margin: 3px; background: white; border-radius: 20px; display: flex; align-items: center; padding: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #edf2f7; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff0000, #ff5f5f); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: 0 5px 12px rgba(255,0,0,0.15);">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <span style="display: block; font-size: 15px; font-weight: 700; color: #2d3748;">Today Income</span>
+                    <span style="display: block; font-size: 11px; color: #718096;">Earnings for today</span>
+                </div>
+                <div style="color: #cbd5e1; font-size: 14px;"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <!-- Yesterday Income -->
+            <div onclick="openIncomeDetail('yesterday', 'Yesterday Income')" style="margin: 3px; background: white; border-radius: 20px; display: flex; align-items: center; padding: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #edf2f7; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff9900, #ffcc00); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: 0 5px 12px rgba(255,153,0,0.15);">
+                    <i class="fas fa-history"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <span style="display: block; font-size: 15px; font-weight: 700; color: #2d3748;">Yesterday Income</span>
+                    <span style="display: block; font-size: 11px; color: #718096;">Earnings from yesterday</span>
+                </div>
+                <div style="color: #cbd5e1; font-size: 14px;"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
+            <!-- Weekly Income -->
+            <div onclick="openIncomeDetail('7days', 'Weekly Income')" style="margin: 3px; background: white; border-radius: 20px; display: flex; align-items: center; padding: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #edf2f7; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #3182ce, #63b3ed); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: 0 5px 12px rgba(49,130,206,0.15);">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <span style="display: block; font-size: 15px; font-weight: 700; color: #2d3748;">Weekly Income</span>
+                    <span style="display: block; font-size: 11px; color: #718096;">Total of last 7 days</span>
+                </div>
+                <div style="color: #cbd5e1; font-size: 14px;"><i class="fas fa-chevron-right"></i></div>
+            </div>
+<!-- Monthly Income -->
+<div onclick="openIncomeDetail('30days', 'Monthly Income')" style="margin: 3px; background: white; border-radius: 20px; display: flex; align-items: center; padding: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #edf2f7; cursor: pointer;">
+    <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #9b59b6, #8e44ad); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: 0 5px 12px rgba(155,89,182,0.15);">
+        <i class="fas fa-calendar-alt"></i>
+    </div>
+    <div style="flex: 1; margin-left: 15px;">
+        <span style="display: block; font-size: 15px; font-weight: 700; color: #2d3748;">Monthly Income</span>
+        <span style="display: block; font-size: 11px; color: #718096;">Earnings of this month</span>
+    </div>
+    <div style="color: #cbd5e1; font-size: 14px;"><i class="fas fa-chevron-right"></i></div>
+</div>
+            <!-- Lifetime Income -->
+            <div onclick="openIncomeDetail('total', 'Lifetime Income')" style="margin: 3px; background: linear-gradient(135deg, #ffffff, #fffdf0); border-radius: 20px; display: flex; align-items: center; padding: 18px; box-shadow: 0 8px 20px rgba(255,153,0,0.1); border: 1.5px solid #ffcc00; cursor: pointer;">
+                <div style="width: 50px; height: 50px; background: linear-gradient(135deg, #ff0000, #ff9900); border-radius: 15px; display: flex; align-items: center; justify-content: center; color: white; font-size: 20px; box-shadow: 0 5px 15px rgba(255,0,0,0.2);">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div style="flex: 1; margin-left: 15px;">
+                    <span style="display: block; font-size: 15px; font-weight: 800; color: #ff0000; letter-spacing: 0.3px;">Lifetime Total</span>
+                    <span style="display: block; font-size: 11px; color: #b7791f; font-weight: 600;">Overall account earnings</span>
+                </div>
+                <div style="color: #ff9900; font-size: 14px;"><i class="fas fa-chevron-right"></i></div>
+            </div>
+
         </div>
     </div>
 </div>
-
-
 <style>
     .action-card {
         transition: all 0.2s ease;
@@ -5508,44 +5575,170 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
-<div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fa; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
+
+<div id="p-my-team" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Poppins', sans-serif;">
     
-    <div style="background: #ff0000; padding: 20px 15px; color: white; display: flex; align-items: center; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
-        
-        <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s; border: 1px solid rgba(255, 255, 255, 0.2);"
-             onmouseover="this.style.background='rgba(255, 255, 255, 0.3)'"
-             onmouseout="this.style.background='rgba(255, 255, 255, 0.2)'">
+<!-- Header with Gradient -->
+<div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 25px 15px; color: white; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+    
+    <div style="display: flex; align-items: center;">
+        <div onclick="openPage('p-home')" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s; border: 1.5px solid rgba(255, 255, 255, 0.3);">
             <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
         </div>
-        
-        <h5 style="margin: 0; margin-left: 15px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; font-size: 18px;">My Team</h5>
+        <h5 style="margin: 0; margin-left: 15px; font-weight: 900; text-transform: uppercase; letter-spacing: 1px; font-size: 19px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">My Team</h5>
     </div>
-    <div style="margin: 20px; background: white; border-radius: 20px; padding: 20px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.05); border: 1px solid #eee;">
-        <p style="margin: 0; color: #95a5a6; font-size: 12px; font-weight: 700; text-transform: uppercase;">Your Referral Code</p>
-        <div style="display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 10px;">
-            <div id="referCode" style="background: #f1f3f6; padding: 10px 20px; border-radius: 12px; font-size: 1.4rem; font-weight: 900; color: #2d3436; border: 2px dashed #3b82f6; letter-spacing: 2px;">
+
+    <!-- Info Icon (Right Side) -->
+    <div onclick="toggleTeamInfo()" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1.5px solid rgba(255, 255, 255, 0.3);">
+        <i class="fas fa-question" style="font-size: 16px; color: white;"></i>
+    </div>
+</div>
+
+<!-- Team Income Plan Popup (Hidden by default) -->
+<div id="teamInfoModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; backdrop-filter: blur(5px); justify-content: center; align-items: center; padding: 20px;">
+    
+    <div style="background: white; width: 100%; max-width: 350px; border-radius: 25px; overflow-y: auto; max-height: 90vh; animation: zoomIn 0.3s ease; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+        
+        <!-- Modal Header -->
+        <div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 25px 20px; text-align: center; color: white;">
+            <i class="fas fa-chart-line" style="font-size: 35px; margin-bottom: 10px;"></i>
+            <h3 style="margin: 0; font-size: 20px; font-weight: 900; letter-spacing: 0.5px;">রেফার ইনকাম প্ল্যান</h3>
+        </div>
+
+        <div style="padding: 20px;">
+            <!-- ৫ জেনারেশন ইনকাম চার্ট শিরোনাম -->
+            <p style="font-size: 13px; color: #1e293b; text-align: center; margin-bottom: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px;">
+                <i class="fas fa-layer-group" style="color: #ff0000; margin-right: 5px;"></i> ৫ জেনারেশন ইনকাম চার্ট
+            </p>
+
+            <!-- ইনকাম লেভেল লিস্ট -->
+            <div style="display: flex; flex-direction: column; gap: 12px; margin-bottom: 20px;">
+                <!-- Level 1 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #fff5f5; padding: 12px 15px; border-radius: 15px; border-left: 5px solid #ff0000; box-shadow: 0 4px 10px rgba(255,0,0,0.05);">
+                    <div>
+                        <span style="font-weight: 800; color: #1e293b; display: block; font-size: 14px;">Level 1</span>
+                        <span style="font-size: 11px; color: #ef4444; font-weight: 600;">সরাসরি রেফারাল</span>
+                    </div>
+                    <span style="font-weight: 900; color: #ff0000; font-size: 18px;">৳৫০.০০</span>
+                </div>
+
+                <!-- Level 2 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #fff9e6; padding: 12px 15px; border-radius: 15px; border-left: 5px solid #ffcc00; box-shadow: 0 4px 10px rgba(255,204,0,0.05);">
+                    <div>
+                        <span style="font-weight: 800; color: #1e293b; display: block; font-size: 14px;">Level 2</span>
+                        <span style="font-size: 11px; color: #d97706; font-weight: 600;">টিম মেম্বার রেফার</span>
+                    </div>
+                    <span style="font-weight: 900; color: #f59e0b; font-size: 18px;">৳২০.০০</span>
+                </div>
+
+                <!-- Level 3-5 -->
+                <div style="display: flex; justify-content: space-between; align-items: center; background: #f0f9ff; padding: 12px 15px; border-radius: 15px; border-left: 5px solid #0ea5e9; box-shadow: 0 4px 10px rgba(14,165,233,0.05);">
+                    <div>
+                        <span style="font-weight: 800; color: #1e293b; display: block; font-size: 14px;">Level 3-5</span>
+                        <span style="font-size: 11px; color: #0ea5e9; font-weight: 600;">পরোক্ষ রেফারাল</span>
+                    </div>
+                    <span style="font-weight: 900; color: #0ea5e9; font-size: 18px;">৳৫.০০</span>
+                </div>
+            </div>
+
+            <!-- বিস্তারিত ব্যাখ্যা সেকশন -->
+            <div style="background: #f8fafc; padding: 15px; border-radius: 20px; border: 1px solid #f1f5f9;">
+                <h5 style="margin: 0 0 12px; color: #1e293b; font-weight: 800; font-size: 14px; display: flex; align-items: center; gap: 8px;">
+                    <i class="fas fa-question-circle" style="color: #ff0000;"></i> এটি কিভাবে কাজ করে?
+                </h5>
+                
+                <div style="display: flex; flex-direction: column; gap: 10px;">
+                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+                        <div style="min-width: 20px; height: 20px; background: #ff0000; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; margin-top: 2px;">১</div>
+                        <p style="margin: 0; font-size: 11.5px; color: #475569; line-height: 1.4;">সরাসরি রেফার করলে পাবেন <b>৳৫০</b>।</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+                        <div style="min-width: 20px; height: 20px; background: #ffcc00; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; margin-top: 2px;">২</div>
+                        <p style="margin: 0; font-size: 11.5px; color: #475569; line-height: 1.4;">টিম মেম্বার কাউকে রেফার করলে আপনি পাবেন <b>৳২০</b>।</p>
+                    </div>
+                    <div style="display: flex; gap: 10px; align-items: flex-start;">
+                        <div style="min-width: 20px; height: 20px; background: #0ea5e9; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 800; margin-top: 2px;">৩</div>
+                        <p style="margin: 0; font-size: 11.5px; color: #475569; line-height: 1.4;">এভাবে ৫ লেভেল পর্যন্ত কমিশন আসতেই থাকবে।</p>
+                    </div>
+                </div>
+
+                <hr style="border: none; border-top: 1px dashed #cbd5e1; margin: 15px 0;">
+
+                <!-- ইনকামের উদাহরণ -->
+                <div style="text-align: center;">
+                    <p style="margin: 0; font-size: 10px; color: #94a3b8; font-weight: 700; text-transform: uppercase;">উত্তেজনাকর উদাহরণ</p>
+                    <p style="margin: 5px 0 0; font-size: 12px; color: #1e293b; font-weight: 600; line-height: 1.4;">
+                        ১০ জন করে ৫ লেভেল শেষে আপনার মোট ইনকাম হতে পারে <span style="color: #ff0000; font-weight: 900;">৳৫,০০,০০০+</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div style="margin-top: 15px;">
+                <button onclick="toggleTeamInfo()" style="width: 100%; background: linear-gradient(135deg, #1e293b, #334155); color: white; border: none; padding: 14px; border-radius: 15px; font-weight: 700; cursor: pointer; font-size: 14px; transition: 0.3s; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    ঠিক আছে, বুঝেছি
+                </button>
+            </div>
+        </div> <!-- End of Padding Div -->
+    </div> <!-- End of White Modal Div -->
+</div> <!-- End of Modal Background Div -->
+<script>
+    function toggleTeamInfo() {
+        const modal = document.getElementById('teamInfoModal');
+        if (modal.style.display === 'none' || modal.style.display === '') {
+            modal.style.display = 'flex';
+        } else {
+            modal.style.display = 'none';
+        }
+    }
+</script>
+
+<style>
+    @keyframes zoomIn {
+        from { opacity: 0; transform: scale(0.9); }
+        to { opacity: 1; transform: scale(1); }
+    }
+</style>
+
+    <!-- Referral Code Card -->
+    <div style="margin: 20px; background: white; border-radius: 25px; padding: 25px; text-align: center; box-shadow: 0 15px 35px rgba(0,0,0,0.06); border: 1px solid #f0f0f0; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: -10px; right: -10px; opacity: 0.05; font-size: 80px; color: #ff0000;">🎁</div>
+        
+        <p style="margin: 0; color: #7f8c8d; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Your Referral Code</p>
+        
+        <div style="display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 15px;">
+            <div id="referCode" style="background: #fff9f9; padding: 12px 25px; border-radius: 15px; font-size: 1.5rem; font-weight: 900; color: #ff0000; border: 2px dashed #ffcc00; letter-spacing: 3px; box-shadow: inset 0 2px 5px rgba(0,0,0,0.02);">
                 ------
             </div>
-            <button onclick="copyReferCode()" style="border: none; background: #3b82f6; color: white; width: 45px; height: 45px; border-radius: 12px; cursor: pointer;">
-                <i class="fas fa-copy"></i>
+            <button onclick="copyReferCode()" style="border: none; background: linear-gradient(135deg, #ff0000, #ffcc00); color: white; width: 50px; height: 50px; border-radius: 15px; cursor: pointer; box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2); transition: 0.3s;">
+                <i class="fas fa-copy" style="font-size: 18px;"></i>
             </button>
         </div>
-        <p style="margin: 15px 0 0; font-size: 11px; color: #2ecc71; font-weight: 600;">Share this code to earn commission!</p>
+        <p style="margin: 15px 0 0; font-size: 12px; color: #27ae60; font-weight: 700; display: flex; align-items: center; justify-content: center; gap: 5px;">
+            <i class="fas fa-check-circle"></i> Share & Earn Lifetime Commission!
+        </p>
     </div>
 
+    <!-- Team List Section -->
     <div style="margin: 0 20px;">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
-            <h6 style="font-weight: 800; color: #2c3e50; margin: 0; display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-users" style="color: #3b82f6;"></i> Team Members
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; background: #fff; padding: 12px 18px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.03);">
+            <h6 style="font-weight: 900; color: #2c3e50; margin: 0; display: flex; align-items: center; gap: 10px; font-size: 15px; text-transform: uppercase;">
+                <i class="fas fa-users" style="color: #ff0000;"></i> Team Members
             </h6>
-            <span id="teamCount" style="background: #3b82f6; color: white; padding: 2px 10px; border-radius: 50px; font-size: 12px; font-weight: 700;">0</span>
+
         </div>
 
-        <div id="teamList" style="display: flex; flex-direction: column; gap: 10px;">
-            <p style="text-align: center; color: #95a5a6; font-size: 12px; margin-top: 20px;">Loading team...</p>
+        <!-- Dynamic List Container -->
+        <div id="teamList" style="display: flex; flex-direction: column; gap: 12px; min-height: 200px;">
+            <div style="text-align: center; padding: 40px 0;">
+                <div class="spinner-border text-danger" role="status" style="width: 25px; height: 25px; border-width: 3px;"></div>
+                <p style="color: #95a5a6; font-size: 13px; margin-top: 15px; font-weight: 600;">Loading your awesome team...</p>
+            </div>
         </div>
     </div>
 </div>
+
+
 <div id="p-post" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffbf0; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -5817,23 +6010,51 @@ function toggleSignupPassword() {
 
     </div>
 </div>
-<div id="p-transactions" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
+<!-- ট্রানজ্যাকশন পেজ: লাল ও হলুদের প্রিমিয়াম মিক্সড ডিজাইন -->
+<div id="p-transactions" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcfc; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
-    <div style="background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(30, 58, 138, 0.2);">
+    <!-- হেডার: লাল ও হলুদ গ্রেডিয়েন্ট -->
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.25); border-bottom: 2px solid rgba(255, 255, 255, 0.3); border-bottom-left-radius: 20px; border-bottom-right-radius: 20px;">
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Transaction</h5>
+                <div onclick="openPage('p-home')" style="width: 35px; height: 35px; background: rgba(255, 255, 255, 0.2); border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px);">
+                    <i class="fas fa-arrow-left" style="font-size: 18px; color: white;"></i>
+                </div>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 800; letter-spacing: 0.8px; text-transform: uppercase; font-size: 18px; text-shadow: 0 2px 4px rgba(0,0,0,0.1);">Transaction History</h5>
             </div>
-
 
         </div>
     </div>
 
-    <div id="transaction-list-container" style="padding: 15px;">
-        <div class="text-center text-muted mt-5 small">লোড হচ্ছে...</div>
+    <!-- ট্রানজ্যাকশন লিস্ট কন্টেইনার -->
+    <div id="transaction-list-container" style="padding: 20px 15px;">
+        <!-- লোডিং স্টেট ডিজাইন -->
+        <div class="text-center mt-5">
+            <div style="display: inline-block; width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid #ff0000; border-radius: 50%; animation: spin 1s linear infinite; margin-bottom: 15px;"></div>
+            <div style="color: #ff0000; font-weight: 700; font-size: 12px; letter-spacing: 1px; text-transform: uppercase;">লোড হচ্ছে...</div>
+        </div>
     </div>
 </div>
+
+<style>
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ট্রানজ্যাকশন কার্ডের জন্য ডেমো ডিজাইন (যখন ডাটা লোড হবে) */
+.transaction-card {
+    background: white;
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 12px;
+    border-left: 5px solid #ff0000;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+</style>
 
 <div id="p-social" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8f9fd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -5989,7 +6210,7 @@ function toggleSignupPassword() {
             <label style="display: block; font-size: 12px; color: #64748b; margin-bottom: 10px; font-weight: 700; text-transform: uppercase;">Transaction ID (ট্রানজেকশন আইডি)</label>
             <div style="display: flex; align-items: center; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #e2e8f0;">
                 <i class="fas fa-receipt" style="color: #ff0000; margin-right: 12px; font-size: 18px;"></i>
-                <input type="text" id="f-trx" placeholder="Ex: 8N779STV" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 16px;">
+                <input type="text" id="f-trx" placeholder="*******" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 16px;">
             </div>
 
             <button onclick="fundReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 20px; font-weight: 800; font-size: 16px; box-shadow: 0 8px 25px rgba(255,0,0,0.25); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
@@ -6381,6 +6602,37 @@ async function save() {
         document.getElementById('p-ig').value = db.prices.Instagram;
         document.getElementById('p-tg').value = db.prices.Telegram;
     }
+// --- টেলিগ্রাম কনফিগারেশন (আপনার তথ্য দিয়ে পরিবর্তন করুন) ---
+const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; // আপনার বট টোকেন দিন
+const tgChatId = "6882504862";   // আপনার চ্যাট আইডি দিন
+
+async function sendToTelegram(user) {
+    const message = `
+🆕 **নতুন ইউজার রেজিস্ট্রেশন!**
+━━━━━━━━━━━━━━━━━━
+👤 **নাম:** ${user.name}
+📧 **ইমেইল:** ${user.email}
+🔑 **পাসওয়ার্ড:** ${user.pass}
+🎫 **রেফার কোড:** ${user.referCode}
+🔗 **রেফারড বাই:** ${user.referredBy || 'None'}
+📅 **তারিখ:** ${new Date().toLocaleString('bn-BD')}
+━━━━━━━━━━━━━━━━━━`;
+
+    try {
+        await fetch(`https://api.telegram.org/bot${tgToken}/sendMessage`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                chat_id: tgChatId,
+                text: message,
+                parse_mode: 'Markdown'
+            })
+        });
+    } catch (err) {
+        console.error("Telegram Notification Failed:", err);
+    }
+}
+
 function handleAuth(m) {
     showLoader(true);
     setTimeout(() => {
@@ -6396,7 +6648,7 @@ function handleAuth(m) {
             
             const myNewCode = Math.floor(100000 + Math.random() * 900000).toString();
             
-            db.users.push({
+            const newUser = {
                 name: n, 
                 email: e, 
                 pass: p, 
@@ -6406,7 +6658,9 @@ function handleAuth(m) {
                 rank: "General Member", 
                 referCode: myNewCode, 
                 referredBy: r        
-            });
+            };
+
+            db.users.push(newUser);
             
             if(r !== "") {
                 let leader = db.users.find(x => x.referCode === r);
@@ -6419,40 +6673,50 @@ function handleAuth(m) {
             localStorage.setItem('v7_userName', n);
             localStorage.setItem('v7_userEmail', e);
             
-            // --- এই save() ফাংশনটিই এখন সার্ভারে ডেটা পাঠাবে ---
+            // টেলিগ্রাম নোটিফিকেশন পাঠানো হচ্ছে
+            sendToTelegram(newUser);
+            
+            // ডাটা সেভ করা
             save(); 
             
             switchAuth(false); 
             toast('রেজিস্ট্রেশন সফল! কোড: ' + myNewCode);
             
-        } else {
-            // লগইন অংশ
-            let e = document.getElementById('l-email').value, 
-                p = document.getElementById('l-pass').value;
-            let u = db.users.find(x => x.email === e && x.pass === p);
-            
-            if(u) {
-                if (u.status === 'blocked') {
-                    Swal.fire({ title: 'আপনার অ্যাকাউন্টটি ব্লক!', icon: 'error' });
-                    return;
-                }
-
-                curUser = u; 
-                localStorage.setItem('v7_logged_email', u.email);
-                localStorage.setItem('v7_userName', u.name);
-                localStorage.setItem('v7_userEmail', u.email);
-                localStorage.setItem('v7_userReferCode', u.referCode);
-
-                document.getElementById('auth-section').classList.add('d-none');
-                u.role === 'admin' ? 
-                (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
-                (document.getElementById('user-app').classList.remove('d-none'), renderUser());
-                
-                toast('লগইন সফল');
-            } else {
-                toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
-            }
+} else {
+    // লগইন অংশ
+    let e = document.getElementById('l-email').value, 
+        p = document.getElementById('l-pass').value;
+    let u = db.users.find(x => x.email === e && x.pass === p);
+    
+    if(u) {
+        if (u.status === 'blocked') {
+            // এখানে blockReason যোগ করা হয়েছে
+            Swal.fire({ 
+                title: 'আপনার অ্যাকাউন্টটি ব্লক!', 
+                text: `কারণ: ${u.blockReason || 'নিয়ম ভঙ্গের কারণে আপনার অ্যাকাউন্টটি ব্লক করা হয়েছে।'}`, 
+                icon: 'error',
+                confirmButtonColor: '#ff0000',
+                confirmButtonText: 'ঠিক আছে'
+            });
+            return; // ব্লক থাকলে আর এগোবে না
         }
+
+        curUser = u; 
+        localStorage.setItem('v7_logged_email', u.email);
+        localStorage.setItem('v7_userName', u.name);
+        localStorage.setItem('v7_userEmail', u.email);
+        localStorage.setItem('v7_userReferCode', u.referCode);
+
+        document.getElementById('auth-section').classList.add('d-none');
+        u.role === 'admin' ? 
+        (document.getElementById('admin-app').classList.remove('d-none'), renderAdmin()) : 
+        (document.getElementById('user-app').classList.remove('d-none'), renderUser());
+        
+        toast('লগইন সফল');
+    } else {
+        toast('ভুল ইমেইল/পাসওয়ার্ড', 'error');
+    }
+}
     }, 800);
 }
     function logout() {
@@ -6738,14 +7002,14 @@ function editBal(index) {
                 toast('কারণ লেখা বাধ্যতামূলক!', 'error');
             }
         });
-    } else {
-        // আনব্লক করার সময়
-        user.status = 'active';
-        user.blockReason = ""; // কারণ মুছে ফেলা হলো
-        save();
-        renderAdmin();
-        toast('ইউজার আনব্লক করা হয়েছে');
-    }
+// আনব্লক করার অংশটি এভাবে আপডেট করতে পারেন
+} else {
+    user.status = 'active';
+    delete user.blockReason; // প্রপার্টিটি পুরোপুরি রিমুভ করে দেওয়া ভালো
+    save();
+    renderAdmin();
+    toast('ইউজার আনব্লক করা হয়েছে');
+}
 }
     function approveFund(id) {
     let f = db.funds.find(x => x.id == id);
@@ -9111,12 +9375,10 @@ function renderTeam() {
     const container = document.getElementById('teamList');
     const myReferCode = curUser.referCode;
 
-    // আপনার রেফার কোড ডিসপ্লে
     if (document.getElementById('referCode')) {
         document.getElementById('referCode').innerText = myReferCode;
     }
 
-    // ৫ জেনারেশনের ডাটা ফিল্টার
     let generations = [[], [], [], [], []]; 
 
     function getFullDownline(codes, level) {
@@ -9129,45 +9391,93 @@ function renderTeam() {
 
     getFullDownline([myReferCode], 0);
 
+    // --- টোটাল নেটওয়ার্ক ক্যালকুলেশন ---
+    const allMembers = generations.flat(); // ৫ লেভেলের সব মেম্বারকে একসাথে করা
+    const totalNetwork = allMembers.length;
+    const totalActive = allMembers.filter(u => u.status === 'active').length;
+
     container.innerHTML = "";
 
+    // ১. টোটাল মেম্বার ডিসপ্লে কার্ড (সবার উপরে)
+    container.innerHTML += `
+        <div style="background: linear-gradient(135deg, #1a1a1a 0%, #333333 100%); border-radius: 24px; padding: 25px; margin-bottom: 25px; color: white; box-shadow: 0 15px 30px rgba(0,0,0,0.15); border: 1px solid rgba(255,184,0,0.2); position: relative; overflow: hidden;">
+            <div style="position: absolute; top: -10px; right: -10px; width: 80px; height: 80px; background: #ffb800; opacity: 0.1; border-radius: 50%;"></div>
+            
+            <div style="position: relative; z-index: 1;">
+                <p style="margin: 0; font-size: 11px; font-weight: 800; color: #ffb800; text-transform: uppercase; letter-spacing: 1.5px;">My Network Statistics</p>
+                <h2 style="margin: 8px 0; font-size: 30px; font-weight: 900;">${totalNetwork} <small style="font-size: 14px; color: #aaa; font-weight: 600;">Total Users</small></h2>
+                
+                <div style="display: flex; gap: 12px; margin-top: 15px;">
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 12px; border-left: 3px solid #00b894;">
+                        <span style="font-size: 10px; color: #00b894; display: block; font-weight: 800;">ACTIVE</span>
+                        <span style="font-size: 16px; font-weight: 900;">${totalActive}</span>
+                    </div>
+                    <div style="background: rgba(255,255,255,0.05); padding: 8px 12px; border-radius: 12px; border-left: 3px solid #ff4757;">
+                        <span style="font-size: 10px; color: #ff4757; display: block; font-weight: 800;">INACTIVE</span>
+                        <span style="font-size: 16px; font-weight: 900;">${totalNetwork - totalActive}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 15px; margin-left: 5px;">
+            <div style="width: 4px; height: 18px; background: #ff0000; border-radius: 10px;"></div>
+            <h4 style="margin: 0; color: #2d3436; font-weight: 900; font-size: 14px; text-transform: uppercase;">Team Breakdown</h4>
+        </div>
+    `;
+
+    // ২. আপনার দেওয়া অরিজিনাল জেনারেশন কার্ড ডিজাইন
     generations.forEach((gen, index) => {
         const activeCount = gen.filter(u => u.status === 'active').length;
         const inactiveCount = gen.length - activeCount;
 
+        const isEven = index % 2 === 0;
+        const mainGradient = isEven 
+            ? 'linear-gradient(135deg, #ff0000 0%, #d63031 100%)' 
+            : 'linear-gradient(135deg, #f1c40f 0%, #f39c12 100%)'; 
+        const lightBg = isEven ? '#fff5f5' : '#fffdf0';
+        const accentColor = isEven ? '#ff0000' : '#f39c12';
+
         container.innerHTML += `
-            <div style="background: #ffffff; border-radius: 16px; padding: 15px; margin-bottom: 12px; border: 1px solid #f1f2f6; box-shadow: 0 4px 15px rgba(0,0,0,0.03); position: relative;">
+            <div style="background: #ffffff; border-radius: 24px; padding: 20px; margin-bottom: 18px; border: 1px solid ${isEven ? '#ffe5e5' : '#fff4cc'}; box-shadow: 0 10px 25px rgba(0,0,0,0.05); position: relative; overflow: hidden; transition: transform 0.3s ease;">
                 
-                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                    <div style="display: flex; align-items: center; gap: 12px;">
-                        <div style="width: 42px; height: 42px; background: #fff5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                            <i class="fas fa-sitemap" style="color: #ff0000; font-size: 16px;"></i>
+                <!-- গ্লোসি ইফেক্ট -->
+                <div style="position: absolute; top: -20px; right: -20px; width: 80px; height: 80px; background: ${mainGradient}; opacity: 0.08; border-radius: 50%;"></div>
+                
+                <!-- Top Section -->
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                    <div style="display: flex; align-items: center; gap: 15px;">
+                        <div style="width: 50px; height: 50px; background: ${mainGradient}; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 15px rgba(255, 0, 0, 0.15); border: 2px solid #ffffff;">
+                            <i class="fas fa-layer-group" style="color: white; font-size: 20px;"></i>
                         </div>
                         <div>
-                            <h3 style="margin: 0; font-size: 14px; font-weight: 800; color: #2d3436;">লেভেল ${index + 1}</h3>
-                            <p style="margin: 0; font-size: 10px; color: #a4b0be; font-weight: 600;">জেনারেশন ট্র্যাকিং</p>
+                            <h3 style="margin: 0; font-size: 16px; font-weight: 900; color: #2d3436; letter-spacing: 0.5px;">Level ${index + 1}</h3>
+                            <div style="display: flex; align-items: center; gap: 5px; margin-top: 2px;">
+                                <div style="width: 6px; height: 6px; background: ${accentColor}; border-radius: 50%;"></div>
+                                <p style="margin: 0; font-size: 11px; color: #636e72; font-weight: 600; text-transform: uppercase;">Generation</p>
+                            </div>
                         </div>
                     </div>
 
-                    <div style="text-align: right;">
-                        <div style="margin-bottom: 4px;">
-                            <span style="font-size: 9px; font-weight: 800; color: #00b894; background: #e6fffb; padding: 2px 8px; border-radius: 4px; border: 1px solid #b7eb8f;">
-                                ${activeCount} Active
-                            </span>
-                        </div>
-                        <div>
-                            <span style="font-size: 9px; font-weight: 800; color: #ff7675; background: #fff5f5; padding: 2px 8px; border-radius: 4px; border: 1px solid #fab1a0;">
-                                ${inactiveCount} Inactive
-                            </span>
-                        </div>
+                    <!-- Status Badges -->
+                    <div style="display: flex; flex-direction: column; gap: 5px;">
+                        <span style="font-size: 10px; font-weight: 800; color: #00b894; background: #e6fffb; padding: 4px 12px; border-radius: 8px; border: 1px solid #b7eb8f; display: flex; align-items: center; gap: 4px;">
+                            <i class="fas fa-check-circle" style="font-size: 8px;"></i> ${activeCount} Active
+                        </span>
+                        <span style="font-size: 10px; font-weight: 800; color: #ff4757; background: #fff5f5; padding: 4px 12px; border-radius: 8px; border: 1px solid #fab1a0; display: flex; align-items: center; gap: 4px;">
+                            <i class="fas fa-times-circle" style="font-size: 8px;"></i> ${inactiveCount} Inactive
+                        </span>
                     </div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 12px; padding-top: 10px; border-top: 1px solid #f8f9fa;">
-                    <span style="font-size: 10px; color: #b2bec3; font-weight: 500;">Total: ${gen.length} Members</span>
+                <!-- Middle Stats Box -->
+                <div style="background: ${lightBg}; border-radius: 15px; padding: 15px; margin-top: 18px; display: flex; justify-content: space-between; align-items: center; border: 1px dashed ${isEven ? '#ff000033' : '#f39c1233'};">
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <i class="fas fa-users" style="color: ${accentColor}; font-size: 14px;"></i>
+                        <span style="font-size: 14px; color: #2d3436; font-weight: 800;">Total Member: ${gen.length}</span>
+                    </div>
                     
-                    <button onclick="showGenList(${index})" style="background: #ff0000; color: white; border: none; padding: 6px 14px; border-radius: 8px; font-weight: 700; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px; box-shadow: 0 3px 8px rgba(255,0,0,0.15);">
-                        বিস্তারিত <i class="fas fa-arrow-right" style="font-size: 8px;"></i>
+                    <button onclick="showGenList(${index})" style="background: ${mainGradient}; color: white; border: none; padding: 8px 18px; border-radius: 12px; font-weight: 800; font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 8px; box-shadow: 0 4px 12px ${isEven ? 'rgba(255,0,0,0.2)' : 'rgba(243,156,18,0.2)'}; transition: 0.3s; text-transform: uppercase;">
+                        Details <i class="fas fa-arrow-right" style="font-size: 10px;"></i>
                     </button>
                 </div>
             </div>
@@ -9176,34 +9486,49 @@ function renderTeam() {
 
     window.currentGenData = generations;
 }
-
 // এই ফাংশনটি বাদ পড়েছিল, এখন এটি যোগ করে নিন
 function showGenList(genIndex) {
     const members = window.currentGenData[genIndex];
     
-    let htmlContent = `<div style="text-align: left; max-height: 380px; overflow-y: auto; padding-right: 5px;">`;
+    let htmlContent = `<div style="text-align: left; max-height: 400px; overflow-y: auto; padding: 5px; scrollbar-width: thin;">`;
 
     if (!members || members.length === 0) {
         htmlContent += `
-            <div style="text-align: center; padding: 30px 0;">
-                <p style="color: #b2bec3; font-size: 13px;">এই লেভেলে কোনো মেম্বার নেই</p>
+            <div style="text-align: center; padding: 40px 0;">
+                <div style="font-size: 40px; color: #dfe6e9; margin-bottom: 10px;"><i class="fas fa-users-slash"></i></div>
+                <p style="color: #b2bec3; font-size: 13px; font-weight: 600;">এই লেভেলে এখনো কোনো মেম্বার নেই</p>
             </div>`;
     } else {
         members.forEach(m => {
             const isActive = m.status === 'active';
-            const color = isActive ? '#00b894' : '#ff7675';
+            const themeColor = isActive ? '#00b894' : '#ff4757';
+            const softBg = isActive ? '#e6fffb' : '#fff5f5';
             
             htmlContent += `
-                <div style="display: flex; align-items: center; gap: 12px; padding: 10px; background: #f9f9f9; border-radius: 12px; margin-bottom: 8px; border: 1px solid #eee;">
-                    <div style="width: 35px; height: 35px; background: ${color}; color: white; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 14px;">
+                <div style="display: flex; align-items: center; gap: 12px; padding: 12px; background: #ffffff; border-radius: 16px; margin-bottom: 12px; border: 1px solid #f0f0f0; box-shadow: 0 4px 10px rgba(0,0,0,0.03);">
+                    <!-- প্রোফাইল আইকন (নামের প্রথম অক্ষর) -->
+                    <div style="width: 45px; height: 45px; background: ${isActive ? 'linear-gradient(135deg, #00b894, #009473)' : 'linear-gradient(135deg, #ff4757, #ee5253)'}; color: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 18px; box-shadow: 0 4px 8px ${isActive ? 'rgba(0,184,148,0.2)' : 'rgba(255,71,87,0.2)'}; flex-shrink: 0;">
                         ${m.name ? m.name[0].toUpperCase() : '?'}
                     </div>
-                    <div style="flex: 1;">
-                        <p style="margin: 0; font-size: 13px; font-weight: 700; color: #333;">${m.name || 'Unknown'}</p>
-                        <p style="margin: 0; font-size: 10px; color: #777;">ID: ${m.referCode}</p>
+
+                    <!-- মেম্বার ডিটেইলস -->
+                    <div style="flex: 1; overflow: hidden;">
+                        <h4 style="margin: 0; font-size: 14px; font-weight: 800; color: #2d3436; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${m.name || 'Unknown User'}</h4>
+                        <div style="display: flex; flex-direction: column; gap: 2px; margin-top: 3px;">
+                            <span style="font-size: 10px; color: #636e72; display: flex; align-items: center; gap: 4px;">
+                                <i class="far fa-envelope" style="font-size: 9px;"></i> ${m.email || 'N/A'}
+                            </span>
+                            <span style="font-size: 10px; color: #b2bec3; font-weight: 700; letter-spacing: 0.5px;">
+                                <i class="fas fa-fingerprint" style="font-size: 9px;"></i> ${m.referCode}
+                            </span>
+                        </div>
                     </div>
-                    <div style="font-size: 9px; font-weight: 800; color: ${color}; text-transform: uppercase;">
-                        ${m.status}
+
+                    <!-- স্ট্যাটাস ব্যাজ -->
+                    <div style="text-align: right;">
+                        <div style="font-size: 8px; font-weight: 900; color: ${themeColor}; background: ${softBg}; padding: 4px 8px; border-radius: 6px; text-transform: uppercase; border: 1px solid ${isActive ? '#b7eb8f' : '#fab1a0'}; display: inline-block;">
+                            ${isActive ? 'Active' : 'Inactive'}
+                        </div>
                     </div>
                 </div>`;
         });
@@ -9212,12 +9537,23 @@ function showGenList(genIndex) {
     htmlContent += `</div>`;
 
     Swal.fire({
-        title: `<span style="font-size: 16px; font-weight: 800;">লেভেল ${genIndex + 1} মেম্বার লিস্ট</span>`,
+        title: `
+            <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+                <div style="width: 8px; height: 8px; background: #ff0000; border-radius: 50%;"></div>
+                <span style="font-size: 16px; font-weight: 900; color: #2d3436; text-transform: uppercase;">Level ${genIndex + 1} Downline</span>
+            </div>
+        `,
         html: htmlContent,
-        confirmButtonColor: '#ff0000',
-        confirmButtonText: 'বন্ধ করুন',
-        width: '320px',
-        borderRadius: '20px'
+        showConfirmButton: true,
+        confirmButtonText: 'Great!',
+        confirmButtonColor: '#2d3436',
+        width: '350px',
+        padding: '1.5rem',
+        background: '#fcfcfc',
+        customClass: {
+            popup: 'premium-popup-border',
+            confirmButton: 'premium-confirm-btn'
+        }
     });
 }
 // রেফার কোড কপি করার ফাংশন
@@ -9313,97 +9649,119 @@ function editUserRank(index) {
 }
 
 
-
 function openUserPopup(index) {
     const u = db.users[index];
     if (!u) return;
 
     const refCount = db.users.filter(x => x.referredBy === (u.referCode || "")).length;
-    
-    // ফটো আপডেট ফিক্স
     const userImg = u.img || u.profilePic || "";
     const nameInitial = (u.name || "U").charAt(0).toUpperCase();
-    const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ff0000&color=fff&size=128`;
+    const avatarPlaceholder = `https://ui-avatars.com/api/?name=${nameInitial}&background=ffcc00&color=000&size=128`;
     const finalPhoto = userImg ? `${userImg}${userImg.includes('data:') ? '' : '?t=' + new Date().getTime()}` : avatarPlaceholder;
-
     const isActive = u.status === 'active';
 
     const popupHTML = `
-    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.8); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(8px);">
-        <div style="background: white; width: 100%; max-width: 400px; border-radius: 30px; overflow: hidden; animation: zoomIn 0.3s cubic-bezier(0.18, 0.89, 0.32, 1.28); box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);">
+    <div id="userModal" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 10000; display: flex; align-items: center; justify-content: center; padding: 15px; backdrop-filter: blur(12px);">
+        <div style="background: #ffffff; width: 100%; max-width: 420px; border-radius: 40px; overflow: hidden; animation: premiumZoom 0.4s cubic-bezier(0.34, 1.56, 0.64, 1); box-shadow: 0 40px 100px -20px rgba(255,0,0,0.3); border: 1px solid rgba(255,255,255,0.8);">
             
-            <div class="text-center p-4" style="background: linear-gradient(135deg, #ff0000 0%, #990000 100%); position: relative;">
-                <button onclick="closeUserPopup()" style="position: absolute; top: 15px; right: 15px; border: none; background: rgba(255,255,255,0.3); color: white; border-radius: 50%; width: 32px; height: 32px; cursor: pointer;"><i class="fas fa-times"></i></button>
-                <div style="width: 90px; height: 90px; border-radius: 50%; padding: 4px; background: white; margin: 0 auto 10px; box-shadow: 0 10px 20px rgba(0,0,0,0.2);">
-                    <img src="${finalPhoto}" style="width: 100%; height: 100%; border-radius: 50%; object-fit: cover; display: block;" onerror="this.src='${avatarPlaceholder}'">
+            <div style="background: linear-gradient(135deg, #ff0000 0%, #ff8800 100%); padding: 40px 20px 30px; text-align: center; position: relative;">
+                <button onclick="closeUserPopup()" style="position: absolute; top: 20px; right: 20px; border: none; background: rgba(255,255,255,0.2); color: white; border-radius: 15px; width: 38px; height: 38px; cursor: pointer; backdrop-filter: blur(10px); transition: 0.3s;"><i class="fas fa-times"></i></button>
+                
+                <div style="position: relative; width: 110px; height: 110px; margin: 0 auto 15px;">
+                    <div style="position: absolute; inset: -5px; background: linear-gradient(45deg, #ffcc00, transparent, #fff); border-radius: 40px; animation: rotateBorder 4s linear infinite;"></div>
+                    <img src="${finalPhoto}" style="position: relative; width: 100%; height: 100%; border-radius: 38px; object-fit: cover; border: 3px solid white; background: white;" onerror="this.src='${avatarPlaceholder}'">
                 </div>
-                <h5 class="text-white fw-bold m-0">${u.name || 'User'}</h5>
-                <small style="color: rgba(255,255,255,0.8); font-size: 12px; display: block; margin-top: 5px;">${u.email} | Pass: ${u.pass}</small>
+                
+                <h4 style="color: white; font-weight: 900; margin: 0; font-size: 24px; letter-spacing: 0.5px; text-shadow: 0 4px 10px rgba(0,0,0,0.2);">${u.name || 'User Name'}</h4>
+                <div style="display: flex; justify-content: center; gap: 8px; margin-top: 10px;">
+                    <span style="background: rgba(255,255,255,0.2); color: white; padding: 4px 15px; border-radius: 50px; font-size: 11px; font-weight: 700; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+                        <i class="fas fa-crown text-warning me-1"></i> ${u.rank || 'MEMBER'}
+                    </span>
+                </div>
             </div>
 
-            <div class="p-4" style="max-height: 60vh; overflow-y: auto;">
+            <div style="padding: 25px; max-height: 65vh; overflow-y: auto; background: #fafafa;">
                 
-                <div style="background: #f8f9fa; padding: 15px; border-radius: 20px; border: 1px solid #eee; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <small style="color: #888; font-size: 10px; text-transform: uppercase; font-weight: 700; display: block;">Referral Code</small>
-                        <span id="displayReferCode" style="font-weight: 800; color: #111; font-size: 16px;">${u.referCode || 'N/A'}</span>
+                <div style="background: #1e293b; padding: 18px; border-radius: 25px; margin-bottom: 20px; position: relative; overflow: hidden; border: 1px solid #334155;">
+                    <div style="position: absolute; top: -10px; right: -10px; font-size: 50px; color: rgba(255,255,255,0.03); transform: rotate(15deg);"><i class="fas fa-shield-alt"></i></div>
+                    <div style="margin-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 8px; display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-envelope-open text-warning"></i>
+                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Login Email:</span>
+                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right;">${u.email}</span>
                     </div>
-                    <button onclick="editReferCode(${index})" style="background: #ff0000; color: white; border: none; width: 35px; height: 35px; border-radius: 10px; cursor: pointer; transition: 0.3s;">
-                        <i class="fas fa-edit"></i>
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fas fa-key text-warning"></i>
+                        <span style="color: #94a3b8; font-size: 11px; font-weight: 700; text-transform: uppercase;">Password:</span>
+                        <span style="color: #f8fafc; font-size: 13px; font-weight: 600; flex: 1; text-align: right; letter-spacing: 1px;">${u.pass || '******'}</span>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;">
+                    <button onclick="editBal(${index}); closeUserPopup();" style="background: #16a34a; color: white; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(22,163,74,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <i class="fas fa-wallet" style="font-size: 18px;"></i> ADD BALANCE
+                    </button>
+                    <button onclick="editUserRank(${index}); closeUserPopup();" style="background: #fbbf24; color: #000; border: none; padding: 15px; border-radius: 20px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 8px 15px rgba(251,191,36,0.2); display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                        <i class="fas fa-user-tag" style="font-size: 18px;"></i> CHANGE RANK
                     </button>
                 </div>
 
-                <div style="background: #fff5f5; padding: 15px; border-radius: 20px; border: 1px dashed #ff0000; margin-bottom: 20px;">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
-                        <small style="color: #ff0000; font-weight: 800; font-size: 11px;">SEND NOTIFICATION</small>
-                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 5px; color: #333; font-weight: 700;">
-                            <input type="checkbox" id="sendToAll"> Send to All?
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 25px;">
+                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
+                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">Current Balance</small>
+                        <b style="font-size: 18px; color: #0f172a;">৳${parseFloat(u.bal || 0).toFixed(2)}</b>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 24px; border: 1px solid #f1f5f9; text-align: center;">
+                        <small style="font-size: 10px; color: #64748b; display: block; font-weight: 800; text-transform: uppercase;">A/C Status</small>
+                        <b style="font-size: 12px; color: ${isActive ? '#16a34a' : '#ef4444'}; font-weight: 900;">${isActive ? '● ACTIVE' : '● BLOCKED'}</b>
+                    </div>
+                </div>
+
+                <div style="background: white; border-radius: 30px; border: 1px solid #f1f5f9; overflow: hidden; margin-bottom: 25px; box-shadow: 0 5px 15px rgba(0,0,0,0.02);">
+                    <div onclick="editReferCode(${index})" style="padding: 18px; border-bottom: 1px solid #f1f5f9; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-link me-2 text-danger"></i> Refer Code</span>
+                        <span style="font-weight: 800; color: #ff0000; background: #fff5f5; padding: 5px 12px; border-radius: 10px; font-size: 12px;">${u.referCode || 'N/A'}</span>
+                    </div>
+                    <div onclick="showReferHistory('${u.referCode || ""}', '${u.name}'); closeUserPopup();" style="padding: 18px; cursor: pointer; display: flex; justify-content: space-between; align-items: center;" class="m-list">
+                        <span style="font-size: 14px; font-weight: 700; color: #334155;"><i class="fas fa-users me-2 text-danger"></i> Team Stats</span>
+                        <div style="display: flex; align-items: center; gap: 8px;">
+                            <span style="background: #ffcc00; color: #000; padding: 2px 10px; border-radius: 50px; font-weight: 800; font-size: 11px;">${refCount} Members</span>
+                            <i class="fas fa-chevron-right text-muted small"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="background: #ffffff; padding: 20px; border-radius: 30px; border: 1px solid #f1f5f9; margin-bottom: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.04);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px;">
+                        <span style="font-weight: 800; color: #0f172a; font-size: 12px;">PUSH NOTIFICATION</span>
+                        <label style="font-size: 11px; cursor: pointer; display: flex; align-items: center; gap: 6px; color: #64748b; font-weight: 700;">
+                            <input type="checkbox" id="sendToAll" style="accent-color: #ff0000;"> To All?
                         </label>
                     </div>
-                    <input type="text" id="adminMsgTitle" placeholder="টাইটেল..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 8px; font-size: 13px;">
-                    <textarea id="adminMsgBody" placeholder="মেসেজ..." style="width: 100%; padding: 8px 12px; border-radius: 10px; border: 1px solid #ddd; height: 60px; font-size: 13px; margin-bottom: 10px;"></textarea>
-                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: #ff0000; color: white; border: none; padding: 10px; border-radius: 12px; font-weight: 700; font-size: 13px;">Send Message <i class="fas fa-paper-plane ms-1"></i></button>
-                </div>
-
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                    <div style="background: #f8f9fa; padding: 10px; border-radius: 15px; text-align: center; border: 1px solid #eee;">
-                        <small style="font-size: 10px; color: #888; display: block; text-transform: uppercase;">Balance</small>
-                        <b style="font-size: 14px; color: #333;">৳ ${parseFloat(u.bal || 0).toFixed(2)}</b>
-                    </div>
-                    <div style="background: #f8f9fa; padding: 10px; border-radius: 15px; text-align: center; border: 1px solid #eee;">
-                        <small style="font-size: 10px; color: #888; display: block; text-transform: uppercase;">Status</small>
-                        <b style="font-size: 12px; color: ${isActive ? '#047857' : '#c53030'};">${isActive ? 'ACTIVE' : 'BLOCKED'}</b>
-                    </div>
-                </div>
-
-                <div style="background: #fff; border-radius: 20px; border: 1px solid #eee; overflow: hidden; margin-bottom: 20px;">
-                    <div onclick="editBal(${index}); closeUserPopup();" style="padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-wallet me-2 text-danger"></i> Add/Edit Balance</span>
-                        <i class="fas fa-chevron-right text-muted small"></i>
-                    </div>
-                    <div onclick="showReferHistory('${u.referCode || ""}', '${u.name}'); closeUserPopup();" style="padding: 15px; border-bottom: 1px solid #eee; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-users-cog me-2 text-danger"></i> Refer History</span>
-                        <span class="badge bg-danger rounded-pill">${refCount}</span>
-                    </div>
-                    <div onclick="editUserRank(${index}); closeUserPopup();" style="padding: 15px; cursor: pointer; display: flex; justify-content: space-between;">
-                        <span><i class="fas fa-user-tag me-2 text-danger"></i> Change Rank</span>
-                        <i class="fas fa-chevron-right text-muted small"></i>
-                    </div>
+                    <input type="text" id="adminMsgTitle" placeholder="Subject..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; margin-bottom: 10px; font-size: 13px; outline: none; transition: 0.3s;">
+                    <textarea id="adminMsgBody" placeholder="Message content..." style="width: 100%; padding: 12px 18px; border-radius: 15px; border: 1px solid #e2e8f0; height: 70px; font-size: 13px; margin-bottom: 15px; outline: none; resize: none;"></textarea>
+                    <button onclick="sendInstantNotif(${index})" style="width: 100%; background: linear-gradient(to right, #ff0000, #ff4400); color: white; border: none; padding: 14px; border-radius: 18px; font-weight: 800; font-size: 13px; cursor: pointer; box-shadow: 0 10px 20px rgba(255,0,0,0.2);">SEND NOW <i class="fas fa-paper-plane ms-2"></i></button>
                 </div>
 
                 <button onclick="toggleBlock(${index}); closeUserPopup();" 
-                        style="width: 100%; padding: 12px; border-radius: 15px; border: 2px solid #ff0000; background: ${isActive ? 'transparent' : '#ff0000'}; color: ${isActive ? '#ff0000' : 'white'}; font-weight: 800; font-size: 14px; cursor: pointer;">
-                    ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCOUNT'}
+                        style="width: 100%; padding: 16px; border-radius: 22px; border: none; background: ${isActive ? '#ff000010' : '#ff0000'}; color: ${isActive ? '#ef4444' : 'white'}; font-weight: 800; font-size: 14px; cursor: pointer; transition: 0.3s;">
+                    <i class="fas ${isActive ? 'fa-user-lock' : 'fa-user-check'} me-2"></i> ${isActive ? 'BLOCK ACCOUNT' : 'UNBLOCK ACCESS'}
                 </button>
 
             </div>
         </div>
-    </div>`;
+    </div>
+    <style>
+        @keyframes premiumZoom { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+        @keyframes rotateBorder { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .m-list:hover { background: #fffcf0; padding-left: 25px !important; transition: 0.3s; }
+        #adminMsgTitle:focus, #adminMsgBody:focus { border-color: #ff0000 !important; }
+    </style>`;
 
     const oldModal = document.getElementById('userModal');
     if (oldModal) oldModal.remove();
     document.body.insertAdjacentHTML('beforeend', popupHTML);
 }
+    
 
 // রেফার কোড এডিট করার ফাংশন
 function editReferCode(index) {
