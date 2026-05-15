@@ -3966,102 +3966,96 @@ function toggleSignupPassword() {
 
 </div>
 
-
-
-
 <div id="p-withdraw" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1500; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <!-- হেডার সেকশন: প্রিমিয়াম গ্রেডিয়েন্ট -->
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+    <!-- হেডার সেকশন: প্রিমিয়াম লুক -->
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%); padding: 22px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+        
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closePage('p-withdraw')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px);">
-                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            <div onclick="closePage('p-withdraw')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);">
+                <i class="fas fa-chevron-left" style="font-size: 16px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 19px; letter-spacing: 0.5px;">Withdraw Funds</h4>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 19px; letter-spacing: 0.5px;">Withdraw Funds</h4>
         </div>
-        <div onclick="openPage('p-withdraw-history')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px);">
-            <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
+
+        <!-- শুধুমাত্র হিস্টোরি আইকন -->
+        <div onclick="openPage('p-withdraw-history')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px);">
+            <i class="fas fa-history" style="font-size: 17px; color: white;"></i>
         </div>
     </div>
-<a href="YOUR_LINK" style="display: flex; align-items: center; background: #fff1f2; padding: 15px; border-radius: 22px; text-decoration: none; margin-top: 25px; border: 1px dashed #e11d48;">
-            <i class="fab fa-youtube" style="color: #e11d48; font-size: 25px; margin-right: 15px;"></i>
-            <span style="color: #e11d48; font-weight: 800; font-size: 14px;">উইথড্র করার ভিডিও </span>
-            <i class="fas fa-external-link-alt" style="margin-left: auto; color: #e11d48; font-size: 12px;"></i>
-        </a>
+
     <div class="container px-3 mt-4">
-        <!-- ব্যালেন্স কার্ড: নতুন রেড-গোল্ড লুক -->
-<div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 30px 25px; border-radius: 28px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(230, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
-    
-    <!-- গ্লোসি শাইন ইফেক্ট -->
-    <div style="position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: rgba(255,255,255,0.15); border-radius: 50%; transform: rotate(45deg);"></div>
-    
-    <span style="font-size: 13px; opacity: 1; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-shadow: 0 1px 3px rgba(0,0,0,0.3);">Available Balance</span>
-    <div style="display: flex; align-items: center; gap: 10px; margin-top: 10px;">
-        <h2 style="margin: 0; font-weight: 900; font-size: 42px; text-shadow: 0 3px 10px rgba(0,0,0,0.3);">৳ <span id="withdraw-bal">0.00</span></h2>
-    </div>
-</div>
+        <!-- ব্যালেন্স কার্ড -->
+        <div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 30px 25px; border-radius: 28px; color: white; margin-bottom: 25px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.2);">
+            
+            <div style="position: absolute; top: -40%; right: -10%; width: 180px; height: 180px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            
+            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; opacity: 0.9;">Available for Payout</span>
+            <div style="display: flex; align-items: center; gap: 8px; margin-top: 8px;">
+                <h2 style="margin: 0; font-weight: 900; font-size: 42px; text-shadow: 0 4px 10px rgba(0,0,0,0.15);">৳ <span id="withdraw-bal">0.00</span></h2>
+            </div>
+        </div>
 
+        <p style="font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 15px; padding-left: 5px;">Choose Payout Method</p>
 
-        <p style="font-size: 14px; font-weight: 800; color: #334155; margin-bottom: 15px; padding-left: 5px;">Select Payout Method</p>
-
-        <!-- মেথড কার্ডস -->
-        <div class="row g-2 mb-4" style="display: flex; gap: 12px; padding: 0 5px;">
+        <!-- মেথড সিলেকশন -->
+        <div style="display: flex; gap: 12px; margin-bottom: 25px;">
             <div style="flex: 1;" onclick="selectWithdrawMethod('Bkash')">
-                <div class="w-method-card" id="w-Bkash" style="background: #ffffff; padding: 15px; border-radius: 18px; text-align: center; border: 2px solid #f1f5f9; box-shadow: 0 6px 15px rgba(0,0,0,0.03); cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                    <div style="background: #fff1f2; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: #e11d48; box-shadow: 0 4px 10px rgba(225, 29, 72, 0.1);">
+                <div class="w-method-card" id="w-Bkash" style="background: #ffffff; padding: 18px; border-radius: 20px; text-align: center; border: 2px solid #f1f5f9; cursor: pointer; transition: 0.3s;">
+                    <div style="background: #fff1f2; width: 45px; height: 45px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: #e11d48;">
                         <i class="fas fa-university" style="font-size: 18px;"></i>
                     </div>
-                    <span style="font-size: 14px; font-weight: 800; color: #1e293b; display: block;">bKash</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #1e293b;">bKash</span>
                 </div>
             </div>
 
             <div style="flex: 1;" onclick="selectWithdrawMethod('Nagad')">
-                <div class="w-method-card" id="w-Nagad" style="background: #ffffff; padding: 15px; border-radius: 18px; text-align: center; border: 2px solid #f1f5f9; box-shadow: 0 6px 15px rgba(0,0,0,0.03); cursor: pointer; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                    <div style="background: #fff7ed; width: 40px; height: 40px; border-radius: 12px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: #f97316; box-shadow: 0 4px 10px rgba(249, 115, 22, 0.1);">
+                <div class="w-method-card" id="w-Nagad" style="background: #ffffff; padding: 18px; border-radius: 20px; text-align: center; border: 2px solid #f1f5f9; cursor: pointer; transition: 0.3s;">
+                    <div style="background: #fff7ed; width: 45px; height: 45px; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; color: #f97316;">
                         <i class="fas fa-wallet" style="font-size: 18px;"></i>
                     </div>
-                    <span style="font-size: 14px; font-weight: 800; color: #1e293b; display: block;">Nagad</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #1e293b;">Nagad</span>
                 </div>
             </div>
         </div>
 
-        <!-- ইনপুট বক্স সেকশন -->
-        <div style="background: white; padding: 25px; border-radius: 28px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border: 1px solid #f1f5f9;">
-            <div class="mb-4">
-                <label style="display: block; font-size: 13px; font-weight: 800; color: #64748b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">Account Number</label>
-                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; color: #1e293b; transition: 0.3s;" onfocus="this.style.borderColor='#ff0000'; this.style.background='#ffffff';">
+        <!-- ইনপুট ফিল্ডস -->
+        <div style="background: white; padding: 25px; border-radius: 28px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 30px;">
+            <div style="margin-bottom: 20px;">
+                <label style="display: block; font-size: 12px; font-weight: 800; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Account Number</label>
+                <input type="number" id="w-num" placeholder="01XXXXXXXXX" style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;">
             </div>
-            <div class="mb-4">
-    <!-- লিমিট টেক্সট যা এখন উপর-নিচে থাকবে -->
-    <div style="display: flex; flex-direction: column; gap: 2px; margin-bottom: 8px;">
-        <span style="font-size: 12px; font-weight: 800; color: #ff0000; text-transform: uppercase;">
-            Minimum Withdraw: 100 Taka
-        </span>
-        <span style="font-size: 12px; font-weight: 800; color: #ff0000; text-transform: uppercase;">
-            Maximum Withdraw: Unlimited
-        </span>
-    </div>
 
-    <label style="display: block; font-size: 13px; font-weight: 800; color: #64748b; margin-bottom: 10px; text-transform: uppercase; letter-spacing: 0.5px;">
-        Withdraw Amount
-    </label>
-    
-    <input type="number" id="w-amt" placeholder="Enter amount" 
-        style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; color: #1e293b; transition: 0.3s;" 
-        onfocus="this.style.borderColor='#ff0000'; this.style.background='#ffffff';"
-        onblur="this.style.borderColor='#f1f5f9'; this.style.background='#f8fafc;'">
-</div>
+            <div style="margin-bottom: 25px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; margin-bottom: 12px; background: #fff1f2; padding: 10px; border-radius: 12px; border-left: 4px solid #ff0000;">
+                    <span style="font-size: 11px; font-weight: 800; color: #b91c1c;">MINIMUM: 100 Taka</span>
+                    <span style="font-size: 11px; font-weight: 800; color: #b91c1c;">MAXIMUM: Unlimited</span>
+                </div>
+                <label style="display: block; font-size: 12px; font-weight: 800; color: #94a3b8; margin-bottom: 8px; text-transform: uppercase;">Withdraw Amount</label>
+                <input type="number" id="w-amt" placeholder="Enter amount" style="width: 100%; padding: 16px; border-radius: 16px; border: 2px solid #f1f5f9; background: #f8fafc; font-weight: 700; outline: none; transition: 0.3s;">
+            </div>
 
-
-            <!-- সাবমিট বাটন: রেড-অরেঞ্জ গ্রেডিয়েন্ট -->
-            <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 20px; border-radius: 18px; font-weight: 800; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.3); transition: 0.3s; cursor: pointer;" 
-                    onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 12px 30px rgba(255, 0, 0, 0.4)';" 
-                    onmouseout="this.style.transform='translateY(0)';">
-                Submit Request
+            <button onclick="withdrawReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 18px; font-weight: 800; font-size: 15px; text-transform: uppercase; letter-spacing: 1px; box-shadow: 0 10px 25px rgba(255, 0, 0, 0.25); active: transform 0.95s;">
+                Submit Withdrawal
             </button>
         </div>
     </div>
 </div>
+
+<style>
+    /* সিলেকশন হলে বর্ডার কালার পরিবর্তনের জন্য */
+    .w-method-card.active-method {
+        border-color: #ff0000 !important;
+        background: #fff1f2 !important;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(255, 0, 0, 0.1);
+    }
+    input:focus {
+        border-color: #ff0000 !important;
+        background: #ffffff !important;
+        box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.05);
+    }
+</style>
 
 <style>
     /* মেথড কার্ড সিলেক্টেড স্টাইল */
@@ -5166,50 +5160,83 @@ function toggleSignupPassword() {
         transform: translateX(3px);
     }
 </style>
-<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
+<div id="p-income-sub" class="p-page d-none shadow" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1600; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+    <style>
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(255, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+        }
+        .animate-card { animation: fadeInUp 0.8s ease-out forwards; }
+        .floating-icon { animation: float 3s ease-in-out infinite; }
+        .glow-effect { animation: pulse-glow 2s infinite; }
+    </style>
+
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff6a00 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="closeIncomeSub()" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
+            <div onclick="closeIncomeSub()" style="width: 40px; height: 40px; background: rgba(255,255,255,0.2); border-radius: 14px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3);">
                 <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
             </div>
-            <h4 style="margin: 0; font-weight: 800; color: white; font-size: 18px; letter-spacing: 0.5px;">FREE TIME EARN</h4>
+            <div>
+                <h4 style="margin: 0; font-weight: 800; color: white; font-size: 17px; letter-spacing: 0.5px; line-height: 1.2;">EARNING REPORT</h4>
+                <span style="font-size: 10px; color: rgba(255,255,255,0.8); font-weight: 500;">Free Time Earn</span>
+            </div>
         </div>
-        <div style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.3);">
-            <i class="fas fa-chart-bar" style="color: white; font-size: 16px;"></i>
+        <div class="floating-icon" style="width: 42px; height: 42px; background: rgba(255, 255, 255, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(8px); border: 1px solid rgba(255, 255, 255, 0.2);">
+            <i class="fas fa-crown" style="color: #ffcc00; font-size: 16px;"></i>
         </div>
     </div>
 
     <div class="container px-3 mt-4">
-        <!-- ইনকাম কার্ড: রেড-ইয়েলো ব্লেন্ডেড গ্রেডিয়েন্ট -->
-        <div style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 30px 25px; border-radius: 30px; color: white; margin-bottom: 30px; box-shadow: 0 15px 35px rgba(255, 0, 0, 0.2); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.2);">
+        
+        <div class="animate-card" style="background: linear-gradient(135deg, #ff0000 0%, #ffcc00 100%); padding: 35px 25px; border-radius: 35px; color: white; margin-bottom: 30px; box-shadow: 0 20px 40px rgba(255, 0, 0, 0.25); position: relative; overflow: hidden; border: 1px solid rgba(255, 255, 255, 0.25);">
             
-            <!-- গ্লোসি শাইন ইফেক্ট -->
-            <div style="position: absolute; top: -50%; right: -20%; width: 200px; height: 200px; background: rgba(255,255,255,0.15); border-radius: 50%; transform: rotate(45deg);"></div>
-            
-            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.95; margin-bottom: 18px; font-size: 12px; text-transform: uppercase; letter-spacing: 1.5px; display: flex; align-items: center; gap: 10px; text-shadow: 0 1px 3px rgba(0,0,0,0.2);">
-                <i class="fas fa-receipt"></i> উপার্জন রিপোর্ট
+            <div style="position: absolute; top: -30px; right: -30px; width: 120px; height: 120px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+            <div style="position: absolute; bottom: -20px; left: 10%; width: 80px; height: 80px; background: rgba(255,255,255,0.1); border-radius: 50%;"></div>
+
+            <h6 id="income-card-title" style="font-weight: 700; opacity: 0.9; margin-bottom: 20px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; display: flex; align-items: center; gap: 8px;">
+                <span style="width: 8px; height: 8px; background: #fff; border-radius: 50%; display: inline-block;"></span>
+                Earnings Report
             </h6>
             
-            <div style="display: flex; align-items: center; justify-content: space-between;">
-                <div>
-                    <h2 style="margin: 0; font-weight: 900; font-size: 42px; display: flex; align-items: center; gap: 8px; color: white; text-shadow: 0 3px 10px rgba(0,0,0,0.2);">
-                        <span style="font-weight: 500;">৳</span>
-                        <span id="income-amt-val">0.00</span>
-                    </h2>
-                </div>
-                
-                <div style="background: rgba(255,255,255,0.25); width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 18px; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
-                    <i class="fas fa-coins" style="font-size: 24px; color: white;"></i>
-                </div>
-            </div>
+<div style="display: flex; align-items: center; justify-content: space-between;">
+    <div>
+        <div style="font-size: 14px; opacity: 0.8; font-weight: 500; margin-bottom: 5px; letter-spacing: 0.5px;">My Earnings</div>
+        
+        <div style="display: flex; align-items: baseline; gap: 8px;">
+            <span style="font-size: 45px; font-weight: 600; color: rgba(255,255,255,0.95);">৳</span>
+            <h2 style="margin: 0; font-weight: 900; font-size: 48px; letter-spacing: -1.5px; text-shadow: 0 4px 12px rgba(0,0,0,0.15); line-height: 1;">
+                <span id="income-amt-val" style="font-family: 'Montserrat', sans-serif;">0.00</span>
+            </h2>
+        </div>
+    </div>
+    
+    <div class="glow-effect" style="background: rgba(255,255,255,1); width: 65px; height: 65px; display: flex; align-items: center; justify-content: center; border-radius: 22px; box-shadow: 0 10px 25px rgba(0,0,0,0.1);">
+        <i class="fas fa-wallet" style="font-size: 28px; color: #ff0000;"></i>
+    </div>
+</div>
+
             
-            <div style="margin-top: 25px; font-size: 11px; font-weight: 800; display: inline-flex; align-items: center; background: rgba(255,255,255,0.2); padding: 8px 20px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(5px);">
-                <i class="far fa-calendar-check" style="margin-right: 8px; color: #ffffff;"></i> 
-                <span id="income-date-val" style="letter-spacing: 1px; color: white;">-- -- ----</span>
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-top: 35px;">
+                <div style="font-size: 11px; font-weight: 700; display: flex; align-items: center; background: rgba(0,0,0,0.15); padding: 8px 18px; border-radius: 50px; backdrop-filter: blur(5px);">
+                    <i class="far fa-calendar-alt" style="margin-right: 8px;"></i> 
+                    <span id="income-date-val" style="color: white;">-- -- ----</span>
+                </div>
+
+                </div>
             </div>
         </div>
+
 
 
 
@@ -6330,107 +6357,93 @@ function toggleSignupPassword() {
         </div>
     </div>
 </div>
-<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
+
+<div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
-    <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
-    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff9900 100%); padding: 25px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 25px rgba(255, 0, 0, 0.15); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
+    <!-- হেডার সেকশন -->
+    <div style="background: linear-gradient(135deg, #ff0000 0%, #ff6600 100%); padding: 22px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 20px rgba(255, 0, 0, 0.2); border-bottom-left-radius: 25px; border-bottom-right-radius: 25px;">
         <div style="display: flex; align-items: center; gap: 15px;">
-            <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.3);">
-                <i class="fas fa-chevron-left" style="font-size: 18px; color: white;"></i>
+            <div onclick="openPage('p-home')" style="width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.3);">
+                <i class="fas fa-chevron-left" style="font-size: 16px; color: white;"></i>
             </div>
-            <div>
-                <h4 style="margin: 0; font-weight: 800; color: white; font-size: 19px; letter-spacing: 0.5px; text-transform: uppercase;">Deposit</h4>
-            </div>
+            <h4 style="margin: 0; font-weight: 700; color: white; font-size: 19px; letter-spacing: 0.5px;">Add Deposit</h4>
         </div>
-        <div onclick="openPage('p-fund-history')" style="width: 40px; height: 40px; background: rgba(255, 255, 255, 0.25); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3);">
-            <i class="fas fa-history" style="color: white; font-size: 18px;"></i>
+        <div onclick="openPage('p-fund-history')" style="width: 38px; height: 38px; background: rgba(255, 255, 255, 0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: 1px solid rgba(255,255,255,0.3); backdrop-filter: blur(8px);">
+            <i class="fas fa-history" style="color: white; font-size: 17px;"></i>
         </div>
     </div>
-    <a href="YOUR_LINK" style="display: flex; align-items: center; background: #fff1f2; padding: 15px; border-radius: 22px; text-decoration: none; margin-top: 25px; border: 1px dashed #e11d48;">
-            <i class="fab fa-youtube" style="color: #e11d48; font-size: 25px; margin-right: 15px;"></i>
-            <span style="color: #e11d48; font-weight: 800; font-size: 14px;">ডিপোজিট করার ভিডিও </span>
-            <i class="fas fa-external-link-alt" style="margin-left: auto; color: #e11d48; font-size: 12px;"></i>
-        </a>
 
-    <div class="container px-3 mt-4">
+    <div class="container px-3 mt-3">
         
-        <!-- জরুরি নির্দেশনা কার্ড -->
-        <div style="background: #fffbeb; border: 1.5px solid #fef3c7; padding: 20px; border-radius: 22px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(245,158,11,0.05); position: relative; overflow: hidden;">
-            <div style="position: absolute; right: -10px; top: -10px; font-size: 60px; color: rgba(245,158,11,0.05); transform: rotate(-15deg);">
-                <i class="fas fa-info-circle"></i>
+        <!-- নির্দেশনা কার্ড -->
+        <div style="background: #fffbeb; border-left: 5px solid #f59e0b; padding: 15px; border-radius: 15px; margin-bottom: 25px;">
+            <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 5px;">
+                <i class="fas fa-exclamation-triangle" style="color: #f59e0b; font-size: 14px;"></i>
+                <span style="font-size: 13px; color: #92400e; font-weight: 800;">জরুরী নির্দেশনা</span>
             </div>
-            <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 8px;">
-                <div style="background: #f59e0b; width: 30px; height: 30px; border-radius: 8px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 10px rgba(245,158,11,0.2);">
-                    <i class="fas fa-bullhorn" style="color: #fff; font-size: 12px;"></i>
-                </div>
-                <span style="font-size: 14px; color: #92400e; font-weight: 800; letter-spacing: 0.5px;">জরুরী নির্দেশনা</span>
-            </div>
-            <p style="font-size: 12.5px; color: #b45309; margin: 0; line-height: 1.6; font-weight: 600; padding-left: 2px;">
-                সঠিকভাবে ডিপোজিট করতে প্রথমে পরিমাণ লিখুন। সর্বনিম্ন <b style="background: #f59e0b; color: white; padding: 1px 6px; border-radius: 4px;">৳৫০</b> এবং সর্বোচ্চ <b style="background: #f59e0b; color: white; padding: 1px 6px; border-radius: 4px;">৳২৫,০০০</b> টাকা পর্যন্ত।
+            <p style="font-size: 12px; color: #b45309; margin: 0; line-height: 1.5; font-weight: 600;">
+                প্রথমে অ্যামাউন্ট লিখে আপনার সুবিধাজনক পেমেন্ট নম্বরটি কপি করে টাকা পাঠান।
             </p>
         </div>
 
-        <!-- এমাউন্ট ইনপুট সেকশন -->
-        <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9; margin-bottom: 25px;">
-            <label style="display: block; font-size: 13px; color: #64748b; margin-bottom: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px;">প্রথমে ডিপোজিট পরিমাণ লিখুন</label>
-            <div style="display: flex; align-items: center; background: #f8fafc; padding: 18px; border-radius: 18px; border: 2px solid #e2e8f0; transition: 0.3s;" id="amt-box">
-                <div style="background: #ff0000; width: 35px; height: 35px; border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-right: 15px;">
-                    <i class="fas fa-taka-sign" style="color: #fff; font-size: 16px;"></i>
-                </div>
-                <input type="number" id="f-amt" placeholder="0.00" oninput="checkAmount()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 800; font-size: 22px; color: #1e293b;">
+        <!-- অ্যামাউন্ট ইনপুট -->
+        <div style="background: white; padding: 20px; border-radius: 22px; box-shadow: 0 8px 30px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 25px;">
+            <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Deposit Amount</label>
+            <div style="display: flex; align-items: center; background: #f8fafc; padding: 15px; border-radius: 16px; border: 2px solid #f1f5f9; transition: 0.3s;" id="amt-box">
+                <span style="font-size: 20px; font-weight: 800; color: #1e293b; margin-right: 10px;">৳</span>
+                <input type="number" id="f-amt" placeholder="0.00" oninput="checkAmount()" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 800; font-size: 24px; color: #ff0000;">
             </div>
         </div>
 
-        <!-- পেমেন্ট মেথডস -->
-        <div id="payment-methods" style="display: flex; flex-direction: column; gap: 15px; margin-bottom: 30px; opacity: 0.4; pointer-events: none; transition: 0.5s;">
-            <p style="font-size: 12px; color: #ef4444; font-weight: 800; margin: 0 5px; display: flex; align-items: center; gap: 6px;">
-                <i class="fas fa-arrow-down"></i> নিচের নম্বর কপি করে Send Money করুন
+        <!-- পেমেন্ট মেথডস (Bank & Wallet Icons) -->
+        <div id="payment-methods" style="margin-bottom: 25px; opacity: 0.5; pointer-events: none; transition: 0.5s;">
+            <p style="font-size: 13px; color: #334155; font-weight: 800; margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-copy" style="color: #64748b;"></i> Copy Number & Send Money
             </p>
             
-            <!-- Bkash Card -->
-            <div style="background: white; padding: 15px; border-radius: 22px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #fce7f3; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                        <img src="https://আইকন_লিংক_বিকাশ" onerror="this.src='https://cdn-icons-png.flaticon.com/512/825/825561.png'" style="width: 30px;">
+            <!-- Bank Method -->
+            <div style="background: white; padding: 15px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 12px; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 48px; height: 48px; background: #eff6ff; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #2563eb;">
+                        <i class="fas fa-university" style="font-size: 22px;"></i>
                     </div>
                     <div>
-                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">Bkash (Personal)</div>
-                        <div style="font-size: 13px; color: #64748b; font-weight: 600; letter-spacing: 0.5px;">01868293471</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">bKash Agent</div>
+                        <div style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">01868293471</div>
                     </div>
                 </div>
-                <button onclick="copyAndToast('01868293471', 'Bkash')" style="background: #e2136e; color: white; border: none; padding: 8px 18px; border-radius: 12px; font-weight: 700; font-size: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(226,19,110,0.2);">COPY</button>
+                <button onclick="copyAndToast('01868293471', 'Bkash')" style="background: #1e293b; color: white; border: none; padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 11px; cursor: pointer;">COPY</button>
             </div>
 
-            <!-- Nagad Card -->
-            <div style="background: white; padding: 15px; border-radius: 22px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 4px 15px rgba(0,0,0,0.02); border: 1px solid #f1f5f9;">
-                <div style="display: flex; align-items: center; gap: 15px;">
-                    <div style="width: 50px; height: 50px; background: #fff2e6; border-radius: 15px; display: flex; align-items: center; justify-content: center;">
-                        <img src="https://আইকন_লিংক_নগদ" onerror="this.src='https://cdn-icons-png.flaticon.com/512/825/825561.png'" style="width: 30px;">
+            <!-- Wallet Method -->
+            <div style="background: white; padding: 15px; border-radius: 20px; display: flex; align-items: center; justify-content: space-between; border: 1px solid #f1f5f9; box-shadow: 0 4px 12px rgba(0,0,0,0.02);">
+                <div style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 48px; height: 48px; background: #fff7ed; border-radius: 14px; display: flex; align-items: center; justify-content: center; color: #f97316;">
+                        <i class="fas fa-wallet" style="font-size: 22px;"></i>
                     </div>
                     <div>
-                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">Nagad (Personal)</div>
-                        <div style="font-size: 13px; color: #64748b; font-weight: 600; letter-spacing: 0.5px;">01868293471</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">Nagad Personal</div>
+                        <div style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">01868293471</div>
                     </div>
                 </div>
-                <button onclick="copyAndToast('01868293471', 'Nagad')" style="background: #f7941d; color: white; border: none; padding: 8px 18px; border-radius: 12px; font-weight: 700; font-size: 12px; cursor: pointer; box-shadow: 0 4px 10px rgba(247,148,29,0.2);">COPY</button>
+                <button onclick="copyAndToast('01868293471', 'Nagad')" style="background: #1e293b; color: white; border: none; padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 11px; cursor: pointer;">COPY</button>
             </div>
         </div>
 
-        <!-- ট্রানজেকশন সাবমিট সেকশন -->
-        <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 30px rgba(0,0,0,0.03); border: 1px solid #f1f5f9;">
-            <label style="display: block; font-size: 12px; color: #64748b; margin-bottom: 10px; font-weight: 700; text-transform: uppercase;">Transaction ID (ট্রানজেকশন আইডি)</label>
-            <div style="display: flex; align-items: center; background: #f8fafc; padding: 15px; border-radius: 15px; margin-bottom: 25px; border: 1px solid #e2e8f0;">
-                <i class="fas fa-receipt" style="color: #ff0000; margin-right: 12px; font-size: 18px;"></i>
-                <input type="text" id="f-trx" placeholder="*******" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 16px;">
+        <!-- ট্রানজেকশন সেকশন -->
+        <div style="background: white; padding: 25px; border-radius: 25px; box-shadow: 0 10px 40px rgba(0,0,0,0.04); border: 1px solid #f1f5f9; margin-bottom: 30px;">
+            <label style="display: block; font-size: 12px; color: #94a3b8; margin-bottom: 10px; font-weight: 800; text-transform: uppercase;">Transaction ID</label>
+            <div style="display: flex; align-items: center; background: #f8fafc; padding: 14px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #e2e8f0;">
+                <i class="fas fa-receipt" style="color: #94a3b8; margin-right: 12px; font-size: 16px;"></i>
+                <input type="text" id="f-trx" placeholder="Paste your TrxID here" style="border: none; background: transparent; width: 100%; outline: none; font-weight: 700; text-transform: uppercase; color: #1e293b; font-size: 15px;">
             </div>
 
-            <button onclick="fundReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 20px; font-weight: 800; font-size: 16px; box-shadow: 0 8px 25px rgba(255,0,0,0.25); display: flex; align-items: center; justify-content: center; gap: 10px; cursor: pointer;">
-                ডিপোজিট নিশ্চিত করুন <i class="fas fa-paper-plane"></i>
+            <button onclick="fundReq()" style="width: 100%; background: linear-gradient(135deg, #ff0000, #ff6600); color: white; border: none; padding: 18px; border-radius: 18px; font-weight: 800; font-size: 16px; box-shadow: 0 10px 25px rgba(255,0,0,0.25); cursor: pointer; transition: 0.3s;">
+                Confirm Deposit
             </button>
         </div>
     </div>
 </div>
-
 
 <style>
 .m-card { background: white; padding: 12px 18px; border-radius: 18px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); border: 1px solid #f1f2f6; }
@@ -6575,12 +6588,11 @@ function toggleSignupPassword() {
         Shop
     </span>
 </div>
-
-
-<div onclick="handleWalletClick()" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
+<div onclick="openPage('p-wallet')" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
     <i class="fas fa-wallet" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></i>
     <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase;">Wallet</span>
 </div>
+
 
     <div onclick="openDirectSupport()" style="text-align: center; cursor: pointer; flex: 1; margin-bottom: 10px; transition: 0.3s;">
         <i class="fas fa-headset" style="font-size: 20px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></i>
@@ -11508,33 +11520,7 @@ function handleTeamClick() {
         renderTeam();
     }
 }
-function handleWalletClick() {
-    // চেক করা হচ্ছে ইউজার একটিভ কি না
-    if (curUser.status !== 'active') {
-        
-        Swal.fire({
-            title: 'ওয়ালেট লকড!',
-            text: 'আপনার ওয়ালেট ব্যালেন্স এবং লেনদেন দেখতে আগে অ্যাকাউন্টটি একটিভ করুন।',
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonText: 'এখনই একটিভ করুন',
-            cancelButtonText: 'পরে করবো',
-            confirmButtonColor: '#2575fc', 
-            cancelButtonColor: '#6c757d',
-            background: '#fff',
-            borderRadius: '20px'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                // একটিভেশন পেজে পাঠিয়ে দিবে
-                openPage('p-fund'); 
-            }
-        });
-        
-    } else {
-        // যদি একটিভ থাকে তবে ওয়ালেট পেজ খুলবে
-        openPage('p-wallet');
-    }
-}
+
 // ১. হোম পেজের বাটন থেকে এই ফাংশনটি কল করবেন
 function handleRechargeClick() {
     if (curUser.status !== 'active') {
