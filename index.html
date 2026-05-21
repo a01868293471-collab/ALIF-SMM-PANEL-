@@ -3672,7 +3672,7 @@ function togglePassword() {
         .photo-grid-item:active .photo-grid-box {
             border-color: #2ecc71 !important; /* চাপ দিলে বর্ডার সবুজ হবে */
             box-shadow: 0 0 12px rgba(46, 204, 113, 0.4);
-            transform: scale(0.92); /* হালকা দেবে যাওয়ার অ্যানিমেশন */
+            transform: scale(0.92); /* হালকা দেবে যাওয়ার অ্যানিমেশন */
         }
         .photo-grid-item span {
             display: block;
@@ -3684,20 +3684,10 @@ function togglePassword() {
         }
     </style>
     
-    <div style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 18px 0; text-align: center; width: 100%;">
+    <!-- grid-template-columns: repeat(4, 1fr); করার কারণে ১ লাইনে ৪টি করে বাটন বসবে -->
+    <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px 0; text-align: center; width: 100%;">
         
-        <div class="photo-grid-item" onclick="handleRechargeClick()">
-            <div class="photo-grid-box">
-                <i class="fas fa-mobile-alt"></i>
-            </div>
-            <span>Mobile<br>Recharge</span>
-        </div>
-
-        <div class="photo-grid-item" onclick="handleDriveOfferClick()">
-            <div class="photo-grid-box"><i class="fas fa-bolt"></i></div>
-            <span>Drive<br>Offer</span>
-        </div>
-        
+        <!-- লাইন ১ -->
         <div class="photo-grid-item" onclick="handleMicroJobClick()">
             <div class="photo-grid-box"><i class="fas fa-briefcase"></i></div>
             <span>Micro<br>Job</span>
@@ -3713,11 +3703,9 @@ function togglePassword() {
             <span>Job<br>Post</span>
         </div>
 
-        <div class="photo-grid-item" onclick="handleVendorClick()">
-            <div class="photo-grid-box"><i class="fas fa-user-tie"></i></div>
-            <span>Vendor<br>ship</span>
-        </div>
 
+
+        <!-- লাইন ২ -->
         <div class="photo-grid-item" onclick="handleCaptchaClick()">
             <div class="photo-grid-box"><i class="fas fa-keyboard"></i></div>
             <span>Captcha<br>Typing</span>
@@ -3738,18 +3726,15 @@ function togglePassword() {
             <span>Digital<br>Service</span>
         </div>
 
+        <!-- লাইন ৩ -->
         <div class="photo-grid-item" onclick="handleSocialServiceClick()">
             <div class="photo-grid-box"><i class="fas fa-users"></i></div>
             <span>Social<br>Service</span>
         </div>
-
-        <div class="photo-grid-item" onclick="handlePayBillClick()">
-            <div class="photo-grid-box">
-                <i class="fas fa-file-invoice-dollar"></i>
-            </div>
-            <span>Pay<br>Bill</span>
+        <div class="photo-grid-item" onclick="handleVendorClick()">
+            <div class="photo-grid-box"><i class="fas fa-user-tie"></i></div>
+            <span>Vendor<br>ship</span>
         </div>
-
         <div class="photo-grid-item" onclick="handleTrainingClick()">
             <div class="photo-grid-box"><i class="fas fa-graduation-cap"></i></div>
             <span>Training<br>Section</span>
@@ -4287,19 +4272,57 @@ function togglePassword() {
 </div>
 
     
+<div id="digital-order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box;">
+    <div style="background: white; width: 100%; max-width: 340px; border-radius: 24px; padding: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.15); animation: zoomIn 0.2s ease-out;">
+        
+        <div style="text-align: center; margin-bottom: 15px;">
+            <div style="width: 50px; height: 50px; background: #e6f9f3; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px auto;">
+                <i class="fab fa-telegram-plane" style="color: #20c997; font-size: 24px;"></i>
+            </div>
+            <h5 id="modal-product-title" style="margin: 0; font-weight: 800; font-size: 16px; color: #1e293b;">Premium Subscription</h5>
+            <p id="modal-product-price" style="margin: 3px 0 0 0; color: #20c997; font-weight: 700; font-size: 14px;">Price: ৳ 0.00</p>
+        </div>
+
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">আপনার নাম:</label>
+                <input type="text" id="digital-cust-name" placeholder="Enter your name" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">টেলিগ্রাম নম্বর:</label>
+                <input type="tel" id="digital-cust-phone" placeholder="e.g. 017XXXXXXXX" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+            <div>
+                <label style="font-size: 11px; color: #64748b; font-weight: 700; display: block; margin-bottom: 4px;">টেলিগ্রাম ইউজার নাম (@ সহ):</label>
+                <input type="text" id="digital-cust-username" placeholder="e.g. @username" style="width: 100%; border: 1px solid #e2e8f0; padding: 10px 12px; border-radius: 10px; font-size: 13px; outline: none; box-sizing: border-box;">
+            </div>
+        </div>
+
+        <div style="display: flex; gap: 10px; margin-top: 20px;">
+            <button onclick="closeDigitalModal()" style="flex: 1; border: 1px solid #e2e8f0; background: #f8fafc; color: #64748b; padding: 10px 0; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;">বাতিল করুন</button>
+            <button onclick="submitDigitalOrder()" style="flex: 1; border: none; background: #20c997; color: white; padding: 10px 0; border-radius: 10px; font-size: 12px; font-weight: 700; cursor: pointer;">কনফার্ম অর্ডার</button>
+        </div>
+
+    </div>
+</div>
+
+<style>
+@keyframes zoomIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+</style>
+
 <div id="p-digital" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f4f7f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: #ff0000; padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2); border-bottom: 1px solid rgba(255, 255, 255, 0.1);">
-        
         <div style="display: flex; align-items: center; justify-content: space-between;">
             <div style="display: flex; align-items: center;">
                 <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
                 <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;">
                     Digital Services
                 </h5>
             </div>
-
             <i class="fas fa-shopping-basket" style="font-size: 18px; color: white; opacity: 0.9;"></i>
         </div>
     </div>
@@ -4310,318 +4333,270 @@ function togglePassword() {
         <div class="row gx-2">
             
             <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">YouTube Premium</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 49.00</p>
-                    <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-
-            <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Telegram Prem.</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 350.00</p>
-                    <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-
-            <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://seeklogo.com/images/C/capcut-logo-4D6F6A6E0F-seeklogo.com.png" style="width: 45px; height:45px; border-radius: 10px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">CapCut Pro</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 99.00</p>
-                    <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-
-            <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Canva Pro</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 30.00</p>
-                    <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-
-            <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Netflix 1 Month</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 180.00</p>
-                    <button onclick="orderDigital('Netflix Screen', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-
-            <div class="col-6 mb-3">
-                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-                    <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 45px; margin-bottom: 10px;">
-                    <h6 style="font-weight: 800; font-size: 14px; margin-bottom: 2px;">Spotify Prem.</h6>
-                    <p style="color: #20c997; font-weight: 700; font-size: 13px; margin-bottom: 10px;">৳ 60.00</p>
-                    <button onclick="orderDigital('Spotify Premium', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 11px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-                </div>
-            </div>
-            <div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">YouTube Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 49.00</p>
-        <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Telegram Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 350.00</p>
-        <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://w7.pngwing.com/pngs/531/992/png-transparent-capcut-logo.png" style="width: 40px; height: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">CapCut Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 99.00</p>
-        <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Canva Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 30.00</p>
-        <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Netflix Screen</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 180.00</p>
-        <button onclick="orderDigital('Netflix', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Spotify Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 60.00</p>
-        <button onclick="orderDigital('Spotify', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968843.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">PicsArt Gold</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 80.00</p>
-        <button onclick="orderDigital('PicsArt', 80)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Prime Video</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 120.00</p>
-        <button onclick="orderDigital('Prime Video', 120)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e798.png" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">ChatGPT Plus</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 250.00</p>
-        <button onclick="orderDigital('ChatGPT Plus', 250)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">LinkedIn Prem.</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 450.00</p>
-        <button onclick="orderDigital('LinkedIn', 450)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968812.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Duolingo Plus</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 70.00</p>
-        <button onclick="orderDigital('Duolingo', 70)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/2702/2702636.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Truecaller Gold</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 50.00</p>
-        <button onclick="orderDigital('Truecaller', 50)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Zee5 Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 40.00</p>
-        <button onclick="orderDigital('Zee5', 40)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/3c/63/05/3c6305a2-c167-9d7a-1153-f72023594894/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Hoichoi</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 55.00</p>
-        <button onclick="orderDigital('Hoichoi', 55)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5977/5977581.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Disney+ Hotstar</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 130.00</p>
-        <button onclick="orderDigital('Hotstar', 130)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968903.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">InShot Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 65.00</p>
-        <button onclick="orderDigital('InShot', 65)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Pinterest Pro</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 35.00</p>
-        <button onclick="orderDigital('Pinterest', 35)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Grammarly_logo.svg/2048px-Grammarly_logo.svg.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Grammarly Prem.</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 110.00</p>
-        <button onclick="orderDigital('Grammarly', 110)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969062.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">NordVPN Premium</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 150.00</p>
-        <button onclick="orderDigital('NordVPN', 150)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-<div class="col-6 mb-3">
-    <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; border: 1px solid #eee;">
-        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968931.png" style="width: 40px; margin-bottom: 10px;">
-        <h6 style="font-weight: 800; font-size: 13px;">Crunchyroll</h6>
-        <p style="color: #20c997; font-weight: 700; font-size: 12px;">৳ 95.00</p>
-        <button onclick="orderDigital('Crunchyroll', 95)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
-    </div>
-</div>
-
-        </div>
-    </div>
-</div>
-
-<div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Reseller Shop</h5>
-            </div>
-
-
-            <div style="display: flex; gap: 10px;">
-                <div onclick="openPage('p-vendor-list')" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                    <i class="fas fa-user-tie" style="font-size: 18px;"></i>
-                </div>
-                <div onclick="openShopHistory()" style="cursor: pointer; padding: 8px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                    <i class="fas fa-history" style="font-size: 18px;"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-3">
-        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
-            <button onclick="filterShop('all')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #dc3545; background: #dc3545; color: white; font-size: 12px; font-weight: 700; white-space: nowrap;">All</button>
-            <button onclick="filterShop('shirt')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Shirt</button>
-            <button onclick="filterShop('pant')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Pant</button>
-            <button onclick="filterShop('panjabi')" style="padding: 8px 20px; border-radius: 20px; border: 1px solid #eee; background: white; color: #333; font-size: 12px; font-weight: 700; white-space: nowrap;">Panjabi</button>
-        </div>
-
-        <div class="row g-3" id="shop-container">
-            <div class="col-6 shop-item shirt">
-                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee;">
-                    <img src="https://via.placeholder.com/150" style="width: 100%; height: 150px; object-fit: cover;">
-                    <div style="padding: 10px;">
-                        <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 35px; overflow: hidden;">Premium Cotton Shirt</h6>
-                        <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px;">৳ ৮৫০</p>
-                        <button onclick="viewProduct('Premium Cotton Shirt', '৮৫০', 'High quality cotton fabric...', 'https://via.placeholder.com/300')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700;">View</button>
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">YouTube Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 49.00</p>
+                        <button onclick="orderDigital('YouTube Premium', 49)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
                     </div>
                 </div>
             </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2111/2111646.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Telegram Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 350.00</p>
+                        <button onclick="orderDigital('Telegram Premium', 350)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://w7.pngwing.com/pngs/531/992/png-transparent-capcut-logo.png" style="width: 40px; height: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">CapCut Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 99.00</p>
+                        <button onclick="orderDigital('CapCut Pro', 99)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968534.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Canva Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 30.00</p>
+                        <button onclick="orderDigital('Canva Pro', 30)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/732/732228.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Netflix Screen</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 180.00</p>
+                        <button onclick="orderDigital('Netflix Screen', 180)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174872.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Spotify Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 60.00</p>
+                        <button onclick="orderDigital('Spotify Premium', 60)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968843.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">PicsArt Gold</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 80.00</p>
+                        <button onclick="orderDigital('PicsArt Gold', 80)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968517.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Prime Video</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 120.00</p>
+                        <button onclick="orderDigital('Prime Video', 120)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn.oaistatic.com/_next/static/media/apple-touch-icon.59f2e798.png" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">ChatGPT Plus</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 250.00</p>
+                        <button onclick="orderDigital('ChatGPT Plus', 250)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">LinkedIn Prem.</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 450.00</p>
+                        <button onclick="orderDigital('LinkedIn Premium', 450)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968812.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Duolingo Plus</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 70.00</p>
+                        <button onclick="orderDigital('Duolingo Plus', 70)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/2702/2702636.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Truecaller Gold</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 50.00</p>
+                        <button onclick="orderDigital('Truecaller Gold', 50)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5a/ZEE5_logo.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Zee5 Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 40.00</p>
+                        <button onclick="orderDigital('Zee5 Premium', 40)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/3c/63/05/3c6305a2-c167-9d7a-1153-f72023594894/AppIcon-0-0-1x_U007emarketing-0-0-0-7-0-0-sRGB-0-0-0-GLES2_U002c0-512MB-85-220-0-0.png/512x512bb.jpg" style="width: 40px; border-radius: 8px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Hoichoi Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 55.00</p>
+                        <button onclick="orderDigital('Hoichoi Premium', 55)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5977/5977581.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Disney+ Hotstar</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 130.00</p>
+                        <button onclick="orderDigital('Disney Hotstar', 130)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968903.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">InShot Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 65.00</p>
+                        <button onclick="orderDigital('InShot Pro', 65)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/145/145808.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Pinterest Pro</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 35.00</p>
+                        <button onclick="orderDigital('Pinterest Pro', 35)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Grammarly_logo.svg/2048px-Grammarly_logo.svg.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Grammarly Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 110.00</p>
+                        <button onclick="orderDigital('Grammarly Premium', 110)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5969/5969062.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">NordVPN Premium</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 150.00</p>
+                        <button onclick="orderDigital('NordVPN Premium', 150)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-6 mb-3">
+                <div style="background: white; border-radius: 18px; padding: 15px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between;">
+                    <div>
+                        <img src="https://cdn-icons-png.flaticon.com/512/5968/5968931.png" style="width: 40px; margin-bottom: 10px;">
+                        <h6 style="font-weight: 800; font-size: 13px; margin-bottom: 2px;">Crunchyroll</h6>
+                    </div>
+                    <div>
+                        <p style="color: #20c997; font-weight: 700; font-size: 12px; margin-bottom: 10px;">৳ 95.00</p>
+                        <button onclick="orderDigital('Crunchyroll', 95)" style="width: 100%; border: none; background: #20c997; color: white; border-radius: 8px; font-size: 10px; font-weight: 700; padding: 7px 0;">ORDER NOW</button>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 
-<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: white; z-index: 2000; overflow-y: auto;">
-    <div style="padding: 20px;">
-        <i class="fas fa-times" style="font-size: 24px; color: #333; cursor: pointer;" onclick="closeProduct()"></i>
-        <img id="view-img" src="" style="width: 100%; border-radius: 20px; margin-top: 20px; box-shadow: 0 10px 20px rgba(0,0,0,0.1);">
-        <h4 id="view-title" style="margin-top: 20px; font-weight: 800;"></h4>
-        <h5 id="view-price" style="color: #dc3545; font-weight: 800;"></h5>
-        <hr>
-        <h6>Details:</h6>
-        <p id="view-desc" style="color: #666; font-size: 14px; line-height: 1.6;"></p>
-        
-        <button onclick="showOrderForm()" style="width: 100%; padding: 15px; border-radius: 15px; border: none; background: #dc3545; color: white; font-weight: 800; font-size: 16px; margin-top: 20px;">অর্ডার করুন</button>
-    </div>
-</div>
 
-
-<div id="shop-order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-    <div style="background: white; width: 100%; border-radius: 25px; padding: 20px; max-height: 90vh; overflow-y: auto;">
-        <h5 style="font-weight: 800; text-align: center; margin-bottom: 20px;">অর্ডার ইনফরমেশন</h5>
-        <input type="text" id="o-name" placeholder="আপনার নাম" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="number" id="o-phone" placeholder="মোবাইল নম্বর" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="text" id="o-dist" placeholder="জেলা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <input type="text" id="o-thana" placeholder="থানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 10px;">
-        <textarea id="o-addr" placeholder="পূর্ণাঙ্গ ঠিকানা" style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #ddd; margin-bottom: 15px; height: 70px;"></textarea>
-        
-        <div style="display: flex; gap: 10px;">
-            <button onclick="closeOrderForm()" style="flex: 1; padding: 12px; border-radius: 10px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
-            <button onclick="submitShopOrder()" style="flex: 2; padding: 12px; border-radius: 10px; border: none; background: #dc3545; color: white; font-weight: 800;">কনফার্ম অর্ডার</button>
-        </div>
-    </div>
-</div>
 <!-- Pay Bill Page -->
 <div id="p-paybill" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fdf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -4693,30 +4668,69 @@ function togglePassword() {
 </style>
 
 
-<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 50px;">
+<div id="p-vendor-list" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8faff; z-index: 1005; overflow-y: auto; padding-bottom: 80px; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
     
-    <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center;">
-        <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-shop')"></i>
-        <span style="margin-left: 15px; font-weight: 700; font-size: 16px; letter-spacing: 0.3px;">Our Registered Vendors</span>
+    <div style="padding: 20px 15px; background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2); display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+        <div style="display: flex; align-items: center;">
+            <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-shop')"></i>
+            <span style="margin-left: 15px; font-weight: 700; font-size: 16px; letter-spacing: 0.3px;">Our Registered Vendors</span>
+        </div>
+        <span id="total-vendor-badge" style="font-size: 11px; background: rgba(255,255,255,0.2); padding: 3px 10px; border-radius: 20px; font-weight: bold;">0 Total</span>
     </div>
 
-    <div class="container mt-3 px-3">
-        <div style="padding: 15px; background: #fff; border-radius: 15px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.03); border: 1px solid #f0f0f0;">
-            
-            <div style="width: 50px; height: 50px; background: #eef2ff; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid #3b82f6; overflow: hidden;">
-                <i class="fas fa-store" style="color: #3b82f6; font-size: 20px;"></i>
-            </div>
-            
-            <div style="flex: 1;">
-                <h6 style="margin: 0; font-weight: 700; color: #2d3436; font-size: 15px;">Alif Enterprise</h6>
-                <div style="display: flex; align-items: center; margin-top: 2px;">
-                    <span style="width: 8px; height: 8px; background: #2ecc71; border-radius: 50%; margin-right: 6px;"></span>
-                    <small style="color: #2ecc71; font-weight: 600; font-size: 11px; text-transform: uppercase;">Active Vendor</small>
+    <div class="container mt-3 px-3" id="dynamic-vendor-container" style="max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+        </div>
+</div>
+<div id="p-vendor-profile-view" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1010; overflow-y: auto; padding-bottom: 60px; box-sizing: border-box; font-family: 'Poppins', sans-serif;">
+    
+    <div style="padding: 18px 15px; background: #0f172a; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 12px rgba(0,0,0,0.1); display: flex; align-items: center; box-sizing: border-box;">
+        <i class="fas fa-arrow-left" style="font-size: 18px; cursor: pointer; padding: 5px;" onclick="openPage('p-vendor-list')"></i>
+        <span style="margin-left: 15px; font-weight: 700; font-size: 15px; letter-spacing: 0.3px;">Vendor Showroom</span>
+    </div>
+
+    <div class="container mt-4 px-3" style="max-width: 480px; margin: 0 auto; width: 100%; box-sizing: border-box;">
+        
+        <div style="background: white; border-radius: 20px; padding: 25px 20px; text-align: center; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 20px;">
+            <div id="pv-badge-icon" style="width: 70px; height: 70px; margin: 0 auto 15px auto; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px;">
                 </div>
+            <h4 id="pv-shop-name" style="margin: 0; font-weight: 800; color: #0f172a; font-size: 18px;">Shop Name</h4>
+            <span id="pv-agent-type" style="display: inline-block; margin-top: 8px; font-size: 11px; padding: 3px 12px; border-radius: 30px; font-weight: bold; text-transform: uppercase;">Agent Type</span>
+        </div>
+
+        <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 4px 20px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; box-sizing: border-box;">
+            <h6 style="margin: 0 0 15px 0; font-size: 12px; font-weight: 800; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1px solid #f1f5f9; padding-bottom: 8px;">
+                <i class="fas fa-info-circle"></i> ভেন্ডর ভেরিফাইড ডাটা
+            </h6>
+
+            <div style="margin-bottom: 15px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block; margin-bottom: 2px;">বিজনেস ডিটেইলস</label>
+                <p id="pv-details" style="margin: 0; font-size: 13px; color: #334155; font-weight: 500; line-height: 1.4; background: #f8fafc; padding: 10px; border-radius: 8px; border: 1px solid #f1f5f9;"></p>
             </div>
 
-            <i class="fas fa-chevron-right" style="color: #ccc; font-size: 14px;"></i>
+            <div style="margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <div>
+                    <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">মোবাইল নম্বর</label>
+                    <span id="pv-phone" style="font-size: 13px; color: #1e293b; font-weight: 700;">-</span>
+                </div>
+                <a id="pv-call-btn" href="#" style="background: #16a34a; color: white; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none;"><i class="fas fa-phone-alt" style="font-size: 12px;"></i></a>
+            </div>
+
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">জাতীয় পরিচয়পত্র (NID)</label>
+                <span id="pv-nid" style="font-size: 13px; color: #1e293b; font-weight: 700;">-</span>
+            </div>
+
+            <div style="margin-bottom: 15px; border-bottom: 1px solid #f8fafc; padding-bottom: 10px;">
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">বিজনেস এড্রেস</label>
+                <span id="pv-address" style="font-size: 13px; color: #1e293b; font-weight: 600;">-</span>
+            </div>
+
+            <div>
+                <label style="font-size: 11px; color: #94a3b8; font-weight: 600; display: block;">রেজিস্ট্রেশন তারিখ</label>
+                <span id="pv-date" style="font-size: 12px; color: #64748b; font-weight: 600;">-</span>
+            </div>
         </div>
+
     </div>
 </div>
 <!-- Mobile Recharge Page -->
@@ -4849,6 +4863,77 @@ function togglePassword() {
             </div>
     </div>
 </div>
+
+
+
+
+<div id="p-shop" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdfd; z-index: 1000; overflow-y: auto; padding-bottom: 80px; font-family: 'Segoe UI', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Reseller Shop</h5>
+            </div>
+
+            <div style="display: flex; gap: 10px; align-items: center;">
+                <div id="btn-header-fav" onclick="toggleHeaderFavoriteFilter()" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15); transition: all 0.3s;">
+                    <i id="header-fav-icon" class="fas fa-heart" style="font-size: 16px; color: white;"></i>
+                </div>
+                <div onclick="openPage('p-vendor-list')" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15);">
+                    <i class="fas fa-user-tie" style="font-size: 16px; color: white;"></i>
+                </div>
+                <div onclick="openShopHistory()" style="cursor: pointer; width: 38px; height: 38px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center; backdrop-filter: blur(5px); border: 1px solid rgba(255,255,255,0.15);">
+                    <i class="fas fa-history" style="font-size: 16px; color: white;"></i>
+                </div>
+            </div>
+
+        </div>
+    </div> <div class="container mt-3" style="padding: 0 15px;">
+        
+        <div style="background: white; border-radius: 14px; padding: 12px 15px; display: flex; align-items: center; box-shadow: 0 4px 15px rgba(0,0,0,0.04); margin-bottom: 20px; border: 1px solid #edf2f7;">
+            <i class="fas fa-search" style="color: #3b82f6; margin-right: 12px; font-size: 15px;"></i>
+            <input type="text" id="shop-search-input" oninput="searchShopProducts()" placeholder="পছন্দের প্রোডাক্টের নাম লিখে খুঁজুন..." style="border: none; width: 100%; outline: none; font-size: 13px; color: #4a5568; background: transparent; font-family: 'Segoe UI', sans-serif;">
+        </div>
+
+        <div class="row g-3" id="shop-container">
+            </div>
+
+    </div> </div>
+
+
+
+
+
+
+    
+<div id="p-shop-history" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1020; overflow-y: auto; padding-bottom: 50px; font-family: 'Segoe UI', sans-serif;">
+    
+    <div style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(15, 23, 42, 0.2);">
+        <div style="display: flex; align-items: center; justify-content: space-between;">
+            
+            <div style="display: flex; align-items: center;">
+                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-shop')"></i>
+                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.5px;">Order History</h5>
+            </div>
+            
+            <div style="background: rgba(255,255,255,0.15); padding: 5px 12px; border-radius: 20px; font-size: 12px; font-weight: 600;">
+                <i class="fas fa-shopping-bag" style="margin-right: 5px; color: #2ecc71;"></i> আমার অর্ডারসমূহ
+            </div>
+
+        </div>
+    </div> <div style="padding: 15px;">
+
+
+        <div id="customer-history-container" style="display: flex; flex-direction: column; gap: 12px;">
+            <div style="text-align: center; padding: 50px 20px; color: #a0aec0;">
+                <i class="fas fa-spinner fa-spin" style="font-size: 24px; margin-bottom: 10px; color: #3b82f6;"></i>
+                <p style="font-size: 13px; margin: 0;">অর্ডার হিস্টোরি লোড হচ্ছে...</p>
+            </div>
+        </div>
+    </div> </div> 
+
 <div id="p-about" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 2000; overflow-y: auto; padding-bottom: 50px; font-family: 'Poppins', sans-serif;">
     
     <!-- হেডার: প্রিমিয়াম রেড-ইয়েলো গ্রেডিয়েন্ট -->
@@ -5395,100 +5480,9 @@ function togglePassword() {
         background: #f8fafc;
     }
 </style>
-<div id="p-drive" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f1f3f6; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
-    
-    <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
-        
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <div style="display: flex; align-items: center;">
-                <i class="fas fa-arrow-left" style="font-size: 20px; cursor: pointer; color: white; padding: 5px;" onclick="openPage('p-home')"></i>
-                
-                <h5 style="margin: 0; margin-left: 15px; font-weight: 700; letter-spacing: 0.3px;">Drive Offers</h5>
-            </div>
 
 
-      
 
-            <div onclick="openDriveHistory()" style="cursor: pointer; padding: 8px 12px; background: rgba(255,255,255,0.2); border-radius: 10px;">
-                <i class="fas fa-history" style="font-size: 18px; color: white;"></i>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-3">
-        <div style="background: #e0f7fa; border-radius: 15px; padding: 12px; border-left: 5px solid #17a2b8; margin-bottom: 20px;">
-            <p style="margin: 0; font-size: 12px; color: #006064; font-weight: 600;">
-                <i class="fas fa-bolt me-2"></i> নোটিশ: ড্রাইভ অফার সচল হওয়ার সময় ৫-৩০ মিনিট। সঠিক নম্বর প্রদান করুন।
-            </p>
-        </div>
-
-        <div style="display: flex; gap: 10px; overflow-x: auto; padding-bottom: 15px; scrollbar-width: none;">
-            <div onclick="filterDrive('all')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <div style="width: 50px; height: 50px; background: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 5px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); border: 2px solid #17a2b8;">All</div>
-            </div>
-            <div onclick="filterDrive('gp')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">GP</small>
-            </div>
-            <div onclick="filterDrive('robi')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Robi</small>
-            </div>
-            <div onclick="filterDrive('airtel')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/d/de/Airtel_logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Airtel</small>
-            </div>
-            <div onclick="filterDrive('bl')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/b4/Banglalink_Logo.png" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">BL</small>
-            </div>
-            <div onclick="filterDrive('teletalk')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/6/64/Teletalk_Logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Teletalk</small>
-            </div>
-            <div onclick="filterDrive('skitto')" style="min-width: 60px; text-align: center; cursor: pointer;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3d/Skitto_logo.svg" style="width: 50px; height: 50px; border-radius: 50%; background: white; padding: 5px;">
-                <small style="font-size: 10px; font-weight: 700;">Skitto</small>
-            </div>
-        </div>
-
-        <div id="drive-list-container">
-            <div class="drive-card gp" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
-                <img src="https://upload.wikimedia.org/wikipedia/en/b/bd/Grameenphone_logo.svg" style="width: 50px; height: 50px; border-radius: 10px;">
-                <div style="margin-left: 15px; flex: 1;">
-                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৪০ জিবি + ৮০০ মিনিট (৩০ দিন)</h6>
-                    <small style="color: #666; display: block;">সারা বাংলাদেশ পাবে</small>
-                    <b style="color: #e67e22; font-size: 16px;">৳ ৫৯৯</b>
-                </div>
-                <button onclick="showOrderPopup('৪০ জিবি ৮০০ মিনিট', 599)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
-            </div>
-
-            <div class="drive-card robi" style="background: white; border-radius: 20px; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; display: flex; align-items: center;">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Robi_Logo_2024.svg" style="width: 50px; height: 50px; border-radius: 10px;">
-                <div style="margin-left: 15px; flex: 1;">
-                    <h6 style="margin: 0; font-weight: 800; font-size: 14px;">৫০ জিবি ইন্টারনেট (৩০ দিন)</h6>
-                    <small style="color: #666; display: block;">শুধুমাত্র ঢাকা ডিভিশন</small>
-                    <b style="color: #e67e22; font-size: 16px;">৳ ৪৫০</b>
-                </div>
-                <button onclick="showOrderPopup('৫০ জিবি রবি', 450)" style="background: #17a2b8; color: white; border: none; padding: 8px 15px; border-radius: 10px; font-weight: 700; font-size: 12px;">Order Now</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="order-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
-        <div style="background: white; width: 100%; border-radius: 25px; padding: 25px; position: relative;">
-            <h5 style="font-weight: 800; color: #333;" id="modal-offer-name">অর্ডার কনফার্ম করুন</h5>
-            <p style="font-size: 13px; color: #777;">অফারটি পেতে আপনার মোবাইল নম্বর দিন</p>
-            
-            <input type="number" id="order-phone" placeholder="017XXXXXXXX" style="width: 100%; padding: 15px; border-radius: 15px; border: 1px solid #ddd; margin-bottom: 20px; outline: none; font-size: 18px; letter-spacing: 2px;">
-            
-            <div style="display: flex; gap: 10px;">
-                <button onclick="closeOrderPopup()" style="flex: 1; padding: 12px; border-radius: 12px; border: none; background: #eee; font-weight: 700;">বাতিল</button>
-                <button onclick="confirmDriveOrder()" style="flex: 2; padding: 12px; border-radius: 12px; border: none; background: #17a2b8; color: white; font-weight: 800;">সাবমিট করুন</button>
-            </div>
-        </div>
-    </div>
-</div>
 <div id="p-training" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fdfdff; z-index: 2000; overflow-y: auto; padding-bottom: 50px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 102; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -6203,24 +6197,13 @@ function togglePassword() {
     <div class="container mt-4" style="max-width: 480px; margin: 0 auto; padding: 0 15px; box-sizing: border-box; width: 100%;">
         
         <div id="vendor-status-banner" style="background: white; border-radius: 15px; padding: 15px; margin-bottom: 20px; border-left: 5px solid #3b82f6; box-shadow: 0 4px 12px rgba(0,0,0,0.03); box-sizing: border-box;">
-            <h6 style="font-weight: 800; color: #1e293b; margin: 0 0 4px 0; font-size: 14px;">ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
+            <h6 style="font-weight: 800; color: #1e293b; margin: 0 0 4px 0; font-size: 14px;">রিসেলিং ভেন্ডর হিসেবে যোগ দিন! 🤝</h6>
             <p style="font-size: 12px; color: #64748b; margin: 0;">নিচের ফর্মটি সঠিক তথ্য দিয়ে পূরণ করুন এবং ভেন্ডরশিপ এক্সেস নিন।</p>
         </div>
 
         <div id="vendor-reg-form" style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.04); border: 1px solid #eaeaea; box-sizing: border-box;">
-            <label style="font-size: 13px; font-weight: 700; color: #334155; margin-bottom: 10px; display: block;">ভেন্ডর টাইপ সিলেক্ট করুন:</label>
-            <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-drive">
-                    <input type="radio" name="vendor_type" value="Drive Agent" style="display: none;" onclick="selectVendor('drive')">
-                    <i class="fas fa-car-side" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
-                    <span style="font-size: 12px; font-weight: 700; color: #475569;">ড্রাইভ এজেন্ট</span>
-                </label>
-                <label style="flex: 1; border: 2px solid #e2e8f0; padding: 12px; border-radius: 14px; text-align: center; cursor: pointer; transition: all 0.2s ease; box-sizing: border-box;" id="label-resell">
-                    <input type="radio" name="vendor_type" value="Reselling Agent" style="display: none;" onclick="selectVendor('resell')">
-                    <i class="fas fa-store" style="display: block; font-size: 20px; margin-bottom: 6px; color: #64748b;"></i>
-                    <span style="font-size: 12px; font-weight: 700; color: #475569;">রিসেলিং এজেন্ট</span>
-                </label>
-            </div>
+            
+            <input type="hidden" name="vendor_type" id="v-type-hidden" value="Reselling Agent">
 
             <form onsubmit="event.preventDefault(); payVendorFee(); return false;">
                 <div style="margin-bottom: 15px;">
@@ -6229,7 +6212,7 @@ function togglePassword() {
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস ডিটেইলস</label>
-                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের সার্ভিস দেন?" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
+                    <textarea id="v-bus-details" placeholder="আপনি কি ধরণের প্রোডাক্ট বা সার্ভিস দেন?" required style="width: 100%; padding: 12px; border-radius: 10px; border: 1px solid #cbd5e1; font-size: 14px; margin-top: 5px; outline: none; height: 80px; resize: none; box-sizing: border-box; font-family: inherit;"></textarea>
                 </div>
                 <div style="margin-bottom: 15px;">
                     <label style="font-size: 12px; font-weight: 600; color: #475569;">বিজনেস এড্রেস</label>
@@ -6247,7 +6230,7 @@ function togglePassword() {
                 <div style="background: #fff5f5; padding: 15px; border-radius: 12px; border: 1px dashed #f87171; margin-top: 15px; margin-bottom: 20px; box-sizing: border-box;">
                     <p style="margin: 0; font-size: 12px; color: #dc2626; font-weight: 700; text-align: center; line-height: 1.4;">
                         <i class="fas fa-exclamation-circle" style="margin-right: 4px;"></i> 
-                        নোটিশ: ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা ফ্রি কাটবে এবং এই টাকা রিফান্ড বা ব্যাক পাবেন না।
+                        নোটিশ: ভেন্ডরশিপ অ্যাক্টিভেশনের জন্য ৫০০ টাকা ফি কাটবে এবং এই টাকা রিফান্ড বা ব্যাক পাবেন না।
                     </p>
                 </div>
 
@@ -6277,32 +6260,7 @@ function togglePassword() {
                 </div>
             </div>
 
-            <div id="form-drive-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
-                <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #2563eb; border-bottom: 2px solid #eff6ff; padding-bottom: 8px; text-transform: uppercase;">
-                    <i class="fas fa-bolt" style="color: #2563eb; margin-right: 5px;"></i> নতুন ড্রাইভ অফার যুক্ত করুন
-                </h6>
-                <form onsubmit="event.preventDefault(); saveDriveOffer(); return false;">
-                    <div style="margin-bottom: 12px;">
-                        <label style="font-size: 11px; font-weight: 700; color: #475569;">ড্রাইভ অফারের নাম</label>
-                        <input type="text" id="d-offer-name" required placeholder="যেমন: Robi 40GB + 800 Min" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                    </div>
-                    <div style="display: flex; gap: 10px; margin-bottom: 18px;">
-                        <div style="flex: 1;">
-                            <label style="font-size: 11px; font-weight: 700; color: #475569;">মূল্য (৳)</label>
-                            <input type="number" id="d-offer-price" required placeholder="বিক্রয় মূল্য" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                        </div>
-                        <div style="flex: 1;">
-                            <label style="font-size: 11px; font-weight: 700; color: #475569;">কমিশন (৳)</label>
-                            <input type="number" id="d-offer-commission" required placeholder="ইউজার কমিশন" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
-                        </div>
-                    </div>
-                    <button type="submit" style="width: 100%; background: #2563eb; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: 700; font-size: 13px; cursor: pointer; outline: none;">
-                        পাবলিশ ড্রাইভ অফার <i class="fas fa-paper-plane" style="margin-left: 4px; font-size: 11px;"></i>
-                    </button>
-                </form>
-            </div>
-
-            <div id="form-reselling-agent" class="d-none" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
+            <div id="form-reselling-agent" style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
                 <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #16a34a; border-bottom: 2px solid #f0fdf4; padding-bottom: 8px; text-transform: uppercase;">
                     <i class="fas fa-store" style="color: #16a34a; margin-right: 5px;"></i> নতুন ফিজিক্যাল প্রোডাক্ট যুক্ত করুন
                 </h6>
@@ -6313,7 +6271,7 @@ function togglePassword() {
                     </div>
                     <div style="margin-bottom: 12px;">
                         <label style="font-size: 11px; font-weight: 700; color: #475569;">প্রোডাক্টের নাম</label>
-                        <input type="text" id="r-prod-name" required placeholder="যেমন: T500 Smart Watch Smart" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
+                        <input type="text" id="r-prod-name" required placeholder="যেমন: T500 Smart Watch" style="width: 100%; padding: 11px; border-radius: 8px; border: 1px solid #cbd5e1; font-size: 13px; margin-top: 4px; outline: none; box-sizing: border-box;">
                     </div>
                     <div style="display: flex; gap: 10px; margin-bottom: 12px;">
                         <div style="flex: 1;">
@@ -6337,10 +6295,9 @@ function togglePassword() {
 
             <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box; margin-bottom: 25px;">
                 <h6 style="margin: 0 0 15px 0; font-size: 13px; font-weight: 800; color: #0f172a; border-bottom: 2px solid #f1f5f9; padding-bottom: 8px; text-transform: uppercase;">
-                    <i class="fas fa-list-ul" style="color: #3b82f6; margin-right: 5px;"></i> আপনার লাইভ আইটেমসমূহ
+                    <i class="fas fa-list-ul" style="color: #3b82f6; margin-right: 5px;"></i> আপনার লাইভ প্রোডাক্টসমূহ
                 </h6>
-                <div id="vendor-product-list" style="max-height: 220px; overflow-y: auto;">
-                    </div>
+                <div id="vendor-product-list" style="max-height: 220px; overflow-y: auto;"></div>
             </div>
 
             <div style="background: white; border-radius: 16px; padding: 20px; box-shadow: 0 6px 20px rgba(0,0,0,0.02); border: 1px solid #e2e8f0; box-sizing: border-box;">
@@ -6348,20 +6305,11 @@ function togglePassword() {
                     <i class="fas fa-shopping-cart" style="margin-right: 5px;"></i> গ্রাহকদের অর্ডার রিকোয়েষ্ট
                 </h6>
                 
-                <div id="sec-drive-requests" class="d-none" style="margin-bottom: 15px;">
-                    <span style="font-size: 11px; font-weight: bold; background: #eff6ff; color: #2563eb; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
-                        <i class="fas fa-bolt"></i> Drive Request Queue
-                    </span>
-                    <div id="drive-order-list" style="max-height: 200px; overflow-y: auto;">
-                        </div>
-                </div>
-
-                <div id="sec-resell-requests" class="d-none">
+                <div id="sec-resell-requests">
                     <span style="font-size: 11px; font-weight: bold; background: #f0fdf4; color: #16a34a; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 10px;">
                         <i class="fas fa-box"></i> Product Orders Queue
                     </span>
-                    <div id="resell-order-list" style="max-height: 200px; overflow-y: auto;">
-                        </div>
+                    <div id="resell-order-list" style="max-height: 200px; overflow-y: auto;"></div>
                 </div>
             </div>
 
@@ -6370,7 +6318,21 @@ function togglePassword() {
         <p id="vendor-footer-note" style="text-align: center; font-size: 11px; color: #94a3b8; margin-top: 20px;">পেমেন্ট করার সাথে সাথে আপনার প্যানেল ইনস্ট্যান্ট আনলক হয়ে যাবে।</p>
     </div>
 </div>
+<div id="customer-history-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 2500; display: flex; align-items: flex-end;">
+    <div style="background: #f8fafc; width: 100%; max-height: 80%; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; overflow: hidden; animation: slideUp 0.3s ease-out;">
+        
+        <div style="padding: 18px 20px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-shopping-bag" style="color: #2563eb; font-size: 18px;"></i>
+                <span style="font-weight: 800; font-size: 15px; color: #1e293b;">আমার অর্ডার সমূহ</span>
+            </div>
+            <i class="fas fa-times-circle" style="font-size: 22px; color: #94a3b8; cursor: pointer;" onclick="closeCustomerHistory()"></i>
+        </div>
 
+        <div id="customer-history-container" style="padding: 15px; overflow-y: auto; flex-grow: 1;">
+            </div>
+    </div>
+</div>
 <div id="p-leader" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcf9; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
     <div style="background: linear-gradient(135deg, #3b82f6 0%, #2ecc71 100%); padding: 20px 15px; color: white; position: sticky; top: 0; z-index: 101; box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);">
@@ -6581,6 +6543,23 @@ function togglePassword() {
 
     </div>
 </div>
+<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; z-index: 2000; overflow-y: auto;">
+    <div style="background: #f8f9fa; padding: 15px 20px; display: flex; align-items: center; border-bottom: 1px solid #eee; position: sticky; top: 0; z-index: 10;">
+        <i class="fas fa-arrow-left" style="font-size: 20px; color: #333; cursor: pointer; padding: 5px;" onclick="closeProduct()"></i>
+        <span style="margin-left: 15px; font-weight: 700; font-size: 16px; color: #333;">প্রোডাক্ট ডিটেইলস</span>
+    </div>
+
+    <div style="padding: 20px;">
+        <img id="view-img" src="" style="width: 100%; max-height: 350px; border-radius: 20px; object-fit: cover; box-shadow: 0 10px 20px rgba(0,0,0,0.08);">
+        <h4 id="view-title" style="margin-top: 20px; font-weight: 800; font-size: 18px; color: #1e293b;"></h4>
+        <h5 id="view-price" style="color: #dc3545; font-weight: 800; font-size: 20px; margin-top: 5px;"></h5>
+        <hr style="border-top: 1px solid #e2e8f0; margin: 20px 0;">
+        <h6 style="font-weight: 700; font-size: 14px; color: #64748b;">পণ্যের বিবরণ:</h6>
+        <p id="view-desc" style="color: #475569; font-size: 14px; line-height: 1.6; background: #f8fafc; padding: 15px; border-radius: 12px; min-height: 80px;"></p>
+        
+        <button onclick="showOrderForm()" style="width: 100%; padding: 15px; border-radius: 15px; border: none; background: #dc3545; color: white; font-weight: 800; font-size: 16px; margin-top: 30px; cursor: pointer; box-shadow: 0 4px 12px rgba(220, 53, 69, 0.2);">অর্ডার করুন</button>
+    </div>
+</div>
 <!-- ট্রানজ্যাকশন পেজ: লাল ও হলুদের প্রিমিয়াম মিক্সড ডিজাইন -->
 <div id="p-transactions" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #fffcfc; z-index: 1000; overflow-y: auto; padding-bottom: 80px;">
     
@@ -6768,7 +6747,31 @@ function togglePassword() {
         box-shadow: 0 5px 15px rgba(255, 0, 0, 0.2);
     }
 </style>
+<div id="view-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 2000; display: flex; align-items: center; justify-content: center; padding: 20px;">
+    <div style="background: white; border-radius: 20px; width: 100%; max-width: 400px; padding: 20px; position: relative;">
+        <i class="fas fa-times-circle" style="position: absolute; top: 15px; right: 15px; font-size: 24px; color: #aaa; cursor: pointer;" onclick="closeProduct()"></i>
+        <img id="view-img" src="" style="width: 100%; height: 200px; object-fit: cover; border-radius: 15px; margin-bottom: 15px;">
+        <h4 id="view-title" style="font-weight: 800; font-size: 18px; color: #222; margin-bottom: 5px;"></h4>
+        <h5 id="view-price" style="color: #dc3545; font-weight: 800; margin-bottom: 15px;"></h5>
+        <p id="view-desc" style="font-size: 13px; color: #666; line-height: 1.5; max-height: 100px; overflow-y: auto;"></p>
+        
+        <button onclick="placeCustomerOrder()" style="width: 100%; padding: 12px; background: #dc3545; color: white; border: none; border-radius: 10px; font-weight: bold; font-size: 14px; margin-top: 15px; cursor: pointer;">অর্ডার করুন</button>
+    </div>
+</div>
 
+<div id="customer-history-modal" class="d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.6); z-index: 2500; display: flex; align-items: flex-end;">
+    <div style="background: #f8fafc; width: 100%; max-height: 75%; border-radius: 24px 24px 0 0; display: flex; flex-direction: column; overflow: hidden;">
+        <div style="padding: 18px 20px; background: white; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <i class="fas fa-shopping-bag" style="color: #3b82f6; font-size: 18px;"></i>
+                <span style="font-weight: 800; font-size: 15px; color: #1e293b;">আমার অর্ডার সমূহ</span>
+            </div>
+            <i class="fas fa-times-circle" style="font-size: 22px; color: #94a3b8; cursor: pointer;" onclick="closeShopHistory()"></i>
+        </div>
+        <div id="customer-history-container" style="padding: 15px; overflow-y: auto; flex-grow: 1;">
+            </div>
+    </div>
+</div>
 
 <div id="p-fund" class="p-page d-none" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #f8fafc; z-index: 1000; overflow-y: auto; font-family: 'Poppins', sans-serif;">
     
@@ -7150,12 +7153,15 @@ function checkShopAccess() {
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 let db = {
+
     withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
     users: JSON.parse(localStorage.getItem('v7_u')) || [
         {name:"Admin", email:"aa@gmail.com", pass:"325800", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
     ],
-    // নিচের এই লাইনটি নতুন যোগ করা হলো
     notifications: JSON.parse(localStorage.getItem('v7_notif') || '[]'), 
+    
+    // 📢 এই লাইনটি নতুন যোগ করুন (যাতে রিফ্রেশ দিলে হিস্টোরি লোকাল স্টোরেজ থেকে ফিরে আসে)
+    investments: JSON.parse(localStorage.getItem('v7_invest') || '[]'), 
     
     orders: JSON.parse(localStorage.getItem('v7_o')) || [],
     funds: JSON.parse(localStorage.getItem('v7_f')) || [],
@@ -7167,6 +7173,7 @@ let db = {
     rocketNum: localStorage.getItem('v7_rocketNum') || "018682934716",
     autoMsg: localStorage.getItem('v7_autoMsg') || "আপনার মেসেজটি জমা হয়েছে। অ্যাডমিন শীঘ্রই উত্তর দিবে।"
 };
+
     
     let curUser = null;
     let currentMethod = "Bkash";
@@ -7175,13 +7182,15 @@ let db = {
     const toast = (msg, icon='success') => { Swal.fire({ text: msg, icon: icon, toast: true, position: 'top', showConfirmButton: false, timer: 2000 }); };
     const formatCurrency = (num) => parseFloat(num).toLocaleString('en-US', { minimumFractionDigits: 2 });
 
-    
-
-async function save() {
-    // ১. ব্রাউজারের লোকাল স্টোরেজে সেভ (আগের মতোই)
+    async function save() {
+    // লোকাল স্টোরেজে সেভ করা
     localStorage.setItem('v7_w', JSON.stringify(db.withdraws || []));
     localStorage.setItem('v7_u', JSON.stringify(db.users || [])); 
     localStorage.setItem('v7_notif', JSON.stringify(db.notifications || [])); 
+    
+    // 📢 এই লাইনটি save ফাংশনে যোগ করুন
+    localStorage.setItem('v7_invest', JSON.stringify(db.investments || [])); 
+    
     localStorage.setItem('v7_o', JSON.stringify(db.orders || []));
     localStorage.setItem('v7_f', JSON.stringify(db.funds || []));
     localStorage.setItem('v7_chats', JSON.stringify(db.chats || []));
@@ -7192,19 +7201,19 @@ async function save() {
     localStorage.setItem('v7_rocketNum', db.rocketNum || "");
     localStorage.setItem('v7_autoMsg', db.autoMsg || "");
     
-    console.log("LocalStorage-এ সেভ হয়েছে!");
+    console.log("LocalStorage-এ সেভ হয়েছে!");
 
-    // ২. সার্ভারের MySQL ডাটাবেসে সেভ করা (মেইন কাজ)
+    // সার্ভারের MySQL ডাটাবেসে সেভ করা
     try {
         const response = await fetch('api.php?action=save', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(db)
         });
-        const resData = await response.text(); // সার্ভারের রেসপন্স চেক করার জন্য
-        console.log("সার্ভারেও ডাটা সেভ হয়েছে:", resData);
+        const resData = await response.text();
+        console.log("সার্ভারেও ডাটা সেভ হয়েছে:", resData);
     } catch (err) {
-        console.error("সার্ভারে সেভ করতে সমস্যা হয়েছে:", err);
+        console.error("সার্ভারে সেভ করতে সমস্যা হয়েছে:", err);
     }
 }
 
@@ -7660,36 +7669,23 @@ if (referSection) {
         renderWithdrawHistory();
     }
 }
-let selectedVendorType = "";
+// ==========================================================================
+// ==========================================================================
+// ১. গ্লোবাল স্টেট ও ভ্যারিয়েবল সমূহ (ড্রাইভ সম্পূর্ণ মুক্ত)
+// ==========================================================================
+let selectedVendorType = "Reselling Agent"; // ড্রাইভ বাদ, ডিফল্ট ও ফিক্সড টাইপ রিসেলিং
+let activeViewingProduct = null;     // বর্তমানে কাস্টমার যে প্রোডাক্টটি দেখছেন
+let showOnlyFavoritesMode = false;   // ফেভারিট মোড অন/অফ ট্র্যাকার
 
-// ১. ভেন্ডর ক্যাটাগরি সিলেকশন ও বর্ডার কালার হ্যান্ডলিং
-function selectVendor(type) {
-    const driveLabel = document.getElementById('label-drive');
-    const resellLabel = document.getElementById('label-resell');
-    if (!driveLabel || !resellLabel) return;
-    
-    selectedVendorType = type === 'drive' ? "Drive Agent" : "Reselling Agent";
+// ==========================================================================
+// ২. ভেন্ডর ক্যাটাগরি সিলেকশন ও বর্ডার কালার হ্যান্ডলিং (বাদ দেওয়া হয়েছে)
+// ==========================================================================
+// যেহেতু ড্রাইভ এজেন্ট অপশনটি নেই, তাই ক্যাটাগরি সিলেক্ট করার প্রয়োজন নেই।
+// HTML-এ সরাসরি রিসেলিং এজেন্ট ফিক্সড থাকবে।
 
-    if (type === 'drive') {
-        driveLabel.style.borderColor = '#2563eb';
-        driveLabel.style.background = '#eff6ff';
-        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#2563eb';
-        
-        resellLabel.style.borderColor = '#e2e8f0';
-        resellLabel.style.background = 'transparent';
-        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#64748b';
-    } else {
-        resellLabel.style.borderColor = '#16a34a';
-        resellLabel.style.background = '#f0fdf4';
-        if(resellLabel.querySelector('i')) resellLabel.querySelector('i').style.color = '#16a34a';
-        
-        driveLabel.style.borderColor = '#e2e8f0';
-        driveLabel.style.background = 'transparent';
-        if(driveLabel.querySelector('i')) driveLabel.querySelector('i').style.color = '#64748b';
-    }
-}
-
-// ২. ভেন্ডরশিপ স্ট্যাটাস চেক ও রেন্ডার
+// ==========================================================================
+// ৩. ভেন্ডরশিপ স্ট্যাটাস চেক ও রেন্ডার
+// ==========================================================================
 function checkVendorStatus() {
     if (!curUser) return;
     
@@ -7702,7 +7698,6 @@ function checkVendorStatus() {
     const bannerNotice = document.getElementById('vendor-status-banner');
 
     if (isPurchased === 'true') {
-        // ১. হেডার আইকন পরিবর্তন করে সবুজ আনলক করা
         if (lockIcon) {
             lockIcon.className = "fas fa-unlock-alt";
             lockIcon.style.color = "#4ade80";
@@ -7711,7 +7706,6 @@ function checkVendorStatus() {
             lockBtn.style.background = "rgba(74, 222, 128, 0.25)";
         }
         
-        // ২. ব্যানার নোটিশ আপডেট
         if (bannerNotice) {
             bannerNotice.style.borderLeftColor = "#16a34a";
             bannerNotice.innerHTML = `
@@ -7720,7 +7714,6 @@ function checkVendorStatus() {
             `;
         }
         
-        // ৩. ফর্মের জায়গায় সাকসেস ড্যাশবোর্ড গেটওয়ে
         if (regFormCard) {
             const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
             regFormCard.innerHTML = `
@@ -7728,8 +7721,8 @@ function checkVendorStatus() {
                     <div style="width: 60px; height: 60px; background: #f0fdf4; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px auto;">
                         <i class="fas fa-check-circle" style="color: #16a34a; font-size: 32px;"></i>
                     </div>
-                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">${profile.businessName || 'Ychc'}</h5>
-                    <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 20px 0;">টাইপ: <b>${profile.type || 'Reselling Agent'}</b><br>আপনার অ্যাকাউন্টটি সফলভাবে ভেন্ডর হিসেবে রেজিস্টার্ড।</p>
+                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 8px;">${profile.businessName || 'Store'}</h5>
+                    <p style="font-size: 13px; color: #64748b; line-height: 1.5; margin: 0 0 20px 0;">টাইপ: <b>Reselling Agent</b><br>আপনার অ্যাকাউন্টটি সফলভাবে ভেন্ডর হিসেবে রেজিস্টার্ড।</p>
                     <button onclick="enterVendorDashboard()" style="background: #0f172a; color: white; border: none; padding: 12px 25px; border-radius: 30px; font-size: 13px; font-weight: 700; cursor: pointer; width: 100%; max-width: 200px; outline: none;">গো টু ড্যাশবোর্ড</button>
                 </div>
             `;
@@ -7745,7 +7738,9 @@ function checkVendorStatus() {
     }
 }
 
-// ৩. ফি পেমেন্ট লজিক
+// ==========================================================================
+// ৪. ফি পেমেন্ট লজিক
+// ==========================================================================
 async function payVendorFee() {
     if (!curUser) return alert("অনুগ্রহ করে প্রথমে লগইন করুন!");
     
@@ -7753,6 +7748,7 @@ async function payVendorFee() {
     const phone = document.getElementById('v-phone') ? document.getElementById('v-phone').value.trim() : "";
     const nid = document.getElementById('v-nid') ? document.getElementById('v-nid').value.trim() : "";
     const addr = document.getElementById('v-bus-addr') ? document.getElementById('v-bus-addr').value.trim() : "";
+    const details = document.getElementById('v-bus-details') ? document.getElementById('v-bus-details').value.trim() : "No details provided";
 
     if (!selectedVendorType) {
         return alert("অনুগ্রহ করে একটি ভেন্ডর টাইপ সিলেক্ট করুন!");
@@ -7776,156 +7772,232 @@ async function payVendorFee() {
             if (userInDb) userInDb.bal = curUser.bal;
         }
 
-        localStorage.setItem('vendor_' + curUser.email, 'true');
-        localStorage.setItem('vendor_profile_' + curUser.email, JSON.stringify({
+        const profilePayload = {
             type: selectedVendorType,
-            businessName: name || "Ychc",
+            businessName: name || "Anonymous Shop",
+            details: details,
             phone: phone,
             nid: nid,
             address: addr,
+            email: curUser.email,
             joinedDate: new Date().toLocaleDateString()
-        }));
+        };
+
+        localStorage.setItem('vendor_' + curUser.email, 'true');
+        localStorage.setItem('vendor_profile_' + curUser.email, JSON.stringify(profilePayload));
+
+        let globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+        globalVendors = globalVendors.filter(v => v.email !== curUser.email);
+        globalVendors.push(profilePayload);
+        localStorage.setItem('global_vendors_list', JSON.stringify(globalVendors));
 
         if (typeof save === "function") {
             await save();
         }
 
         if (typeof renderUser === "function") renderUser(); 
-        checkVendorStatus();
+        if (typeof checkVendorStatus === "function") checkVendorStatus();
+        if (typeof loadGlobalVendorsList === "function") loadGlobalVendorsList(); 
 
         if (typeof showLoader === "function") showLoader(false);
         
         if (typeof toast === "function") {
-            toast("🎉 अभिनंदन! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।", "success");
+            toast("🎉 অভিনন্দন! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।", "success");
         } else {
             alert("🎉 অভিনন্দন! ভেন্ডরশিপ প্যানেল তাৎক্ষণিক আনলক করা হলো।");
         }
         
-        enterVendorDashboard(); // পেমেন্ট শেষে ডিরেক্ট ড্যাশবোর্ডে নিয়ে যাবে
+        enterVendorDashboard();
     }
 }
-// ১. কাস্টম ব্যাক বাটন হ্যান্ডলার (তালা আইকন রিমুভ করার কারণে ব্যাক ট্র্যাক সেটআপ)
+// ==========================================================================
+// ৫. গ্লোবাল তালিকা থেকে ভেন্ডর রেন্ডার ও শপ ভিউ (ড্রাইভ সম্পূর্ণ মুক্ত)
+// ==========================================================================
+function loadGlobalVendorsList() {
+    const container = document.getElementById('dynamic-vendor-container');
+    const badgeCount = document.getElementById('total-vendor-badge');
+    const globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+
+    if (badgeCount) badgeCount.innerText = `${globalVendors.length} Total`;
+    if (!container) return;
+
+    if (globalVendors.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8;">
+                <i class="fas fa-store-slash" style="font-size: 40px; margin-bottom: 10px; color: #cbd5e1;"></i>
+                <p style="font-size: 13px; margin: 0;">বর্তমানে কোনো নিবন্ধিত ভেন্ডর নেই।</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = globalVendors.reverse().map(vendor => {
+        // ড্রাইভের কন্ডিশন বাদ দিয়ে সরাসরি রিসেলিং এজেন্টের থিম ফিক্সড করা হয়েছে
+        const iconClass = "fas fa-store";
+        const themeColor = "#16a34a";
+        const bgColor = "#f0fdf4";
+
+        return `
+            <div onclick="viewVendorStore('${vendor.email}')" style="padding: 15px; background: #fff; border-radius: 18px; display: flex; align-items: center; margin-bottom: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.02); border: 1px solid #f0f2f5; cursor: pointer; transition: transform 0.2s; box-sizing: border-box;">
+                <div style="width: 48px; height: 48px; background: ${bgColor}; border-radius: 50%; margin-right: 15px; display: flex; align-items: center; justify-content: center; border: 2px solid ${themeColor}; overflow: hidden; flex-shrink: 0;">
+                    <i class="${iconClass}" style="color: ${themeColor}; font-size: 18px;"></i>
+                </div>
+                <div style="flex: 1; overflow: hidden;">
+                    <h6 style="margin: 0; font-weight: 700; color: #1e293b; font-size: 14px; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${vendor.businessName}</h6>
+                    <p style="margin: 2px 0 4px 0; font-size: 11px; color: #64748b; text-overflow: ellipsis; white-space: nowrap; overflow: hidden;">${vendor.details}</p>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                        <div style="display: flex; align-items: center;">
+                            <span style="width: 6px; height: 6px; background: #2ecc71; border-radius: 50%; margin-right: 4px;"></span>
+                            <small style="color: #2ecc71; font-weight: 700; font-size: 10px; text-transform: uppercase;">Active</small>
+                        </div>
+                        <span style="font-size: 9px; background: ${bgColor}; color: ${themeColor}; padding: 1px 6px; border-radius: 4px; font-weight: bold;">Reselling Agent</span>
+                    </div>
+                </div>
+                <i class="fas fa-chevron-right" style="color: #cbd5e1; font-size: 13px; margin-left: 10px;"></i>
+            </div>`;
+    }).join("");
+}
+
+function viewVendorStore(vendorEmail) {
+    const globalVendors = JSON.parse(localStorage.getItem('global_vendors_list') || '[]');
+    const vendor = globalVendors.find(v => v.email === vendorEmail);
+
+    if (!vendor) {
+        alert("দুঃখিত, এই ভেন্ডরের তথ্য খুঁজে পাওয়া যায়নি!");
+        return;
+    }
+
+    const shopNameEl = document.getElementById('pv-shop-name');
+    const agentTypeEl = document.getElementById('pv-agent-type');
+    const badgeIconEl = document.getElementById('pv-badge-icon');
+    const detailsEl = document.getElementById('pv-details');
+    const phoneEl = document.getElementById('pv-phone');
+    const callBtnEl = document.getElementById('pv-call-btn');
+    const nidEl = document.getElementById('pv-nid');
+    const addressEl = document.getElementById('pv-address');
+    const dateEl = document.getElementById('pv-date');
+
+    if (shopNameEl) shopNameEl.innerText = vendor.businessName || "Anonymous Shop";
+    if (detailsEl) detailsEl.innerText = vendor.details || "কোনো বিবরণ দেওয়া হয়নি।";
+    if (phoneEl) phoneEl.innerText = vendor.phone || "N/A";
+    if (nidEl) nidEl.innerText = vendor.nid || "ভেরিফাইড";
+    if (addressEl) addressEl.innerText = vendor.address || "N/A";
+    if (dateEl) dateEl.innerText = vendor.joinedDate || vendor.regDate || "N/A";
+    if (callBtnEl && vendor.phone) callBtnEl.href = "tel:" + vendor.phone;
+
+    // প্রোফাইল ভিউ থেকে ড্রাইভের কন্ডিশন সরিয়ে সরাসরি রিসেলিং মোড সেট করা হয়েছে
+    if (agentTypeEl) {
+        agentTypeEl.innerText = "রিসেলিং এজেন্ট";
+        agentTypeEl.style.background = "#f0fdf4";
+        agentTypeEl.style.color = "#16a34a";
+    }
+    
+    if (badgeIconEl) {
+        badgeIconEl.innerHTML = `<i class="fas fa-store" style="color: #16a34a;"></i>`;
+        badgeIconEl.style.background = "#f0fdf4";
+        badgeIconEl.style.border = "2px solid #16a34a";
+    }
+
+    openPage('p-vendor-profile-view');
+}
+
+
 function handleVendorBackBtn() {
-    const isDashboardVisible = !document.getElementById('p-vendor-dashboard').classList.contains('d-none');
+    const isDashboardVisible = document.getElementById('p-vendor-dashboard') && !document.getElementById('p-vendor-dashboard').classList.contains('d-none');
     
     if (isDashboardVisible) {
-        // যদি ড্যাশবোর্ডে থাকে, ব্যাক দিলে ড্যাশবোর্ড অফ হয়ে মেইন রেজিস্ট্রেশন/স্ট্যাটাস মোডে আসবে
         closeVendorDashboard();
     } else {
-        // নরমাল অবস্থায় পেজ ক্লোজ হবে বা হোমে যাবে
-        if (typeof openPage === 'function') { 
-            openPage('p-home'); 
-        } else { 
-            document.getElementById('p-vendor').classList.add('d-none'); 
-        }
+        openPage('p-home');
     }
 }
-
-// ২. ড্যাশবোর্ড গেটওয়ে ও ইন্টারফেস ফিল্টারিং মেকানিজম
+// ==========================================================================
+// ৬. ড্যাশবোর্ড গেটওয়ে ও কন্ট্রোল মেকানিজম (ড্রাইভ সম্পূর্ণ মুক্ত)
+// ==========================================================================
 function enterVendorDashboard() {
-    if (!curUser) return alert("দয়া করে লগইন করুন!");
+    if (!curUser) return alert("দয়া করে লগইন করুন!");
     
     const isPurchased = localStorage.getItem('vendor_' + curUser.email);
-    if (isPurchased !== 'true') return; // পেইড না হলে ঢুকবে না
+    if (isPurchased !== 'true') return alert("আপনি এখনো ভেন্ডরশিপ প্রোগ্রাম অ্যাক্টিভেট করেননি!");
 
     const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
-    const vType = profile.type; // "Drive Agent" অথবা "Reselling Agent"
     
-    // হেডার ও ইন্টারফেস কাস্টমাইজেশন
+    // হেডার এবং টাইটেল আপডেট
     if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "#0f172a";
     if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = profile.businessName || "Dashboard";
     if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.remove('d-none');
 
+    // রেজিস্ট্রেশন ফর্ম ও ব্যানার হাইড করা
     if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.add('d-none');
     if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.add('d-none');
     if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.add('d-none');
+    
+    // মেইন ড্যাশবোর্ড প্যানেল শো করা
     if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.remove('d-none');
 
-    // টাইপ অনুযায়ী ফিল্টারিং উইন্ডো টগল
-    const driveForm = document.getElementById('form-drive-agent');
+    // ফিজিক্যাল প্রোডাক্ট ও অর্ডার কিউ শো (ড্রাইভের সবকিছু রিমুভড)
     const resellForm = document.getElementById('form-reselling-agent');
-    const driveReqSec = document.getElementById('sec-drive-requests');
     const resellReqSec = document.getElementById('sec-resell-requests');
 
-    if (vType === "Drive Agent") {
-        if (driveForm) driveForm.classList.remove('d-none');
-        if (resellForm) resellForm.classList.add('d-none');
-        if (driveReqSec) driveReqSec.classList.remove('d-none');
-        if (resellReqSec) resellReqSec.classList.add('d-none');
-    } else {
-        if (driveForm) driveForm.classList.add('d-none');
-        if (resellForm) resellForm.classList.remove('d-none');
-        if (driveReqSec) driveReqSec.classList.add('d-none');
-        if (resellReqSec) resellReqSec.classList.remove('d-none');
-    }
+    if (resellForm) resellForm.classList.remove('d-none');
+    if (resellReqSec) resellReqSec.classList.remove('d-none');
 
-    renderVendorItems();
-    renderOrderRequests(vType);
+    // ডাটা রেন্ডার ফাংশন কল
+    if (typeof renderVendorItems === "function") renderVendorItems();
+    if (typeof renderOrderRequests === "function") renderOrderRequests("Reselling Agent");
 }
 
-// ৩. ড্যাশবোর্ড থেকে ব্যাক করার মেথড
 function closeVendorDashboard() {
+    // হেডার রিস্টোর (আগের গ্রাডিয়েন্ট কালার)
     if (document.getElementById('vendor-header-bar')) document.getElementById('vendor-header-bar').style.background = "linear-gradient(135deg, #2563eb 0%, #16a34a 100%)";
     if (document.getElementById('dashboard-title')) document.getElementById('dashboard-title').innerText = "Vendorship Program";
     if (document.getElementById('vendor-active-badge')) document.getElementById('vendor-active-badge').classList.add('d-none');
 
+    // ফর্ম এবং স্ট্যাটিক ভিউ রিস্টোর
     if (document.getElementById('p-vendor-dashboard')) document.getElementById('p-vendor-dashboard').classList.add('d-none');
     if (document.getElementById('vendor-reg-form')) document.getElementById('vendor-reg-form').classList.remove('d-none');
     if (document.getElementById('vendor-status-banner')) document.getElementById('vendor-status-banner').classList.remove('d-none');
     if (document.getElementById('vendor-footer-note')) document.getElementById('vendor-footer-note').classList.remove('d-none');
 }
 
-// ৪. ড্রাইভ সেভ ফাংশন
-function saveDriveOffer() {
-    if (!curUser) return;
-    const name = document.getElementById('d-offer-name').value.trim();
-    const price = document.getElementById('d-offer-price').value.trim();
-    const comm = document.getElementById('d-offer-commission').value.trim();
 
-    const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
-    items.push({
-        id: Date.now(),
-        type: 'drive',
-        name: name,
-        price: parseFloat(price),
-        commission: parseFloat(comm),
-        date: new Date().toLocaleDateString()
-    });
-    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(items));
 
-    document.getElementById('d-offer-name').value = "";
-    document.getElementById('d-offer-price').value = "";
-    document.getElementById('d-offer-commission').value = "";
-    
-    renderVendorItems();
-    alert("🟢 ড্রাইভ অফারটি সফলভাবে লাইভ হয়েছে!");
-}
 
-// ৫. রিসেলিং প্রোডাক্ট সেভ (FileReader base64 মেথড)
 function saveResellProduct() {
-    if (!curUser) return;
+    if (!curUser) return alert("দয়া করে প্রথমে লগইন করুন!");
+    
     const imgFile = document.getElementById('r-prod-img').files[0];
     const name = document.getElementById('r-prod-name').value.trim();
     const price = document.getElementById('r-prod-price').value.trim();
     const mPrice = document.getElementById('r-prod-market-price').value.trim();
     const details = document.getElementById('r-prod-details').value.trim();
+    const catEl = document.getElementById('r-prod-category');
+    const category = catEl ? catEl.value : 'shirt';
 
+    if (!name || !price) return alert("অনুগ্রহ করে প্রোডাক্টের নাম এবং মূল্য অবশ্যই দিন!");
     if (!imgFile) return alert("অনুগ্রহ করে একটি প্রোডাক্টের ছবি সিলেক্ট করুন!");
 
     const reader = new FileReader();
     reader.onload = function (e) {
-        const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
-        items.push({
+        const productData = {
             id: Date.now(),
             type: 'resell',
             image: e.target.result,
             name: name,
             price: parseFloat(price),
-            marketPrice: parseFloat(mPrice),
+            marketPrice: parseFloat(mPrice) || 0,
             details: details,
+            category: category.toLowerCase(),
+            email: curUser.email,
             date: new Date().toLocaleDateString()
-        });
-        localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(items));
+        };
+
+        const personalItems = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+        personalItems.push(productData);
+        localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(personalItems));
+
+        const globalShopItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+        globalShopItems.push(productData);
+        localStorage.setItem('global_resell_shop_list', JSON.stringify(globalShopItems));
 
         document.getElementById('r-prod-img').value = "";
         document.getElementById('r-prod-name').value = "";
@@ -7934,12 +8006,13 @@ function saveResellProduct() {
         document.getElementById('r-prod-details').value = "";
 
         renderVendorItems();
-        alert("🟢 রিসেলিং প্রোডাক্টটি ইমেজসহ সফলভাবে আপলোড হয়েছে!");
+        renderResellerShopItems();
+        
+        alert("🟢 রিসেলিং প্রোডাক্টটি ইমেজসহ সফলভাবে আপলোড এবং শপে লাইভ হয়েছে!");
     };
     reader.readAsDataURL(imgFile);
 }
 
-// ৬. আইটেম লিস্ট রেন্ডার
 function renderVendorItems() {
     if (!curUser) return;
     const items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
@@ -7948,7 +8021,7 @@ function renderVendorItems() {
     if (!listContainer) return;
 
     if (items.length === 0) {
-        listContainer.innerHTML = `<p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 20px 0;">কোনো আইটেম যোগ করা হয়নি।</p>`;
+        listContainer.innerHTML = `<p style="text-align: center; color: #94a3b8; font-size: 12px; margin: 20px 0;">কোনো আইটেম যোগ করা হয়নি।</p>`;
         return;
     }
 
@@ -7986,62 +8059,450 @@ function renderVendorItems() {
 
 function deleteVendorItem(id) {
     if (!curUser || !confirm("এটি ডিলিট করতে চান?")) return;
-    let items = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
-    items = items.filter(i => i.id !== id);
-    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(items));
+    
+    let personalItems = JSON.parse(localStorage.getItem('vendor_items_' + curUser.email) || '[]');
+    personalItems = personalItems.filter(i => i.id !== id);
+    localStorage.setItem('vendor_items_' + curUser.email, JSON.stringify(personalItems));
+    
+    let globalItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+    globalItems = globalItems.filter(i => i.id !== id);
+    localStorage.setItem('global_resell_shop_list', JSON.stringify(globalItems));
+    
     renderVendorItems();
+    renderResellerShopItems();
 }
 
-// ৭. সুনির্দিষ্ট আলাদা অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং সিস্টেম
+// ==========================================================================
+// ৮. কাস্টমার Reseller Shop পেজ ও ফেভারিট টগল ফিল্টারিং মেকানিজম
+// ==========================================================================
+function renderResellerShopItems() {
+    const container = document.getElementById('shop-container');
+    if (!container) return;
+
+    const allItems = JSON.parse(localStorage.getItem('global_resell_shop_list') || '[]');
+    let allProducts = allItems.filter(i => i.type === 'resell');
+    const favorites = JSON.parse(localStorage.getItem('customer_favorites_' + (curUser?.email || 'guest')) || '[]');
+
+    if (showOnlyFavoritesMode) {
+        allProducts = allProducts.filter(item => favorites.includes(item.id));
+    }
+
+    if (allProducts.length === 0) {
+        container.innerHTML = `
+            <div style="text-align: center; padding: 40px 20px; color: #94a3b8; width: 100%;">
+                <i class="fas fa-shopping-basket" style="font-size: 30px; margin-bottom: 8px; color: #cbd5e1;"></i>
+                <p style="font-size: 13px; margin: 0;">${showOnlyFavoritesMode ? 'কোনো ফেভারিট প্রোডাক্ট পাওয়া যায়নি।' : 'শপে বর্তমানে কোনো প্রোডাক্ট নেই।'}</p>
+            </div>`;
+        return;
+    }
+
+    container.innerHTML = allProducts.reverse().map(item => {
+        const itemCat = item.category || 'shirt';
+        const isFav = favorites.includes(item.id);
+        const heartColor = isFav ? '#ef4444' : '#cbd5e1';
+        const heartIcon = isFav ? 'fas fa-heart' : 'far fa-heart';
+
+        const safeName = item.name.replace(/'/g, "\\'").replace(/"/g, '\\"');
+        const safeDetails = (item.details || '').replace(/'/g, "\\'").replace(/"/g, '\\"');
+        const vEmail = item.email || item.vendorEmail || '';
+
+        return `
+            <div class="col-6 shop-item ${itemCat}">
+                <div style="background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.05); border: 1px solid #eee; height: 100%; display: flex; flex-direction: column; justify-content: space-between; position: relative;">
+                    <div onclick="toggleFavorite(${item.id})" style="position: absolute; top: 10px; right: 10px; background: rgba(255,255,255,0.9); width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.1); z-index: 5;">
+                        <i class="${heartIcon}" style="color: ${heartColor}; font-size: 14px;"></i>
+                    </div>
+                    <img src="${item.image}" style="width: 100%; height: 140px; object-fit: cover;">
+                    <div style="padding: 10px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between;">
+                        <div>
+                            <h6 style="font-size: 13px; font-weight: 700; margin-bottom: 5px; height: 36px; overflow: hidden; color: #2d3436; line-height: 1.4;">${item.name}</h6>
+                            <p style="color: #dc3545; font-weight: 800; margin-bottom: 10px; font-size: 14px;">৳ ${item.price}</p>
+                        </div>
+                        <button onclick="viewProduct('${safeName}', '${item.price}', '${safeDetails}', '${item.image}', '${item.id}', '${vEmail}')" style="width: 100%; padding: 8px; border: none; border-radius: 8px; background: #f8f9fa; color: #333; font-size: 12px; font-weight: 700; cursor: pointer;">View</button>
+                    </div>
+                </div>
+            </div>`;
+    }).join("");
+}
+
+function toggleHeaderFavoriteFilter() {
+    showOnlyFavoritesMode = !showOnlyFavoritesMode;
+    const favHeaderIcon = document.getElementById('header-fav-icon');
+    if (favHeaderIcon) {
+        favHeaderIcon.style.color = showOnlyFavoritesMode ? "#ef4444" : "";
+    }
+    renderResellerShopItems();
+}
+
+function toggleFavorite(productId) {
+    if (!curUser) return alert("দয়া করে লগইন করুন!");
+    let favorites = JSON.parse(localStorage.getItem('customer_favorites_' + curUser.email) || '[]');
+    if (favorites.includes(productId)) {
+        favorites = favorites.filter(id => id !== productId);
+    } else {
+        favorites.push(productId);
+    }
+    localStorage.setItem('customer_favorites_' + curUser.email, JSON.stringify(favorites));
+    renderResellerShopItems();
+}
+
+// ==========================================================================
+// ৯. প্রোডাক্ট ভিউ মডাল এবং ইন-লাইন অর্ডার মেকানিজম (সব এক উইন্ডোতে)
+// ==========================================================================
+function viewProduct(name, price, details, image, id, vendorEmail) {
+    const modal = document.getElementById('view-modal');
+    if (!modal) return;
+
+    // মডালের স্টেট ডাটা এসাইন
+    activeViewingProduct = { 
+        id: id, 
+        name: name, 
+        price: parseFloat(price), 
+        vendorEmail: vendorEmail, 
+        image: image 
+    };
+
+    // মার্চেন্ট পেমেন্ট নম্বর (আপনার রিয়েল নাম্বার এখানে বসিয়ে দেবেন)
+    const bkashNo = "017XXXXXXXX"; 
+    const nagadNo = "019XXXXXXXX";
+
+    // সম্পূর্ণ মডালের লেআউট নতুন করে রি-রাইট করা হচ্ছে যাতে ইনপুট ফর্মটি ডায়নামিকালি চলে আসে
+    modal.innerHTML = `
+        <div style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 9999; display: flex; align-items: center; justify-content: center; padding: 15px; box-sizing: border-box;">
+            <div style="background: white; width: 100%; max-width: 450px; max-height: 90vh; border-radius: 20px; overflow-y: auto; box-shadow: 0 10px 25px rgba(0,0,0,0.2); position: relative; display: flex; flex-direction: column;">
+                
+                <div onclick="closeProduct()" style="position: absolute; top: 12px; right: 12px; background: rgba(0,0,0,0.5); color: white; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; font-weight: bold; z-index: 10;">✕</div>
+                
+                <img src="${image}" style="width: 100%; height: 200px; object-fit: cover;">
+                
+                <div style="padding: 15px; border-bottom: 1px dashed #e2e8f0;">
+                    <h5 style="font-size: 16px; font-weight: 700; color: #1e293b; margin-bottom: 5px;">${name}</h5>
+                    <div style="display: flex; gap: 15px; align-items: center; margin-bottom: 10px;">
+                        <span style="color: #dc3545; font-weight: 800; font-size: 16px;">৳ ${price}</span>
+                        <span style="color: #94a3b8; font-size: 12px; text-decoration: line-through;">বাজার মূল্য: ৳ ${(parseFloat(price) * 1.25).toFixed(0)}</span>
+                    </div>
+                    <p style="font-size: 12px; color: #64748b; margin: 0; background: #f8fafc; padding: 8px; border-radius: 8px; line-height: 1.5; max-height: 80px; overflow-y: auto;">
+                        <b>বিস্তারিত বিবরণ:</b><br>${details || "কোনো বিবরণ দেওয়া হয়নি।"}
+                    </p>
+                </div>
+
+                <div style="padding: 15px; background: #f8fafc; flex-grow: 1;">
+                    <h6 style="font-size: 13px; font-weight: 700; color: #0f172a; margin-bottom: 12px; display: flex; align-items: center; gap: 5px;">
+                        <i class="fas fa-shopping-cart" style="color: #16a34a;"></i> অর্ডার করার জন্য নিচের তথ্যগুলো পূরণ করুন:
+                    </h6>
+                    
+                    <div style="display: flex; flex-direction: column; gap: 8px; font-size: 12px;">
+                        <input type="text" id="ord-name" placeholder="👤 আপনার সম্পূর্ণ নাম" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        <input type="tel" id="ord-phone" placeholder="📞 সচল মোবাইল নম্বর" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        
+                        <div style="display: flex; gap: 8px;">
+                            <input type="text" id="ord-district" placeholder="📍 জেলা" style="width: 50%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                            <input type="text" id="ord-thana" placeholder="🏢 থানা" style="width: 50%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        </div>
+                        
+                        <input type="text" id="ord-address" placeholder="🏠 গ্রাম/রোড/বাড়ি নং এবং বিস্তারিত ঠিকানা" style="width: 100%; padding: 8px 12px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; box-sizing: border-box;">
+                        
+                        <label style="font-weight: 700; margin-top: 5px; color: #334155;">💳 পেমেন্ট পদ্ধতি সিলেক্ট করুন:</label>
+                        <select id="ord-payment-method" onchange="handlePaymentMethodChange(this.value, ${price})" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 8px; outline: none; background: white; box-sizing: border-box;">
+                            <option value="cod">📦 ক্যাশ অন ডেলিভারি (হাতে পেয়ে টাকা)</option>
+                            <option value="advance_dhaka">💸 অগ্রিম পেমেন্ট - ঢাকার ভেতরে (ডেলিভারি চার্জ ৮০৳)</option>
+                            <option value="advance_outside">💸 অগ্রিম পেমেন্ট - ঢাকার বাইরে (ডেলিভারি চার্জ ১৩০৳)</option>
+                        </select>
+
+                        <div id="advance-pay-box" style="display: none; background: #fff3cd; border: 1px solid #ffeba2; padding: 10px; border-radius: 8px; margin-top: 5px; box-sizing: border-box;">
+                            <p style="margin: 0 0 8px 0; font-size: 11px; color: #856404; line-height: 1.4;">
+                                📱 <b>বিকাশ নম্বর:</b> ${bkashNo} (Personal)<br>
+                                📱 <b>নগদ নম্বর:</b> ${nagadNo} (Personal)<br>
+                                <span id="total-pay-text" style="font-weight: bold; color: #dc3545;"></span> টাকা পাঠিয়ে নিচে ট্রানজেকশন কোড বসান।
+                            </p>
+                            <input type="text" id="ord-trxid" placeholder="🔑 TrxID (Transaction Code) লিখুন" style="width: 100%; padding: 6px 10px; border: 1px solid #f59e0b; border-radius: 6px; outline: none; font-size: 11px; box-sizing: border-box;">
+                        </div>
+
+                        <button onclick="submitInlineCustomerOrder()" style="width: 100%; background: #16a34a; color: white; border: none; padding: 10px; border-radius: 8px; font-weight: 700; font-size: 13px; margin-top: 10px; cursor: pointer; box-shadow: 0 4px 6px rgba(22,163,74,0.2);">🟢 অর্ডার কনফর্ম করুন</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    modal.classList.remove('d-none');
+}
+
+// পেমেন্ট মেথড ড্রপডাউন চেঞ্জ করার হ্যান্ডলার
+function handlePaymentMethodChange(val, basePrice) {
+    const payBox = document.getElementById('advance-pay-box');
+    const totalText = document.getElementById('total-pay-text');
+    if (!payBox || !totalText) return;
+
+    if (val === 'cod') {
+        payBox.style.display = 'none';
+    } else {
+        payBox.style.display = 'block';
+        let charge = val === 'advance_dhaka' ? 80 : 130;
+        totalText.innerText = `সর্বমোট: ৳${basePrice + charge} (প্রোডাক্ট ৳${basePrice} + চার্জ ৳${charge})`;
+    }
+}
+
+// ইন-লাইন উইন্ডো থেকে অর্ডার সাবমিট করার কোর লজিক
+function submitInlineCustomerOrder() {
+    if (typeof curUser === 'undefined' || !curUser) return alert("দয়া করে অর্ডার করতে লগইন করুন!");
+    if (!activeViewingProduct) return alert("দুঃখিত, কোনো প্রোডাক্ট ডাটা লোড হয়নি।");
+
+    const name = document.getElementById('ord-name').value.trim();
+    const phone = document.getElementById('ord-phone').value.trim();
+    const district = document.getElementById('ord-district').value.trim();
+    const thana = document.getElementById('ord-thana').value.trim();
+    const address = document.getElementById('ord-address').value.trim();
+    const payMethodChoice = document.getElementById('ord-payment-method').value;
+
+    // ভ্যালিডেশন চেক
+    if (!name || !phone || !district || !thana || !address) {
+        return alert("❌ দুঃখিত! অর্ডারের সবকটি ঘর সঠিকভাবে পূরণ করা বাধ্যতামূলক।");
+    }
+
+    let paymentMethod = "Cash on Delivery";
+    let deliveryCharge = 0;
+    let paymentStatus = "Cash on Delivery";
+    let trxId = "N/A";
+
+    if (payMethodChoice !== 'cod') {
+        paymentMethod = "Advance Payment";
+        deliveryCharge = payMethodChoice === 'advance_dhaka' ? 80 : 130;
+        
+        const userTrx = document.getElementById('ord-trxid').value.trim();
+        if (!userTrx) {
+            return alert("❌ অগ্রিম পেমেন্টের জন্য ট্রানজেকশন আইডি (TrxID) দেওয়া বাধ্যতামূলক!");
+        }
+        trxId = userTrx;
+        paymentStatus = "Paid (Pending Verification)";
+    }
+
+    // অর্ডার অবজেক্ট স্ট্রাকচার মেপিং
+    const orderId = Date.now();
+    const orderData = {
+        orderId: orderId,
+        productId: activeViewingProduct.id,
+        productName: activeViewingProduct.name,
+        price: activeViewingProduct.price,
+        deliveryCharge: deliveryCharge,
+        totalPrice: activeViewingProduct.price + deliveryCharge,
+        image: activeViewingProduct.image,
+        vendorEmail: activeViewingProduct.vendorEmail, 
+        customerEmail: curUser.email,
+        customerName: name,
+        customerPhone: phone,
+        shippingAddress: `${district}, ${thana}, ${address}`,
+        addressDetails: { district, thana, details: address },
+        paymentMethod: paymentMethod,
+        paymentStatus: paymentStatus,
+        trxId: trxId,
+        status: 'Pending', 
+        date: new Date().toLocaleDateString()
+    };
+
+    // লোকাল স্টোরেজে ডেটা স্টোরিং
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    allOrders.push(orderData);
+    localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
+
+    alert(`🟢 অভিনন্দন! আপনার অর্ডারটি সফল হয়েছে।\n📌 অর্ডার আইডি: ${orderId}\n💵 মেথড: ${paymentMethod}`);
+    closeProduct();
+
+    // ভেন্ডর ড্যাশবোর্ড কিউ ইনস্ট্যান্ট আপডেট ও রিফ্রেশ মেকানিজম
+    if (typeof renderOrderRequests === "function" && curUser.role) {
+        renderOrderRequests(curUser.role);
+    }
+}
+
+function closeProduct() {
+    const modal = document.getElementById('view-modal');
+    if (modal) {
+        modal.classList.add('d-none');
+        modal.innerHTML = ""; // রিসেট মেমোরি
+    }
+}
+// ==========================================================================
+
+// ১০. ভেন্ডর অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং ও প্রসেস
+
+// ==========================================================================
+
+// ==========================================================================
+// ১০. ভেন্ডর অর্ডার রিকোয়েষ্ট কিউ (Queue) রেন্ডারিং ও প্রসেস (WITH PRODUCT PHOTO)
+// ==========================================================================
 function renderOrderRequests(vType) {
     const driveContainer = document.getElementById('drive-order-list');
     const resellContainer = document.getElementById('resell-order-list');
+    if(!curUser) return;
     
-    let pendingCount = 0;
-    let successCount = 0;
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    const myOrders = allOrders.filter(order => order.vendorEmail === curUser.email);
+
+    let pendingCount = myOrders.filter(o => o.status === 'Pending').length;
+    let successCount = myOrders.filter(o => o.status === 'Approved' || o.status === 'Delivered').length;
+
+    // ডিফল্ট ইমেজ হ্যান্ডলার ফাংশন
+    const getProductImg = (imgUrl) => imgUrl ? imgUrl : 'https://cdn-icons-png.flaticon.com/512/679/679821.png';
 
     if (vType === "Drive Agent" && driveContainer) {
-        // ড্রাইভ রিকোয়েস্ট উইন্ডো ডিজাইন (আলাদা মেকানিজম)
-        driveContainer.innerHTML = `
-            <div style="background: #fdfaf2; border: 1px solid #fef3c7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309;">
-                    <span>Robi 40GB Request</span>
-                    <span>৳420</span>
+        driveContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
+            <div style="background: #fdfaf2; border: 1px solid #fef3c7; padding: 14px; border-radius: 14px; font-size: 12px; margin-bottom: 10px; box-sizing: border-box; display: flex; flex-direction: column; gap: 8px;">
+                <div style="display: flex; gap: 10px; align-items: center;">
+                    <img src="${getProductImg(order.image)}" style="width: 45px; height: 45px; border-radius: 8px; object-fit: cover; border: 1px solid #fde68a; background: #fff;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/679/679821.png'">
+                    
+                    <div style="flex-grow: 1;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #b45309; font-size: 13px;">
+                            <span>${order.productName}</span>
+                            <span>৳${order.price}</span>
+                        </div>
+                        <div style="color: #475569; font-size: 11px; margin-top: 3px; line-height: 1.4;">
+                            🎯 লক্ষ্য নম্বর: <b style="color:#000;">${order.customerPhone}</b>
+                        </div>
+                    </div>
                 </div>
-                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                    🎯 লক্ষ্য নম্বর: <b style="color:#000;">018XXXXXXXX</b><br>
-                    👤 গ্রাহক মেইল: user@gmail.com
+                <div style="color: #64748b; font-size: 11px; border-top: 1px dashed #fef3c7; padding-top: 6px;">
+                    👤 গ্রাহক মেইল: ${order.customerEmail}
                 </div>
-                <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
-                    <button style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Success</button>
-                    <button style="background:#ef4444; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Cancel</button>
+                <div style="display: flex; justify-content: flex-end; gap: 6px; margin-top: 2px;">
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:5px 12px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;">Success</button>
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:5px 12px; border-radius:6px; font-size:11px; font-weight:600; cursor:pointer;">Cancel</button>
                 </div>
-            </div>`;
-        pendingCount = 1;
+            </div>
+        `).join("") || `<p style="text-align:center;font-size:11px;color:#94a3b8;margin:15px 0;">কোনো পেন্ডিং অর্ডার নেই</p>`;
     }
 
     if (vType === "Reselling Agent" && resellContainer) {
-        // রিসেলিং রিকোয়েস্ট উইন্ডো ডিজাইন (বাজার ডিটেইলস সহ আলাদা মেকানিজম)
-        resellContainer.innerHTML = `
-            <div style="background: #f0fdf4; border: 1px solid #dcfce7; padding: 12px; border-radius: 10px; font-size: 12px; margin-bottom: 8px; box-sizing: border-box;">
-                <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d;">
-                    <span>Smart Watch Order</span>
-                    <span>৳850</span>
+        resellContainer.innerHTML = myOrders.filter(o => o.status === 'Pending').map(order => `
+            <div style="background: #f0fdf4; border: 1px solid #dcfce7; padding: 14px; border-radius: 14px; font-size: 12px; margin-bottom: 10px; box-sizing: border-box; display: flex; flex-direction: column; gap: 10px;">
+                <div style="display: flex; gap: 12px; align-items: flex-start;">
+                    <img src="${getProductImg(order.image)}" style="width: 55px; height: 55px; border-radius: 10px; object-fit: cover; border: 1px solid #bbf7d0; background: #fff;" onerror="this.src='https://cdn-icons-png.flaticon.com/512/679/679821.png'">
+                    
+                    <div style="flex-grow: 1;">
+                        <div style="display: flex; justify-content: space-between; font-weight: 700; color: #15803d; font-size: 13px; line-height: 1.3;">
+                            <span style="max-width: 70%;">${order.productName}</span>
+                            <span style="text-align: right;">৳${order.price} <br><small style="font-size:10px; color:#64748b; font-weight:normal;">(মোট: ৳${order.totalPrice || order.price})</small></span>
+                        </div>
+                    </div>
                 </div>
-                <div style="color: #475569; font-size: 11px; margin-top: 4px; line-height: 1.4;">
-                    📦 শিপিং এড্রেস: মিরপুর, ঢাকা<br>
-                    📞 ফোন নম্বর: 019XXXXXXXX
+                
+                <div style="color: #475569; font-size: 11px; line-height: 1.5; background: rgba(255,255,255,0.7); padding: 8px; border-radius: 8px; border: 1px solid #e8f5e9;">
+                    👤 কাস্টমার নাম: <b>${order.customerName || 'N/A'}</b><br>
+                    📦 শিপিং এড্রেস: ${order.shippingAddress}<br>
+                    📞 ফোন নম্বর: <b>${order.customerPhone}</b><br>
+                    💳 পেমেন্ট পদ্ধতি: <span style="color:#0284c7; font-weight:600;">${order.paymentMethod}</span><br>
+                    🔑 TrxID: <span style="color:#db2777; font-weight:bold;">${order.trxId || 'N/A'}</span><br>
+                    ✉️ গ্রাহক মেইল: ${order.customerEmail}
                 </div>
-                <div style="margin-top: 8px; display: flex; justify-content: flex-end; gap: 5px;">
-                    <button style="background:#16a34a; color:white; border:none; padding:4px 10px; border-radius:4px; font-size:10px; font-weight:bold; cursor:pointer;">Deliver</button>
+                
+                <div style="display: flex; justify-content: flex-end; gap: 6px;">
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Approved')" style="background:#16a34a; color:white; border:none; padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600; cursor:pointer; box-shadow: 0 2px 4px rgba(22,163,74,0.15);">Deliver</button>
+                    <button onclick="updateOrderStatus(${order.orderId}, 'Rejected')" style="background:#ef4444; color:white; border:none; padding:6px 14px; border-radius:8px; font-size:11px; font-weight:600; cursor:pointer;">Reject</button>
                 </div>
-            </div>`;
-        successCount = 1;
+            </div>
+        `).join("") || `<p style="text-align:center;font-size:11px;color:#94a3b8;margin:15px 0;">কোনো পেন্ডিং অর্ডার নেই</p>`;
     }
 
     if(document.getElementById('v-pending-orders')) document.getElementById('v-pending-orders').innerText = pendingCount;
     if(document.getElementById('v-success-orders')) document.getElementById('v-success-orders').innerText = successCount;
 }
+
+
+
+function updateOrderStatus(orderId, newStatus) {
+    if (!curUser) return;
+    
+    let allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    allOrders = allOrders.map(order => {
+        if (order.orderId === orderId) {
+            order.status = newStatus;
+        }
+        if (order.orderId === orderId) {
+            order.status = newStatus;
+        }
+        return order;
+    });
+    localStorage.setItem('global_orders_list', JSON.stringify(allOrders));
+    
+    const profile = JSON.parse(localStorage.getItem('vendor_profile_' + curUser.email) || '{}');
+    renderOrderRequests(profile.type || "Reselling Agent");
+    
+    alert(`অর্ডারটি সফলভাবে ${newStatus} করা হয়েছে!`);
+}
+// ==========================================================================
+// ১১. কাস্টমার পার্সোনাল হিস্টোরি ও রাউটিং মেকানিজম (রিকোয়েস্ট ৩ ফিক্সড)
+// ==========================================================================
+function openShopHistory() {
+    // হেডারের হিস্টোরি আইকনে চাপ দিলে এখন এটি সরাসরি নতুন পেজে ('p-shop-history') নিয়ে যাবে
+    openPage('p-shop-history');
+    renderCustomerOrderHistory();
+}
+
+function renderCustomerOrderHistory() {
+    const historyContainer = document.getElementById('customer-history-container');
+    if (!historyContainer) return;
+
+    if (!curUser) {
+        historyContainer.innerHTML = `<p style="text-align:center; padding:20px; color:#64748b;">হিস্টোরি দেখতে দয়া করে লগইন করুন।</p>`;
+        return;
+    }
+
+    const allOrders = JSON.parse(localStorage.getItem('global_orders_list') || '[]');
+    const myHistory = allOrders.filter(order => order.customerEmail === curUser.email);
+
+    if (myHistory.length === 0) {
+        historyContainer.innerHTML = `<p style="text-align:center; padding:30px; color:#94a3b8; font-size:12px;">আপনি এখনো কোনো প্রোডাক্ট অর্ডার করেননি।</p>`;
+        return;
+    }
+
+    historyContainer.innerHTML = myHistory.reverse().map(order => {
+        let badgeColor = "#eab308"; 
+        if(order.status === 'Approved') badgeColor = "#16a34a"; 
+        if(order.status === 'Rejected') badgeColor = "#ef4444"; 
+
+        return `
+            <div style="display: flex; align-items: center; justify-content: space-between; background: #ffffff; border: 1px solid #f1f5f9; padding: 12px; border-radius: 12px; margin-bottom: 8px; box-shadow:0 2px 6px rgba(0,0,0,0.01);">
+                <div style="display: flex; align-items: center;">
+                    <img src="${order.image || 'https://via.placeholder.com/50'}" style="width: 42px; height: 42px; border-radius: 8px; object-fit: cover; margin-right: 12px; border: 1px solid #e2e8f0;">
+                    <div>
+                        <h6 style="margin: 0; font-size: 13px; font-weight: 700; color: #1e293b;">${order.productName}</h6>
+                        <span style="font-size: 11px; color: #64748b;">মূল্য: ৳${order.price} | ${order.date}</span>
+                    </div>
+                </div>
+                <div>
+                    <span style="background: ${badgeColor}; color: white; padding: 4px 8px; border-radius: 20px; font-size: 10px; font-weight: 700; text-transform: uppercase;">${order.status}</span>
+                </div>
+            </div>`;
+    }).join("");
+}
+
+// ==========================================================================
+// ১২. গ্লোবাল রাউটার ইন্টারসেপ্টার ও লাইফসাইকেল হুক
+// ==========================================================================
+const originalOpenPage = typeof openPage === 'function' ? openPage : null;
+openPage = function(pageId) {
+    if (originalOpenPage) {
+        originalOpenPage(pageId);
+    } else {
+        document.querySelectorAll('.p-page').forEach(p => p.classList.add('d-none'));
+        const activePage = document.getElementById(pageId);
+        if (activePage) activePage.classList.remove('d-none');
+    }
+    
+    // প্রতিবার পি শপ পেজ ওপেন হলে ডিফল্ট স্টেট এবং শপ রেন্ডার ট্রিগার হবে
+    if (pageId === 'p-shop') {
+        showOnlyFavoritesMode = false; // শপে ঢুকলে প্রথমে সব প্রোডাক্ট দেখাবে
+        const favHeaderIcon = document.getElementById('header-fav-icon');
+        if (favHeaderIcon) favHeaderIcon.style.color = "";
+        renderResellerShopItems();
+    }
+    if (pageId === 'p-shop-history') {
+        renderCustomerOrderHistory();
+    }
+};
+
+document.addEventListener("DOMContentLoaded", function() {
+    loadGlobalVendorsList();
+    checkVendorStatus();
+});
 
 
 function renderAdmin() {
@@ -9063,32 +9524,7 @@ window.addEventListener('DOMContentLoaded', () => {
     checkPurchased();
 });
 
-// ২. টাকা কাটা এবং নতুন ব্যালেন্স সেভ করা
-function processOrder(id, price) {
-    const balEle = document.getElementById('u-bal');
-    let currentBalance = parseFloat(balEle.innerText.replace(/,/g, ''));
 
-    if (currentBalance >= price) {
-        // নতুন ব্যালেন্স হিসাব করা
-        let newBalance = currentBalance - price;
-        
-        // স্ক্রিনে ব্যালেন্স আপডেট করা
-        balEle.innerText = newBalance.toFixed(2);
-        
-        // *** অতি জরুরি: ব্রাউজারের মেমরিতে (LocalStorage) নতুন ব্যালেন্স সেভ করা ***
-        localStorage.setItem('user_current_balance', newBalance);
-
-        alert("সফলভাবে কেনা হয়েছে!");
-        
-        // কেনা কোর্সের লিস্ট সেভ করা
-        savePurchaseStatus(id);
-        checkPurchased();
-        closeBuyModal();
-    } else {
-        alert("দুঃখিত! আপনার একাউন্টে পর্যাপ্ত ব্যালেন্স নেই।");
-        closeBuyModal();
-    }
-}
 
 // ৩. কোর্স কেনার স্ট্যাটাস সেভ করা
 function savePurchaseStatus(id) {
@@ -9384,66 +9820,8 @@ function confirmDriveOrder() {
     openPage('p-home');
 }
 
-function openDriveHistory() {
-    alert("আপনার ড্রাইভ অর্ডার হিস্টোরি শীঘ্রই আসছে!");
-}
-// ১. প্রোডাক্ট ফিল্টারিং
-function filterShop(category) {
-    const items = document.querySelectorAll('.shop-item');
-    items.forEach(item => {
-        if (category === 'all' || item.classList.contains(category)) {
-            item.style.display = 'block';
-        } else {
-            item.style.display = 'none';
-        }
-    });
-}
 
-// ২. প্রোডাক্ট ভিউ ওপেন
-function viewProduct(title, price, desc, img) {
-    document.getElementById('view-title').innerText = title;
-    document.getElementById('view-price').innerText = "৳ " + price;
-    document.getElementById('view-desc').innerText = desc;
-    document.getElementById('view-img').src = img;
-    document.getElementById('view-modal').classList.remove('d-none');
-}
 
-function closeProduct() {
-    document.getElementById('view-modal').classList.add('d-none');
-}
-
-// ৩. অর্ডার ফর্ম হ্যান্ডলিং
-function showOrderForm() {
-    document.getElementById('shop-order-modal').classList.remove('d-none');
-}
-
-function closeOrderForm() {
-    document.getElementById('shop-order-modal').classList.add('d-none');
-}
-
-function submitShopOrder() {
-    const name = document.getElementById('o-name').value;
-    const phone = document.getElementById('o-phone').value;
-    
-    if(!name || !phone) return alert("দয়া করে নাম এবং নম্বর দিন!");
-    
-    alert("আপনার অর্ডারটি সফলভাবে সাবমিট হয়েছে। শীঘ্রই আমাদের প্রতিনিধি যোগাযোগ করবেন।");
-    closeOrderForm();
-    closeProduct();
-}
-
-function openShopHistory() {
-    alert("আপনার শপিং হিস্টোরি শীঘ্রই আসছে!");
-}
-function closePage(pageId) {
-    // এখানে 'p-' সহ বা ছাড়া দুইভাবেই আইডি চেক করবে
-    const el = document.getElementById(pageId) || document.getElementById('p-' + pageId);
-    
-    if (el) {
-        el.classList.add('d-none'); // বুটস্ট্র্যাপ ক্লাস
-        el.style.display = 'none';   // সরাসরি সিএসএস দিয়ে হাইড করা (নিশ্চিত হওয়ার জন্য)
-    }
-}
 
 // ১. ওয়ালেট ওপেন করার ফাংশন
 function handleWalletClick() {
@@ -9763,179 +10141,6 @@ function calculateProfit() {
         document.getElementById('profit10').innerText = '৳০';
         document.getElementById('profit30').innerText = '৳০';
     }
-}
-function confirmInvest() {
-    let amtInput = document.getElementById('investAmount');
-    let amt = parseInt(amtInput.value);
-    
-    // ১. তথ্য সঠিক আছে কিনা যাচাই
-    if (!amt || amt < 100) {
-        return Swal.fire({
-            target: document.getElementById('p-invest'), // শুধুমাত্র এই পেজে দেখাবে
-            icon: 'error',
-            title: 'ভুল ইনপুট',
-            text: 'নূন্যতম ১০০ টাকা বিনিয়োগ করতে হবে।'
-        });
-    }
-
-    // ২. ব্যালেন্স চেক (curUser.balance আপনার মেইন ব্যালেন্স ভেরিয়েবল)
-    if (curUser.balance < amt) {
-        return Swal.fire({
-            target: document.getElementById('p-invest'),
-            icon: 'error',
-            title: 'পর্যাপ্ত ব্যালেন্স নেই',
-            text: 'আপনার একাউন্টে পর্যাপ্ত টাকা নেই!'
-        });
-    }
-
-    // ৩. লাভের হিসাব (৩০ দিনে ৩০% লাভ)
-    let profit = Math.floor(amt * 0.30);
-    let totalReturn = amt + profit;
-    let now = new Date().toLocaleString('bn-BD', { hour12: true });
-
-    // ৪. নিশ্চিতকরণ পপআপ
-    Swal.fire({
-        target: document.getElementById('p-invest'),
-        title: 'আপনি কি নিশ্চিত?',
-        text: `৳${amt} আপনার একাউন্ট থেকে কেটে নেওয়া হবে।`,
-        icon: 'question',
-        showCancelButton: true,
-        confirmButtonText: 'হ্যাঁ, নিশ্চিত',
-        cancelButtonText: 'না',
-        confirmButtonColor: '#28a745',
-        cancelButtonColor: '#d33',
-    }).then((result) => {
-        if (result.isConfirmed) {
-            // ৫. টাকা কেটে নেওয়া এবং ডাটা সেভ করা
-            curUser.balance -= amt; // ব্যালেন্স থেকে টাকা কাটা হলো
-            
-            // ইনভেস্টমেন্ট হিস্টোরিতে জমা করা
-            if(!db.investments) db.investments = []; // যদি আগে না থাকে
-            db.investments.push({
-                id: Date.now(),
-                user: curUser.email,
-                investAmt: amt,
-                totalReturn: totalReturn,
-                status: 'Active',
-                time: now,
-                expiry: Date.now() + (30 * 24 * 60 * 60 * 1000) // ৩০ দিন পর
-            });
-            
-            save(); // ডাটাবেস সেভ করা
-            renderUser(); // হোমপেজের ব্যালেন্স আপডেট করা
-
-            // ৬. সফলতার প্রিমিয়াম পপআপ দেখানো
-            showSuccessInvestPopup(amt, totalReturn, now);
-            amtInput.value = ""; // ইনপুট বক্স খালি করা
-        }
-    });
-}
-
-function showSuccessInvestPopup(amt, total, time) {
-    Swal.fire({
-        target: document.getElementById('p-invest'), // পপআপ শুধু এই পেজেই থাকবে
-        width: '350px',
-        background: '#ffffff',
-        showConfirmButton: true,
-        confirmButtonText: 'ঠিক আছে',
-        confirmButtonColor: '#28a745',
-        allowOutsideClick: false,
-        padding: '0',
-        customClass: { popup: 'long-premium-popup' },
-        html: `
-            <style>
-                .long-premium-popup { border-radius: 30px !important; margin-top: 20px !important; }
-                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
-            </style>
-            <div class="pop-container" style="position: relative;">
-                <div style="background: linear-gradient(135deg, #28a745, #5dd373); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: -115px auto 25px; box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4); border: 6px solid #ffffff;">
-                    <i class="fas fa-check" style="color: white; font-size: 35px;"></i>
-                </div>
-                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 20px; font-size: 20px;">বিনিয়োগ সফল!</h3>
-                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 20px;">
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">বিনিয়োগ</span>
-                        <b style="color: #333; font-size: 15px;">৳${amt}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
-                        <span style="color: #888; font-size: 13px;">মোট রিটার্ন</span>
-                        <b style="color: #28a745; font-size: 15px;">৳${total}</b>
-                    </div>
-                    <div style="display:flex; justify-content: space-between; margin-top: 10px;">
-                        <span style="color: #bbb; font-size: 11px;">সময়</span>
-                        <span style="color: #bbb; font-size: 11px;">${time}</span>
-                    </div>
-                </div>
-                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
-                    <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
-                        আগামী ৩০ দিন পর স্বয়ংক্রিয়ভাবে আপনার ব্যালেন্সে ৳${total} টাকা যোগ হয়ে যাবে।
-                    </p>
-                </div>
-            </div>
-        `
-    });
-}
-function renderInvestHistory() {
-    let container = document.getElementById('invest-list-container');
-    container.innerHTML = ""; // আগের ডাটা পরিষ্কার করা
-
-    if (!db.investments || db.investments.length === 0) {
-        container.innerHTML = `<div class="text-center mt-5 text-muted">আপনার কোনো সক্রিয় ইনভেস্টমেন্ট নেই।</div>`;
-        return;
-    }
-
-    // নতুন ইনভেস্ট আগে দেখানোর জন্য রিভার্স করা
-    let sortedInvest = [...db.investments].reverse();
-
-    sortedInvest.forEach(inv => {
-        let now = Date.now();
-        let remainingTime = inv.expiry - now;
-        
-        let daysLeft = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
-        let statusText = "";
-        let statusClass = "";
-
-        if (remainingTime <= 0) {
-            statusText = "Completed";
-            daysLeft = 0;
-            statusClass = "text-success";
-        } else {
-            statusText = "Running";
-            statusClass = "text-primary";
-        }
-
-        container.innerHTML += `
-            <div class="card shadow-sm border-0 mb-3" style="border-radius: 20px; overflow: hidden;">
-                <div style="padding: 15px; background: #fff;">
-                    <div class="d-flex justify-content-between align-items-center mb-2">
-                        <span style="font-size: 10px; color: #aaa; font-weight: 600;">#${inv.id}</span>
-                        <span class="badge" style="background: ${remainingTime > 0 ? '#eef2ff' : '#f0fdf4'}; color: ${remainingTime > 0 ? '#3b82f6' : '#2ecc71'}; border-radius: 8px;">${statusText}</span>
-                    </div>
-                    
-                    <div class="d-flex justify-content-between">
-                        <div>
-                            <small class="text-muted d-block" style="font-size: 10px;">Investment</small>
-                            <b style="color: #2d3436;">৳${inv.investAmt}</b>
-                        </div>
-                        <div class="text-center">
-                            <small class="text-muted d-block" style="font-size: 10px;">Return (30 Days)</small>
-                            <b class="text-success">৳${inv.totalReturn}</b>
-                        </div>
-                        <div class="text-end">
-                            <small class="text-muted d-block" style="font-size: 10px;">Time Left</small>
-                            <b class="${statusClass}">${daysLeft} Days</b>
-                        </div>
-                    </div>
-
-                    <div class="mt-3" style="height: 6px; background: #f1f2f6; border-radius: 10px; position: relative;">
-                        <div style="position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60); border-radius: 10px; width: ${remainingTime > 0 ? (100 - (daysLeft * 3.33)) : 100}%;"></div>
-                    </div>
-                    
-                    <small class="d-block mt-2 text-muted" style="font-size: 9px; text-align: right;">Started: ${inv.time}</small>
-                </div>
-            </div>
-        `;
-    });
 }
 
 // আপনার মেইন openPage ফাংশনে এটি অ্যাড করুন যেন পেজ খুললেই রেন্ডার হয়
@@ -12416,67 +12621,7 @@ function handlePayBillClick() {
         openPage('p-paybill');
     }
 }
-let currentCaptcha = "";
-let todayCaptchaCount = 0;
-let captchaReward = 0.20; // প্রতি ক্যাপচায় ২০ পয়সা (আপনি পরিবর্তন করতে পারেন)
 
-// ১. পেজ খোলার সময় নতুন ক্যাপচা তৈরি
-function openCaptchaPage() {
-    generateCaptcha();
-    openPage('p-captcha');
-}
-
-// ২. র‍্যান্ডম ক্যাপচা তৈরি করা
-function generateCaptcha() {
-    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; // সহজে চেনা যায় এমন অক্ষর
-    let result = "";
-    for (let i = 0; i < 6; i++) {
-        result += chars.charAt(Math.floor(Math.random() * chars.length));
-    }
-    currentCaptcha = result;
-    document.getElementById('target-code').innerText = result;
-    document.getElementById('captcha-input').value = "";
-}
-
-// ৩. ক্যাপচা যাচাই করা
-function checkCaptcha() {
-    const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
-    
-    if (!userInput) {
-        toast("অনুগ্রহ করে কোডটি লিখুন!");
-        return;
-    }
-
-    if (userInput === currentCaptcha) {
-        // সঠিক হলে
-        todayCaptchaCount++;
-        
-        // ইউজারের ব্যালেন্স আপডেট (আপনার ডাটাবেস লজিক অনুযায়ী)
-        curUser.bal += captchaReward;
-        curUser.todayEarn = (curUser.todayEarn || 0) + captchaReward;
-        
-        // UI আপডেট
-        document.getElementById('cap-count').innerText = todayCaptchaCount;
-        document.getElementById('cap-earn').innerText = "৳" + (todayCaptchaCount * captchaReward).toFixed(2);
-        
-        Swal.fire({
-            title: 'সফল হয়েছে!',
-            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন।`,
-            icon: 'success',
-            timer: 1500,
-            showConfirmButton: false
-        });
-
-        // নতুন ক্যাপচা জেনারেট
-        generateCaptcha();
-        if(typeof renderUser === "function") renderUser(); // ব্যালেন্স রিফ্রেশ
-        
-    } else {
-        // ভুল হলে
-        Swal.fire('ভুল কোড!', 'কোডটি আবার দেখে টাইপ করুন।', 'error');
-        generateCaptcha();
-    }
-}
 function handleCaptchaClick() {
     // অ্যাকাউন্ট একটিভ কি না চেক করা
     if (curUser.status !== 'active') {
@@ -12496,6 +12641,712 @@ function handleCaptchaClick() {
         openPage('p-captcha'); 
     }
 }
+function searchShopProducts() {
+    // ১. সার্চ বক্সে ইউজার কি লিখলো তা ছোট হাতের অক্ষরে (Lowercase) নিয়ে নিন
+    const searchInputValue = document.getElementById('shop-search-input').value.toLowerCase().trim();
+    
+    // ২. আপনার শপ কন্টেইনারের ভেতরের সব প্রোডাক্ট কার্ডগুলো ধরুন
+    // (নিশ্চিত করুন যে জাভাস্ক্রিপ্ট দিয়ে কার্ড বানানোর সময় প্রতিটা কার্ডে class="product-item" বা card ক্লাসটি থাকে)
+    const productCards = document.querySelectorAll('#shop-container .col-6, #shop-container .product-item');
+
+    productCards.forEach(card => {
+        // ৩. প্রতিটা কার্ডের ভেতরের প্রোডাক্টের টাইটেল বা নাম টেক্সট খুঁজুন 
+        // (এখানে h5, p বা যেখানে আপনার প্রোডাক্টের নাম শো করাচ্ছেন সেটি চেক করবে)
+        const productName = card.innerText.toLowerCase();
+
+        // ৪. নামের সাথে মিল থাকলে কার্ড দেখাবে, না থাকলে d-none দিয়ে হাইড করে দেবে
+        if (productName.includes(searchInputValue)) {
+            card.style.display = ""; // শো করবে
+        } else {
+            card.style.display = "none"; // হাইড করবে
+        }
+    });
+}
+// ডিজিটাল অর্ডার ট্র্যাকিং স্টেট
+let currentDigitalOrder = {
+    productName: "",
+    price: 0
+};
+
+// ১. অর্ডার বাটন চাপলে পপআপ ওপেন করার ফাংশন
+function orderDigital(prodName, prodPrice) {
+    if (!curUser) return alert("দয়া করে আগে লগইন করুন!");
+
+    // স্টেট সেট করা
+    currentDigitalOrder.productName = prodName;
+    currentDigitalOrder.price = Number(prodPrice);
+
+    // পপআপ টেক্সট আপডেট
+    document.getElementById('modal-product-title').innerText = prodName;
+    document.getElementById('modal-product-price').innerText = `Price: ৳ ${prodPrice}.00`;
+
+    // ইনপুট ফিল্ডগুলো রিসেট করা
+    document.getElementById('digital-cust-name').value = curUser.name || "";
+    document.getElementById('digital-cust-phone').value = "";
+    document.getElementById('digital-cust-username').value = "";
+
+    // পপআপ শো করা
+    const modal = document.getElementById('digital-order-modal');
+    if (modal) {
+        modal.classList.remove('d-none');
+        modal.style.display = 'flex';
+    }
+}
+
+// ২. পপআপ ক্লোজ করার ফাংশন
+function closeDigitalModal() {
+    const modal = document.getElementById('digital-order-modal');
+    if (modal) {
+        modal.classList.add('d-none');
+        modal.style.display = 'none';
+    }
+}
+
+// ডাবল সাবমিশন লক করার জন্য ফাংশনের বাইরে একটি গ্লোবাল ভেরিয়েবল
+let isOrderProcessing = false;
+
+// ৩. সাবমিট এবং ব্যালেন্স কাটার মূল ফাংশন (উইথড্র সিস্টেমের মতো ১০০% পার্মানেন্ট)
+async function submitDigitalOrder() {
+    // অহেতুক ডাবল ক্লিক বা রিফ্রেশ লক চেক
+    if (isOrderProcessing) {
+        return console.log("অর্ডার প্রসেস হচ্ছে, দয়া করে অপেক্ষা করুন...");
+    }
+
+    const nameEl = document.getElementById('digital-cust-name');
+    const phoneEl = document.getElementById('digital-cust-phone');
+    const usernameEl = document.getElementById('digital-cust-username');
+
+    if (!nameEl || !phoneEl || !usernameEl) return;
+
+    const name = nameEl.value.trim();
+    const phone = phoneEl.value.trim();
+    const username = usernameEl.value.trim();
+
+    // ১. ভ্যালিডেশন চেক
+    if (!name || !phone || !username) {
+        return alert("অনুগ্রহ করে সব তথ্য সঠিকভাবে পূরণ করুন!");
+    }
+
+    if (!curUser) {
+        return alert("দয়া করে আগে লগইন করুন!");
+    }
+
+    // অর্ডার প্রসেস শুরু - লক চালু হলো
+    isOrderProcessing = true;
+
+    // ২. db.users অ্যারে থেকে এই লগইন থাকা ইউজারকে খুঁজে বের করা
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) {
+        isOrderProcessing = false; // রিসেট
+        return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
+    }
+
+    // ৩. ইউজারের বর্তমান ব্যালেন্স চেক (db.users[userIndex].bal থেকে সরাসরি)
+    let currentBal = Number(db.users[userIndex].bal || 0);
+    let orderPrice = Number(currentDigitalOrder.price);
+
+    if (currentBal < orderPrice) {
+        isOrderProcessing = false; // রিসেট
+        return alert("দুঃখিত! আপনার মেইন ব্যালেন্সে পর্যাপ্ত টাকা নেই।");
+    }
+
+    // ৪. ব্যালেন্স কেটে নেওয়া (উইথড্র সিস্টেমের মতো চিরতরে মাইনাস)
+    let newBalance = currentBal - orderPrice;
+    
+    // ডাটাবেজ অবজেক্ট এবং কারেন্ট সেশনে ব্যালেন্স আপডেট
+    db.users[userIndex].bal = newBalance;
+    curUser.bal = newBalance;
+
+    // ৫. ডিজিটাল অর্ডারের হিস্টোরি পুশ করা
+    if (!db.digital_orders) db.digital_orders = [];
+    
+    const orderId = 'DG-' + Math.floor(100000 + Math.random() * 900000);
+    const orderData = {
+        orderId: orderId,
+        userEmail: curUser.email,
+        customerName: name,
+        telegramPhone: phone,
+        telegramUsername: username,
+        productName: currentDigitalOrder.productName,
+        price: orderPrice,
+        status: "Pending",
+        date: new Date().toLocaleString('bn-BD')
+    };
+    
+    db.digital_orders.push(orderData);
+
+    // ৬. লোকাল স্টোরেজে সম্পূর্ণ ডাটাবেজ সেভ এবং সার্ভার (api.php) সিঙ্ক
+    if (typeof save === "function") {
+        await save(); // await ব্যবহার করা হয়েছে যাতে ব্যাকএন্ডে সেভ হওয়া নিশ্চিত হয়
+    } else {
+        localStorage.setItem('v7_u', JSON.stringify(db.users));
+        localStorage.setItem('digital_orders_list', JSON.stringify(db.digital_orders));
+    }
+
+    // ৭. অতিরিক্ত ব্যাকআপ কি (Key) থাকলে তাও আপডেট করা
+    localStorage.setItem('balance_' + curUser.email, newBalance);
+
+    // ৮. আপনার ওয়েবসাইটের হোমপেজ বা হেডার এর ব্যালেন্স UI আপডেট করা
+    if (typeof updateUIBalance === "function") {
+        updateUIBalance();
+    } else if (typeof renderHome === "function") {
+        renderHome();
+    } else {
+        const balElement = document.getElementById('user-balance');
+        if(balElement) balElement.innerText = formatCurrency(newBalance);
+    }
+
+    // ৯. টেলিগ্রাম বটে ডাটা পাঠানো
+    sendDigitalOrderToTelegram(orderData);
+
+    // ১০. সবচেয়ে গুরুত্বপূর্ণ: ফর্মের ইনপুট ফিল্ডগুলো চিরতরে খালি করে দেওয়া
+    // এর ফলে পেজ রিফ্রেশ দিলেও ভ্যালিডেশন ফেল করবে, ব্যালেন্স কাটবে না
+    nameEl.value = "";
+    phoneEl.value = "";
+    usernameEl.value = "";
+    
+    // অর্ডার প্রসেস শেষ - লক অবমুক্ত করা হলো
+    isOrderProcessing = false;
+
+    // পপআপ বন্ধ করা ও সফলতার মেসেজ
+    closeDigitalModal();
+    
+    Swal.fire({
+        title: 'অর্ডার সফল হয়েছে! 🚀',
+        text: `অর্ডার আইডি: ${orderId}। আপনার অ্যাকাউন্ট থেকে ৳${orderPrice} কেটে নেওয়া হয়েছে।`,
+        icon: 'success',
+        confirmButtonColor: '#20c997'
+    });
+}
+
+// ৪. টেলিগ্রাম বট এপিআই ইন্টিগ্রেশন ফাংশন (ভেরিয়েবল নেম ফিক্সড)
+function sendDigitalOrderToTelegram(order) {
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862";   
+
+    const textMessage = `
+🛒 *নতুন ডিজিটাল সার্ভিস অর্ডার!*
+━━━━━━━━━━━━━━━━━━
+🆔 *Order ID:* \`${order.orderId}\`
+📦 *Product:* ${order.productName}
+💰 *Price:* ৳ ${order.price}.00
+👤 *User Email:* ${order.userEmail}
+━━━━━━━━━━━━━━━━━━
+📝 *কাস্টমার ডিটেইলস:*
+• *Name:* ${order.customerName}
+• *Telegram Phone:* ${order.telegramPhone}
+• *Telegram User:* ${order.telegramUsername}
+📅 *Time:* ${order.date}
+━━━━━━━━━━━━━━━━━━
+⚡ _ব্যালেন্স সফলভাবে কেটে নেওয়া হয়েছে। সার্ভিসটি দ্রুত ডেলিভারি দিন।_
+    `;
+
+    // এখানে সঠিক ভেরিয়েবল tgToken ব্যবহার করা হয়েছে
+    const telegramUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
+
+    fetch(telegramUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: tgChatId, // এখানে সঠিক ভেরিয়েবল tgChatId ব্যবহার করা হয়েছে
+            text: textMessage,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (!data.ok) console.error("টেলিগ্রাম বটে মেসেজ পাঠাতে সমস্যা হয়েছে:", data.description);
+    })
+    .catch(err => console.error("টেলিগ্রাম API এরর:", err));
+}
+
+// ১. ইনভেস্ট নিশ্চিতকরণ এবং ব্যালেন্স কাটার মূল ফাংশন (উইথড্রর মতো লক সিস্টেম)
+function confirmInvest() {
+    let amtInput = document.getElementById('investAmount');
+    if (!amtInput) return;
+    
+    let amt = parseInt(amtInput.value);
+    
+    if (!curUser) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'),
+            icon: 'error',
+            title: 'দুঃখিত',
+            text: 'দয়া করে আগে লগইন করুন!'
+        });
+    }
+
+    // তথ্য সঠিক আছে কিনা যাচাই
+    if (!amt || amt < 100) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'),
+            icon: 'error',
+            title: 'ভুল ইনপুট',
+            text: 'নূন্যতম ১০০ টাকা বিনিয়োগ করতে হবে।'
+        });
+    }
+
+    // db.users অ্যারে থেকে লগইন থাকা ইউজারকে নিখুঁতভাবে খুঁজে বের করা
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) {
+        return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
+    }
+
+    // আপনার মেইন ব্যালেন্স কি (bal) থেকে সরাসরি চেক
+    let currentBal = Number(db.users[userIndex].bal || 0);
+
+    if (currentBal < amt) {
+        return Swal.fire({
+            target: document.getElementById('p-invest'),
+            icon: 'error',
+            title: 'পর্যাপ্ত ব্যালেন্স নেই',
+            text: 'আপনার একাউন্টে পর্যাপ্ত টাকা নেই!'
+        });
+    }
+
+    // লাভের হিসাব (৩০ দিনে ৩০% লাভ)
+    let profit = Math.floor(amt * 0.30);
+    let totalReturn = amt + profit;
+    let nowStr = new Date().toLocaleString('bn-BD', { hour12: true });
+
+    // নিশ্চিতকরণ পপআপ
+    Swal.fire({
+        target: document.getElementById('p-invest'),
+        title: 'আপনি কি নিশ্চিত?',
+        text: `৳${amt} আপনার একاعউন্ট থেকে কেটে নেওয়া হবে।`,
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'হ্যাঁ, নিশ্চিত',
+        cancelButtonText: 'না',
+        confirmButtonColor: '#28a745',
+        cancelButtonColor: '#d33',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // উইথড্র সিস্টেমের মতো ব্যালেন্স চিরতরে মাইনাস করা হলো
+            let newBalance = currentBal - amt;
+            db.users[userIndex].bal = newBalance;
+            curUser.bal = newBalance; // সেশন আপডেট
+
+            // ইনভেস্টমেন্ট হিস্টোরি লোকাল স্টোরেজ মেইন db অবজেক্টে পুশ
+            if (!db.investments) db.investments = []; 
+            
+            const investId = Date.now();
+            const expiryTime = Date.now() + (30 * 24 * 60 * 60 * 1000); // ৩০ দিন পর
+
+            db.investments.push({
+                id: investId,
+                user: curUser.email,
+                investAmt: amt,
+                totalReturn: totalReturn,
+                status: 'Active',
+                time: nowStr,
+                expiry: expiryTime,
+                isClaimed: false // টাকা ব্যাক এসেছে কিনা ট্র্যাকিংয়ের জন্য নতুন ফ্ল্যাগ
+            });
+            
+            // ডাটাবেস পার্মানেন্ট সেভ (Localstorage + MySQL)
+            if (typeof save === "function") {
+                save(); 
+            } else {
+                localStorage.setItem('v7_u', JSON.stringify(db.users));
+                localStorage.setItem('v7_invest', JSON.stringify(db.investments));
+            }
+
+            // হোমপেজ ও UI ব্যালেন্স আপডেট
+            if (typeof renderUser === "function") renderUser();
+            if (typeof updateUIBalance === "function") updateUIBalance();
+
+            // সফলতার প্রিমিয়াম পপআপ দেখানো
+            showSuccessInvestPopup(amt, totalReturn, nowStr);
+            amtInput.value = ""; // ইনপুট বক্স রিসেট
+            
+            // হিস্টোরি রেন্ডার রিফ্রেশ করা
+            if (typeof renderInvestHistory === "function") renderInvestHistory();
+        }
+    });
+}
+
+// ২. সফলতার পপআপ উইন্ডো
+function showSuccessInvestPopup(amt, total, time) {
+    Swal.fire({
+        target: document.getElementById('p-invest'),
+        width: '350px',
+        background: '#ffffff',
+        showConfirmButton: true,
+        confirmButtonText: 'ঠিক আছে',
+        confirmButtonColor: '#28a745',
+        allowOutsideClick: false,
+        padding: '0',
+        customClass: { popup: 'long-premium-popup' },
+        html: `
+            <style>
+                .long-premium-popup { border-radius: 30px !important; margin-top: 20px !important; }
+                .pop-container { padding: 90px 20px 30px 20px; text-align: center; }
+            </style>
+            <div class="pop-container" style="position: relative;">
+                <div style="background: linear-gradient(135deg, #28a745, #5dd373); width: 80px; height: 80px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: -115px auto 25px; box-shadow: 0 15px 30px rgba(40, 167, 69, 0.4); border: 6px solid #ffffff;">
+                    <i class="fas fa-check" style="color: white; font-size: 35px;"></i>
+                </div>
+                <h3 style="color: #28a745; font-weight: 900; margin-bottom: 20px; font-size: 20px;">বিনিয়োগ সফল!</h3>
+                <div style="text-align: left; background: #fdfdfd; border-radius: 20px; padding: 20px; border: 1px solid #f1f2f6; margin-bottom: 20px;">
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">বিনিয়োগ</span>
+                        <b style="color: #333; font-size: 15px;">৳${amt}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-bottom: 12px; border-bottom: 1px solid #f8f9fa; padding-bottom: 8px;">
+                        <span style="color: #888; font-size: 13px;">মোট রিটার্ন</span>
+                        <b style="color: #28a745; font-size: 15px;">৳${total}</b>
+                    </div>
+                    <div style="display:flex; justify-content: space-between; margin-top: 10px;">
+                        <span style="color: #bbb; font-size: 11px;">সময়</span>
+                        <span style="color: #bbb; font-size: 11px;">${time}</span>
+                    </div>
+                </div>
+                <div style="background: #fff9e6; border-radius: 12px; padding: 10px; border-left: 4px solid #f1c40f;">
+                    <p style="font-size: 10px; color: #7f8c8d; margin: 0; line-height: 1.5;">
+                        আগামী ৩০ দিন পর স্বয়ংক্রিয়ভাবে আপনার ব্যালেন্সে ৳${total} টাকা যোগ হয়ে যাবে।
+                    </p>
+                </div>
+            </div>
+        `
+    });
+}
+
+// ৩. অটো-মেয়াদ চেক, ব্যালেন্স রিফান্ড এবং টেলিগ্রাম নোটিফিকেশন সিস্টেম (মাস্ট-হ্যাভ ফাংশন)
+function checkAndRefundInvestments() {
+    if (!curUser || !db.investments || db.investments.length === 0) return;
+
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) return;
+
+    let currentTime = Date.now();
+    let isUpdated = false;
+
+    db.investments.forEach(inv => {
+        // যদি ইনভেস্টমেন্টের মেয়াদ শেষ হয়, স্ট্যাটাস একটিভ থাকে এবং এখনো রিফান্ড না করা হয়ে থাকে
+        if (inv.user === curUser.email && currentTime >= inv.expiry && inv.status === 'Active' && !inv.isClaimed) {
+            
+            let returnAmt = Number(inv.totalReturn);
+            
+            // ১. ব্যালেন্স ফিরিয়ে দেওয়া
+            db.users[userIndex].bal = Number(db.users[userIndex].bal || 0) + returnAmt;
+            curUser.bal = db.users[userIndex].bal;
+            
+            // ২. স্ট্যাটাস আপডেট লক করা
+            inv.status = 'Completed';
+            inv.isClaimed = true;
+            isUpdated = true;
+
+            // ৩. টেলিগ্রাম বটে রিকোয়েস্ট/মেসেজ পাঠানো
+            sendInvestmentExpiryToTelegram(inv);
+        }
+    });
+
+    // কোনো ইনভেস্টমেন্ট ম্যাচিউরড হলে ডাটাবেজ একবারে সেভ হবে
+    if (isUpdated) {
+        if (typeof save === "function") save();
+        if (typeof renderUser === "function") renderUser();
+        if (typeof updateUIBalance === "function") updateUIBalance();
+        toast("অভিনন্দন! আপনার ইনভেস্টমেন্টের মেয়াদ শেষ হয়েছে এবং লাভসহ টাকা মূল ব্যালেন্সে যোগ হয়েছে।", "success");
+    }
+}
+
+// ৪. ইনভেস্টমেন্ট হিস্টোরি রেন্ডার করার ফাংশন
+function renderInvestHistory() {
+    // প্রতিবার রেন্ডার হওয়ার আগে ব্যাকগ্রাউন্ডে চেক করে নিবে কোনোটার মেয়াদ শেষ হলো কিনা
+    checkAndRefundInvestments();
+
+    let container = document.getElementById('invest-list-container');
+    if (!container) return;
+    container.innerHTML = ""; 
+
+    if (!db.investments || db.investments.length === 0) {
+        container.innerHTML = `<div class="text-center mt-5 text-muted" style="font-size: 13px;">আপনার কোনো সক্রিয় ইনভেস্টমেন্ট নেই।</div>`;
+        return;
+    }
+
+    // শুধুমাত্র এই ইউজারের ইনভেস্টমেন্ট ফিল্টার করে রিভার্স করা
+    let myInvestments = db.investments.filter(inv => inv.user === curUser.email);
+    
+    if (myInvestments.length === 0) {
+        container.innerHTML = `<div class="text-center mt-5 text-muted" style="font-size: 13px;">আপনার কোনো সক্রিয় ইনভেস্টমেন্ট নেই।</div>`;
+        return;
+    }
+
+    let sortedInvest = [...myInvestments].reverse();
+
+    sortedInvest.forEach(inv => {
+        let now = Date.now();
+        let remainingTime = inv.expiry - now;
+        
+        let daysLeft = Math.ceil(remainingTime / (1000 * 60 * 60 * 24));
+        let statusText = "";
+        let statusClass = "";
+
+        if (remainingTime <= 0 || inv.status === 'Completed') {
+            statusText = "Completed";
+            daysLeft = 0;
+            statusClass = "text-success";
+        } else {
+            statusText = "Running";
+            statusClass = "text-primary";
+        }
+
+        // প্রোগ্রেস বার পার্সেন্টেজ হিসাব
+        let progressPercent = 100;
+        if (remainingTime > 0) {
+            let totalDuration = 30 * 24 * 60 * 60 * 1000;
+            let elapsed = totalDuration - remainingTime;
+            progressPercent = Math.min(100, Math.max(0, (elapsed / totalDuration) * 100));
+        }
+
+        container.innerHTML += `
+            <div class="card shadow-sm border-0 mb-3" style="border-radius: 20px; overflow: hidden; background: white;">
+                <div style="padding: 15px;">
+                    <div class="d-flex justify-content-between align-items-center mb-2">
+                        <span style="font-size: 10px; color: #aaa; font-weight: 600;">#${inv.id}</span>
+                        <span class="badge" style="background: ${inv.status === 'Running' ? '#eef2ff' : '#f0fdf4'}; color: ${inv.status === 'Running' ? '#3b82f6' : '#2ecc71'}; border-radius: 8px; padding: 5px 10px;">${inv.status}</span>
+                    </div>
+                    
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <small class="text-muted d-block" style="font-size: 10px;">Investment</small>
+                            <b style="color: #2d3436;">৳${inv.investAmt}</b>
+                        </div>
+                        <div class="text-center">
+                            <small class="text-muted d-block" style="font-size: 10px;">Return (30 Days)</small>
+                            <b class="text-success">৳${inv.totalReturn}</b>
+                        </div>
+                        <div class="text-end">
+                            <small class="text-muted d-block" style="font-size: 10px;">Time Left</small>
+                            <b class="${statusClass}">${daysLeft} Days</b>
+                        </div>
+                    </div>
+
+                    <div class="mt-3" style="height: 6px; background: #f1f2f6; border-radius: 10px; position: relative;">
+                        <div style="position: absolute; left: 0; top: 0; height: 100%; background: linear-gradient(90deg, #2ecc71, #27ae60); border-radius: 10px; width: ${progressPercent}%;"></div>
+                    </div>
+                    
+                    <small class="d-block mt-2 text-muted" style="font-size: 9px; text-align: right;">Started: ${inv.time}</small>
+                </div>
+            </div>
+        `;
+    });
+}
+
+// ৫. মেয়াদ পূর্তির পর টেলিগ্রাম বটে এপিআই রিকোয়েস্ট পাঠানোর ফাংশন
+function sendInvestmentExpiryToTelegram(order) {
+    const tgToken = "7963516868:AAEX5wGUkgYDaTfA0ffL_B3COQaZKNRDlvo"; 
+    const tgChatId = "6882504862";   
+
+    const textMessage = `
+⏰ *ইনভেস্টমেন্ট মেয়াদ পূর্ণ হয়েছে! (অটো রিফান্ড)*
+━━━━━━━━━━━━━━━━━━
+🆔 *Investment ID:* \`${order.id}\`
+👤 *User Email:* ${order.user}
+💰 *Invest Amount:* ৳ ${order.investAmt}.00
+💸 *Total Refunded:* ৳ ${order.totalReturn}.00
+━━━━━━━━━━━━━━━━━━
+📊 *স্ট্যাটাস আপডেট:*
+• *Status:* Completed (লাভসহ টাকা ব্যালেন্সে যোগ হয়েছে)
+📅 *Start Time:* ${order.time}
+━━━━━━━━━━━━━━━━━━
+⚡ _ইউজারের ওয়ালেটে ব্যালেন্স সাকসেসফুলি ক্রেডিট করে দেওয়া হয়েছে।_
+    `;
+
+    const telegramUrl = `https://api.telegram.org/bot${tgToken}/sendMessage`;
+
+    fetch(telegramUrl, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            chat_id: tgChatId,
+            text: textMessage,
+            parse_mode: 'Markdown'
+        })
+    })
+    .then(res => res.json())
+    .catch(err => console.error("টেলিগ্রাম নোটিফিকেশন এরর:", err));
+}
+let currentCaptcha = "";
+const captchaReward = 0.50; // প্রতি ক্যাপচায় ৫০ পয়সা
+const maxCaptchaLimit = 10;  // দৈনিক সর্বোচ্চ ১০ বার ট্রাই করার সুযোগ
+
+// ১. পেজ খোলার সময় নতুন ক্যাপচা তৈরি এবং ডাটাবেস চেক
+function openCaptchaPage() {
+    if (!curUser) {
+        return Swal.fire('দুঃখিত', 'দয়া করে আগে লগইন করুন!', 'error');
+    }
+    
+    // ইউজার ডাটাবেজ ইনডেক্স খুঁজে বের করা
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
+
+    // আজকের তারিখ বের করা (তারিখ পরিবর্তনের সাথে সাথে লিমিট রিসেট হবে স্বয়ংক্রিয়ভাবে)
+    let todayStr = new Date().toLocaleDateString('en-US');
+    let lastActiveDate = db.users[userIndex].captchaDate || "";
+
+    // যদি দিন পরিবর্তন হয়, তবে ইউজারের দৈনিক কাউন্ট ও দৈনিক ইনকাম ০ হয়ে যাবে
+    if (lastActiveDate !== todayStr) {
+        db.users[userIndex].captchaCount = 0;
+        db.users[userIndex].todayEarn = 0; // নতুন দিনে আজকের ইনকাম ০ হবে
+        db.users[userIndex].captchaDate = todayStr;
+        
+        // কারেন্ট ইউজার সেশন সিঙ্ক
+        curUser.captchaCount = 0;
+        curUser.todayEarn = 0;
+        saveCaptchaData(); // লোকাল স্টোরেজে সেভ
+    }
+
+    // UI-তে বর্তমান কাউন্ট দেখানো
+    let currentCount = db.users[userIndex].captchaCount || 0;
+    
+    if(document.getElementById('cap-count')) {
+        document.getElementById('cap-count').innerText = currentCount;
+    }
+    if(document.getElementById('cap-earn')) {
+        document.getElementById('cap-earn').innerText = "৳" + (currentCount * captchaReward).toFixed(2);
+    }
+
+    // যদি অলরেডি ১০ বার শেষ হয়ে যায়, তবে নতুন ক্যাপচা তৈরি করবে না
+    if (currentCount >= maxCaptchaLimit) {
+        if(document.getElementById('target-code')) document.getElementById('target-code').innerText = "LIMIT OVER";
+        if(document.getElementById('captcha-input')) {
+            document.getElementById('captcha-input').value = "";
+            document.getElementById('captcha-input').disabled = true;
+        }
+        return;
+    } else {
+        if(document.getElementById('captcha-input')) document.getElementById('captcha-input').disabled = false;
+    }
+
+    generateCaptcha();
+    if (typeof openPage === "function") openPage('p-captcha');
+}
+
+// ২. র‍্যান্ডম ক্যাপচা তৈরি করা
+function generateCaptcha() {
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    let currentCount = db.users[userIndex].captchaCount || 0;
+
+    if (currentCount >= maxCaptchaLimit) {
+        if(document.getElementById('target-code')) document.getElementById('target-code').innerText = "LIMIT OVER";
+        if(document.getElementById('captcha-input')) {
+            document.getElementById('captcha-input').value = "";
+            document.getElementById('captcha-input').disabled = true;
+        }
+        return;
+    }
+
+    const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; 
+    let result = "";
+    for (let i = 0; i < 6; i++) {
+        result += chars.charAt(Math.floor(Math.random() * chars.length));
+    }
+    currentCaptcha = result;
+    
+    if(document.getElementById('target-code')) document.getElementById('target-code').innerText = result;
+    if(document.getElementById('captcha-input')) document.getElementById('captcha-input').value = "";
+}
+
+function checkCaptcha() {
+    if (!curUser) return;
+
+    let userIndex = db.users.findIndex(u => u.email === curUser.email);
+    if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
+
+    let currentCount = db.users[userIndex].captchaCount || 0;
+
+    // ১. লিমিট চেক
+    if (currentCount >= maxCaptchaLimit) {
+        Swal.fire('লিমিট শেষ!', 'আজকের জন্য আপনার ১০ বার ট্রাই করার লিমিট শেষ হয়ে গেছে।', 'warning');
+        return;
+    }
+
+    const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+    
+    if (!userInput) {
+        if (typeof toast === "function") toast("অনুগ্রহ করে কোডটি লিখুন!");
+        else alert("অনুগ্রহ করে কোডটি লিখুন!");
+        return;
+    }
+
+    // সঠিক হোক বা ভুল—ট্রাই করার কাউন্ট ১ বাড়বে
+    db.users[userIndex].captchaCount = currentCount + 1;
+    let updatedCount = db.users[userIndex].captchaCount;
+
+    if (userInput === currentCaptcha) {
+        // সঠিক হলে ব্যালেন্স ও আর্নিং যোগ হবে
+        let currentBal = Number(db.users[userIndex].bal || 0);
+        let todayEarn = Number(db.users[userIndex].todayEarn || 0);
+
+        db.users[userIndex].bal = currentBal + captchaReward;
+        db.users[userIndex].todayEarn = todayEarn + captchaReward;
+
+        // --- নতুন ইনকাম হিস্ট্রি যোগ করার লজিক ---
+        // আপনার openIncomeDetail ফাংশনের রিকোয়ারমেন্ট অনুযায়ী তারিখ ফরম্যাট (YYYY-MM-DD | HH:MM) করা হয়েছে
+        let now = new Date();
+        let yyyy = now.getFullYear();
+        let mm = String(now.getMonth() + 1).padStart(2, '0');
+        let dd = String(now.getDate()).padStart(2, '0');
+        let timeStr = now.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: true });
+        let customDateStr = `${yyyy}-${mm}-${dd} | ${timeStr}`;
+
+        // হিস্ট্রি অবজেক্ট তৈরি
+        let historyItem = {
+            amount: captchaReward,
+            note: "Captha Commission",
+            date: customDateStr
+        };
+
+        // ডাটাবেজ এবং সেশনে হিস্ট্রি পুশ করা
+        if (!db.users[userIndex].incomeHistory) db.users[userIndex].incomeHistory = [];
+        db.users[userIndex].incomeHistory.push(historyItem);
+        
+        // সেশন বা কারেন্ট ইউজার অবজেক্ট আপডেট
+        curUser.bal = db.users[userIndex].bal;
+        curUser.todayEarn = db.users[userIndex].todayEarn;
+        curUser.incomeHistory = db.users[userIndex].incomeHistory; // হিস্ট্রি সিঙ্ক
+
+        Swal.fire({
+            title: 'সফল হয়েছে!',
+            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন। (${updatedCount}/${maxCaptchaLimit})`,
+            icon: 'success',
+            timer: 1500,
+            showConfirmButton: false
+        });
+
+    } else {
+        // ভুল হলে কোনো ব্যালেন্স যোগ হবে না, শুধু কাউন্ট বাড়বে
+        Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আপনার ১টি সুযোগ নষ্ট হলো। (${updatedCount}/${maxCaptchaLimit})`, 'error');
+    }
+
+    // UI আপডেট
+    if(document.getElementById('cap-count')) document.getElementById('cap-count').innerText = updatedCount;
+    if(document.getElementById('cap-earn')) document.getElementById('cap-earn').innerText = "৳" + (updatedCount * captchaReward).toFixed(2);
+    
+    saveCaptchaData(); // লোকাল স্টোরেজে সম্পূর্ণ ডাটাবেজ ও সেশন একসাথে সেভ
+
+    // রেন্ডার ফাংশন কল করা (হোমপেজ ও ইনকাম পেজের UI আপডেট করার জন্য)
+    if (typeof renderUser === "function") renderUser(); 
+    if (typeof updateUIBalance === "function") updateUIBalance();
+
+    // নতুন ক্যাপচা জেনারেট করা
+    generateCaptcha();
+}
+
+// ৪. লোকাল স্টোরেজে স্থায়ীভাবে ডাটা সেভ করার ফাংশন
+function saveCaptchaData() {
+    // কারেন্ট ইউজার সেশন ব্যাকআপ (যাতে রিফ্রেশ দিলে কারেন্ট ব্যালেন্স সরাসরি পায়)
+    localStorage.setItem('curUser', JSON.stringify(window.curUser));
+    
+    if (typeof save === "function") {
+        save(); 
+    } else {
+        localStorage.setItem('v7_u', JSON.stringify(db.users)); 
+    }
+}
+
 
 </script>
 
