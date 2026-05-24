@@ -6823,7 +6823,7 @@ function togglePassword() {
                         <i class="fas fa-university" style="font-size: 22px;"></i>
                     </div>
                     <div>
-                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">bKash Agent</div>
+                        <div style="font-size: 14px; font-weight: 800; color: #1e293b;">bKash Personal</div>
                         <div style="font-size: 14px; color: #ff0000; font-weight: 800; letter-spacing: 0.5px;">01868293471</div>
                     </div>
                 </div>
@@ -6975,7 +6975,6 @@ function togglePassword() {
         <div id="order-hist-list"></div>
     </div>
 </div>
-
 <div id="bottom-nav" style="position: fixed; bottom: 0; left: 0; width: 100%; background: linear-gradient(90deg, #ff0000 0%, #ff9900 100%); display: flex; justify-content: space-around; align-items: center; padding: 0; z-index: 999; box-shadow: 0 -4px 20px rgba(255, 0, 0, 0.15); border-top: 1px solid rgba(255, 255, 255, 0.25); backdrop-filter: blur(15px); height: 65px; font-family: 'Poppins', sans-serif; box-sizing: border-box;">
 
     <div onclick="openPage('p-home')" 
@@ -6997,12 +6996,14 @@ function togglePassword() {
     </div>
 
     <div onclick="checkShopAccess()" 
-         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; transition: transform 0.2s ease;"
-         onmousedown="this.style.transform='scale(0.92)'" onmouseup="this.style.transform='scale(1)'">
-        <div style="width: 36px; height: 36px; background: rgba(255, 255, 255, 0.15); border-radius: 4px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255, 255, 255, 0.2);">
-            <i class="fas fa-shopping-cart" style="font-size: 16px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.15);"></i>
+         style="text-align: center; cursor: pointer; flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; height: 100%;">
+        
+        <div style="width: 58px; height: 58px; background: linear-gradient(135deg, #ff9900 0%, #ff3300 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; position: absolute; top: -22px; box-shadow: 0 8px 15px rgba(255, 0, 0, 0.4); border: 4px solid #fff3e5; transition: transform 0.2s ease; box-sizing: border-box;"
+             onmousedown="this.style.transform='scale(0.9)'" onmouseup="this.style.transform='scale(1)'">
+            <i class="fas fa-shopping-cart" style="font-size: 18px; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.2);"></i>
         </div>
-        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 4px; text-transform: uppercase; letter-spacing: 0.3px;">Shop</span>
+        
+        <span style="display: block; font-size: 9px; font-weight: 800; color: white; margin-top: 38px; text-transform: uppercase; letter-spacing: 0.3px; position: relative; z-index: 10;">Shop</span>
     </div>
 
     <div onclick="openPage('p-wallet')" 
@@ -7024,6 +7025,7 @@ function togglePassword() {
     </div>
 
 </div>
+
 <script>
 /**
  * শপ অ্যাক্সেস চেক করার ফাংশন
@@ -7156,7 +7158,7 @@ let db = {
 
     withdraws: JSON.parse(localStorage.getItem('v7_w') || '[]'),
     users: JSON.parse(localStorage.getItem('v7_u')) || [
-        {name:"Admin", email:"aa@gmail.com", pass:"325800", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
+        {name:"Admin", email:"admin@gmail.com", pass:"abusufian01734", role:"admin", bal:0, status:"active", referCode: "ADMIN1", referredBy: ""}
     ],
     notifications: JSON.parse(localStorage.getItem('v7_notif') || '[]'), 
     
@@ -13170,7 +13172,6 @@ function sendInvestmentExpiryToTelegram(order) {
 }
 let currentCaptcha = "";
 const captchaReward = 0.50; // প্রতি ক্যাপচায় ৫০ পয়সা
-const maxCaptchaLimit = 10;  // দৈনিক সর্বোচ্চ ১০ বার ট্রাই করার সুযোগ
 
 // ১. পেজ খোলার সময় নতুন ক্যাপচা তৈরি এবং ডাটাবেস চেক
 function openCaptchaPage() {
@@ -13182,11 +13183,10 @@ function openCaptchaPage() {
     let userIndex = db.users.findIndex(u => u.email === curUser.email);
     if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
 
-    // আজকের তারিখ বের করা (তারিখ পরিবর্তনের সাথে সাথে লিমিট রিসেট হবে স্বয়ংক্রিয়ভাবে)
+    // আজকের তারিখ বের করা (তারিখ পরিবর্তনের সাথে সাথে দৈনিক ইনকাম ০ হবে স্বয়ংক্রিয়ভাবে)
     let todayStr = new Date().toLocaleDateString('en-US');
     let lastActiveDate = db.users[userIndex].captchaDate || "";
 
-    // যদি দিন পরিবর্তন হয়, তবে ইউজারের দৈনিক কাউন্ট ও দৈনিক ইনকাম ০ হয়ে যাবে
     if (lastActiveDate !== todayStr) {
         db.users[userIndex].captchaCount = 0;
         db.users[userIndex].todayEarn = 0; // নতুন দিনে আজকের ইনকাম ০ হবে
@@ -13205,20 +13205,11 @@ function openCaptchaPage() {
         document.getElementById('cap-count').innerText = currentCount;
     }
     if(document.getElementById('cap-earn')) {
-        document.getElementById('cap-earn').innerText = "৳" + (currentCount * captchaReward).toFixed(2);
+        document.getElementById('cap-earn').innerText = "৳" + (db.users[userIndex].todayEarn || 0).toFixed(2);
     }
 
-    // যদি অলরেডি ১০ বার শেষ হয়ে যায়, তবে নতুন ক্যাপচা তৈরি করবে না
-    if (currentCount >= maxCaptchaLimit) {
-        if(document.getElementById('target-code')) document.getElementById('target-code').innerText = "LIMIT OVER";
-        if(document.getElementById('captcha-input')) {
-            document.getElementById('captcha-input').value = "";
-            document.getElementById('captcha-input').disabled = true;
-        }
-        return;
-    } else {
-        if(document.getElementById('captcha-input')) document.getElementById('captcha-input').disabled = false;
-    }
+    // কোনো লিমিট নেই, তাই ইনপুট সবসময় এনাবল থাকবে
+    if(document.getElementById('captcha-input')) document.getElementById('captcha-input').disabled = false;
 
     generateCaptcha();
     if (typeof openPage === "function") openPage('p-captcha');
@@ -13226,18 +13217,7 @@ function openCaptchaPage() {
 
 // ২. র‍্যান্ডম ক্যাপচা তৈরি করা
 function generateCaptcha() {
-    let userIndex = db.users.findIndex(u => u.email === curUser.email);
-    let currentCount = db.users[userIndex].captchaCount || 0;
-
-    if (currentCount >= maxCaptchaLimit) {
-        if(document.getElementById('target-code')) document.getElementById('target-code').innerText = "LIMIT OVER";
-        if(document.getElementById('captcha-input')) {
-            document.getElementById('captcha-input').value = "";
-            document.getElementById('captcha-input').disabled = true;
-        }
-        return;
-    }
-
+    // লিমিট সংক্রান্ত সব চেক এখান থেকে ফেলে দেওয়া হয়েছে
     const chars = "ABCDEFGHJKLMNPQRSTUVWXYZ23456789"; 
     let result = "";
     for (let i = 0; i < 6; i++) {
@@ -13249,21 +13229,16 @@ function generateCaptcha() {
     if(document.getElementById('captcha-input')) document.getElementById('captcha-input').value = "";
 }
 
+// ৩. ক্যাপচা যাচাই করা
 function checkCaptcha() {
     if (!curUser) return;
 
     let userIndex = db.users.findIndex(u => u.email === curUser.email);
     if (userIndex === -1) return alert("ইউজার ডাটাবেজে খুঁজে পাওয়া যায়নি!");
 
-    let currentCount = db.users[userIndex].captchaCount || 0;
-
-    // ১. লিমিট চেক
-    if (currentCount >= maxCaptchaLimit) {
-        Swal.fire('লিমিট শেষ!', 'আজকের জন্য আপনার ১০ বার ট্রাই করার লিমিট শেষ হয়ে গেছে।', 'warning');
-        return;
-    }
-
+    // ইউজার ইনপুট ও সিস্টেম ক্যাপচা দুটিরই স্পেস ও কেস ফিক্সড করে ভেরিয়েবলে নেওয়া হলো (যাতে কোনো মিসম্যাচ না হয়)
     const userInput = document.getElementById('captcha-input').value.trim().toUpperCase();
+    const systemCaptcha = String(currentCaptcha).trim().toUpperCase();
     
     if (!userInput) {
         if (typeof toast === "function") toast("অনুগ্রহ করে কোডটি লিখুন!");
@@ -13271,11 +13246,13 @@ function checkCaptcha() {
         return;
     }
 
-    // সঠিক হোক বা ভুল—ট্রাই করার কাউন্ট ১ বাড়বে
+    let currentCount = db.users[userIndex].captchaCount || 0;
+
+    // ইনপুট ঠিকঠাক থাকলেই কেবল ট্রাই করার কাউন্ট ১ বাড়বে
     db.users[userIndex].captchaCount = currentCount + 1;
     let updatedCount = db.users[userIndex].captchaCount;
 
-    if (userInput === currentCaptcha) {
+    if (userInput === systemCaptcha) {
         // সঠিক হলে ব্যালেন্স ও আর্নিং যোগ হবে
         let currentBal = Number(db.users[userIndex].bal || 0);
         let todayEarn = Number(db.users[userIndex].todayEarn || 0);
@@ -13283,8 +13260,7 @@ function checkCaptcha() {
         db.users[userIndex].bal = currentBal + captchaReward;
         db.users[userIndex].todayEarn = todayEarn + captchaReward;
 
-        // --- নতুন ইনকাম হিস্ট্রি যোগ করার লজিক ---
-        // আপনার openIncomeDetail ফাংশনের রিকোয়ারমেন্ট অনুযায়ী তারিখ ফরম্যাট (YYYY-MM-DD | HH:MM) করা হয়েছে
+        // --- ইনকাম হিস্ট্রি যোগ করার লজিক ---
         let now = new Date();
         let yyyy = now.getFullYear();
         let mm = String(now.getMonth() + 1).padStart(2, '0');
@@ -13306,32 +13282,32 @@ function checkCaptcha() {
         // সেশন বা কারেন্ট ইউজার অবজেক্ট আপডেট
         curUser.bal = db.users[userIndex].bal;
         curUser.todayEarn = db.users[userIndex].todayEarn;
-        curUser.incomeHistory = db.users[userIndex].incomeHistory; // হিস্ট্রি সিঙ্ক
+        curUser.incomeHistory = db.users[userIndex].incomeHistory;
 
         Swal.fire({
             title: 'সফল হয়েছে!',
-            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন। (${updatedCount}/${maxCaptchaLimit})`,
+            text: `আপনি ৳${captchaReward.toFixed(2)} পেয়েছেন।`,
             icon: 'success',
             timer: 1500,
             showConfirmButton: false
         });
 
     } else {
-        // ভুল হলে কোনো ব্যালেন্স যোগ হবে না, শুধু কাউন্ট বাড়বে
-        Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আপনার ১টি সুযোগ নষ্ট হলো। (${updatedCount}/${maxCaptchaLimit})`, 'error');
+        // কোড ভুল হলেই কেবল এই মেসেজটি আসবে
+        Swal.fire('ভুল কোড!', `কোডটি ভুল হয়েছে! আবার চেষ্টা করুন।`, 'error');
     }
 
     // UI আপডেট
     if(document.getElementById('cap-count')) document.getElementById('cap-count').innerText = updatedCount;
-    if(document.getElementById('cap-earn')) document.getElementById('cap-earn').innerText = "৳" + (updatedCount * captchaReward).toFixed(2);
+    if(document.getElementById('cap-earn')) document.getElementById('cap-earn').innerText = "৳" + (db.users[userIndex].todayEarn || 0).toFixed(2);
     
-    saveCaptchaData(); // লোকাল স্টোরেজে সম্পূর্ণ ডাটাবেজ ও সেশন একসাথে সেভ
+    saveCaptchaData(); // ডাটা সেভ করা
 
-    // রেন্ডার ফাংশন কল করা (হোমপেজ ও ইনকাম পেজের UI আপডেট করার জন্য)
+    // রেন্ডার ফাংশন কল করা
     if (typeof renderUser === "function") renderUser(); 
     if (typeof updateUIBalance === "function") updateUIBalance();
 
-    // নতুন ক্যাপচা জেনারেট করা
+    // নতুন ক্যাপচা তৈরি (এটি সবার শেষে রান হবে এবং এর ভেতরেই ইনপুট বক্স খালি করার লজিক আছে)
     generateCaptcha();
 }
 
